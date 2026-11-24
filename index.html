@@ -1,0 +1,4494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F3EBDD">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='5' fill='%23A83B30'/%3E%3Ctext x='32' y='46' font-size='40' text-anchor='middle' fill='%23F8F1E5' font-family='serif'%3E%E5%8F%A4%3C/text%3E%3C/svg%3E">
+  <title>穿越古代身份图鉴｜测测你在古代会是什么身份</title>
+  <meta name="description" content="不考历史，只测灵魂。40道生活化选择题，约3分钟测出你穿越到古代的身份：谋士、帝王、文人、侠客、诗人、将领还是隐士。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="穿越古代身份图鉴｜测测你在古代会是什么身份">
+  <meta property="og:description" content="如果带着现在的灵魂回到古代，你会是谁？40道生活题，找到与你同频的那位古人。">
+  <style>
+/* =========================================================
+   穿越古代身份图鉴 · 视觉样式
+   高级国风 / 宣纸 / 朱砂 / 墨绿 / 香槟金
+   ========================================================= */
+
+:root {
+  --paper: #f3ebde;
+  --paper-soft: #faf5eb;
+  --paper-warm: #f7f0e4;
+  --paper-deep: #e9ddca;
+  --ink: #202a25;
+  --ink-soft: #3a463f;
+  --ink-muted: #6b736c;
+  --ink-faint: #8f958e;
+  --cinnabar: #a83b30;
+  --cinnabar-deep: #7d2a22;
+  --cinnabar-soft: #c06452;
+  --jade: #42685b;
+  --jade-soft: #789386;
+  --gold: #af8a52;
+  --gold-soft: #d6c4a4;
+  --line: rgba(32, 42, 37, 0.14);
+  --line-strong: rgba(32, 42, 37, 0.28);
+  --shadow-soft: 0 18px 55px rgba(56, 43, 28, 0.09);
+  --shadow-card: 0 28px 80px rgba(56, 43, 28, 0.16);
+  --font-display: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", serif;
+  --font-kai: "STKaiti", "Kaiti SC", "KaiTi", "FangSong", serif;
+  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-latin: "Optima", "Candara", "Times New Roman", serif;
+  --ease: cubic-bezier(0.22, 0.8, 0.22, 1);
+  --container: 1240px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  background:
+    radial-gradient(circle at 82% 4%, rgba(175, 138, 82, 0.15), transparent 30rem),
+    radial-gradient(circle at 8% 78%, rgba(66, 104, 91, 0.09), transparent 34rem),
+    linear-gradient(180deg, #f8f1e5 0%, #f2e8d8 53%, #f7f0e4 100%);
+  overflow-x: hidden;
+}
+
+body[data-screen="quiz"],
+body[data-screen="loading"] {
+  background:
+    radial-gradient(circle at 86% 8%, rgba(175, 138, 82, 0.11), transparent 26rem),
+    radial-gradient(circle at 2% 72%, rgba(66, 104, 91, 0.08), transparent 11rem),
+    linear-gradient(180deg, #f7f0e4 0%, #f1e7d7 100%);
+}
+
+body[data-screen="quiz"] .site-foot,
+body[data-screen="loading"] .site-foot {
+  display: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+::selection {
+  color: var(--paper-soft);
+  background: var(--cinnabar);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cinnabar);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 2000;
+  padding: 10px 16px;
+  color: var(--paper-soft);
+  background: var(--ink);
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.noscript {
+  position: relative;
+  z-index: 999;
+  padding: 14px 20px;
+  color: #fff;
+  text-align: center;
+  background: var(--cinnabar);
+}
+
+/* ---------- 氛围底纹 ---------- */
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient__sun {
+  position: absolute;
+  top: -8rem;
+  right: 5%;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(178, 75, 57, 0.16), rgba(178, 75, 57, 0) 68%);
+  filter: blur(2px);
+}
+
+.ambient__wash {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.65;
+}
+
+.ambient__wash--one {
+  left: -12rem;
+  bottom: 6%;
+  width: 30rem;
+  height: 20rem;
+  background: rgba(66, 104, 91, 0.12);
+  transform: rotate(-24deg);
+}
+
+.ambient__wash--two {
+  top: 34%;
+  right: -16rem;
+  width: 32rem;
+  height: 25rem;
+  background: rgba(175, 138, 82, 0.11);
+  transform: rotate(18deg);
+}
+
+.ambient__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(32, 42, 37, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(32, 42, 37, 0.035) 1px, transparent 1px);
+  background-size: 118px 118px;
+  opacity: 0.42;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 18%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse at 50% 18%, #000 0%, transparent 72%);
+}
+
+.ambient__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* ---------- 顶栏 ---------- */
+
+.site-head {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(var(--container), calc(100% - 48px));
+  min-height: 88px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand__seal {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  color: #f9f2e6;
+  font-family: var(--font-display);
+  font-size: 21px;
+  line-height: 1;
+  background: var(--cinnabar);
+  border: 1px solid rgba(125, 42, 34, 0.32);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 2px rgba(255, 248, 236, 0.17);
+  transform: rotate(-2deg);
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand__word {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.brand__en {
+  color: var(--ink-muted);
+  font-family: var(--font-latin);
+  font-size: 8px;
+  letter-spacing: 0.22em;
+}
+
+.head-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-muted);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
+
+.head-note span {
+  display: block;
+  width: 34px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* ---------- 通用 ---------- */
+
+main {
+  position: relative;
+  z-index: 2;
+  width: min(var(--container), calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.is-active {
+  display: block;
+  animation: screenReveal 0.62s var(--ease) both;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--cinnabar);
+  font-family: var(--font-latin);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.eyebrow--center {
+  justify-content: center;
+}
+
+.eyebrow__line {
+  display: block;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 1px;
+  background: var(--cinnabar);
+  opacity: 0.7;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 54px;
+  padding: 0 25px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    color 0.28s var(--ease),
+    background-color 0.28s var(--ease),
+    border-color 0.28s var(--ease),
+    box-shadow 0.28s var(--ease),
+    transform 0.28s var(--ease);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  color: #f9f2e6;
+  background: var(--ink);
+  border-color: var(--ink);
+  box-shadow: 0 14px 32px rgba(32, 42, 37, 0.18);
+}
+
+.btn--primary:hover {
+  background: var(--cinnabar-deep);
+  border-color: var(--cinnabar-deep);
+  box-shadow: 0 17px 38px rgba(125, 42, 34, 0.23);
+  transform: translateY(-2px);
+}
+
+.btn__arrow {
+  display: inline-block;
+  font-family: var(--font-latin);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1;
+  transition: transform 0.28s var(--ease);
+}
+
+.btn--primary:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+.btn--ghost {
+  color: var(--ink);
+  background: rgba(255, 252, 246, 0.36);
+  border-color: var(--line-strong);
+}
+
+.btn--ghost:hover {
+  background: rgba(255, 252, 246, 0.82);
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.btn--outline {
+  color: var(--cinnabar);
+  background: transparent;
+  border-color: rgba(168, 59, 48, 0.45);
+}
+
+.btn--outline:hover {
+  color: #fff;
+  background: var(--cinnabar);
+  border-color: var(--cinnabar);
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  cursor: wait;
+  opacity: 0.62;
+  transform: none;
+}
+
+.text-btn {
+  align-self: flex-start;
+  margin-top: 18px;
+  padding: 0;
+  color: var(--ink-muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid rgba(32, 42, 37, 0.2);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.text-btn span {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 14px;
+  transition: transform 0.25s ease;
+}
+
+.text-btn:hover {
+  color: var(--cinnabar);
+  border-color: var(--cinnabar);
+}
+
+.text-btn:hover span {
+  transform: rotate(-90deg);
+}
+
+/* ---------- 首页 ---------- */
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.78fr);
+  gap: clamp(46px, 6vw, 98px);
+  align-items: center;
+  min-height: calc(100vh - 150px);
+  min-height: calc(100svh - 150px);
+  padding: 34px 0 56px;
+}
+
+.intro-copy {
+  position: relative;
+  z-index: 1;
+  padding-top: 6px;
+}
+
+.intro-title {
+  margin-top: 19px;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(62px, 7.6vw, 104px);
+  font-weight: 600;
+  letter-spacing: 0.035em;
+  line-height: 0.98;
+}
+
+.intro-title__line {
+  display: block;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: titleReveal 0.8s var(--ease) forwards;
+}
+
+.intro-title__line:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.intro-title__line--accent {
+  position: relative;
+  color: var(--cinnabar);
+  letter-spacing: 0.015em;
+}
+
+.intro-title__dot {
+  color: var(--gold);
+  font-size: 0.55em;
+  vertical-align: top;
+  margin-left: 0.04em;
+}
+
+.intro-lead {
+  margin-top: 30px;
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.1vw, 29px);
+  line-height: 1.58;
+  letter-spacing: 0.025em;
+}
+
+.intro-body {
+  max-width: 535px;
+  margin-top: 18px;
+  color: var(--ink-muted);
+  font-size: 14px;
+  line-height: 1.95;
+  letter-spacing: 0.015em;
+}
+
+.intro-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 27px;
+  color: var(--ink-soft);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.intro-meta li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 18px;
+  border-right: 1px solid var(--line);
+}
+
+.intro-meta li:first-child {
+  padding-left: 0;
+}
+
+.intro-meta li:last-child {
+  border-right: 0;
+}
+
+.intro-meta span {
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 10px;
+}
+
+.intro-actions {
+  margin-top: 34px;
+}
+
+.btn--start {
+  min-width: 250px;
+  min-height: 58px;
+  justify-content: space-between;
+  padding: 0 22px 0 27px;
+}
+
+.fineprint {
+  margin-top: 15px;
+  color: var(--ink-faint);
+  font-size: 10px;
+  letter-spacing: 0.09em;
+}
+
+.fineprint span {
+  color: var(--cinnabar);
+}
+
+.intro-art {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 0;
+}
+
+.art-side-note {
+  position: absolute;
+  top: 50%;
+  left: -38px;
+  color: var(--ink-muted);
+  font-family: var(--font-kai);
+  font-size: 11px;
+  letter-spacing: 0.36em;
+  writing-mode: vertical-rl;
+  transform: translateY(-50%);
+  opacity: 0.8;
+}
+
+.archive-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 416px);
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  padding: 20px 22px 18px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 14%, rgba(175, 138, 82, 0.13), transparent 12rem),
+    linear-gradient(155deg, rgba(255, 252, 245, 0.9), rgba(233, 221, 201, 0.9));
+  border: 1px solid rgba(76, 67, 52, 0.22);
+  box-shadow:
+    10px 16px 0 rgba(168, 59, 48, 0.035),
+    0 28px 75px rgba(70, 53, 33, 0.16);
+  transform: rotate(1.1deg);
+  animation: cardFloat 7s ease-in-out infinite;
+}
+
+.archive-card::before {
+  position: absolute;
+  inset: 8px;
+  z-index: 0;
+  border: 1px solid rgba(175, 138, 82, 0.35);
+  content: "";
+  pointer-events: none;
+}
+
+.archive-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  opacity: 0.07;
+  content: "";
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.archive-top,
+.archive-visual,
+.archive-bottom,
+.archive-corner {
+  position: relative;
+  z-index: 1;
+}
+
+.archive-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 1px 10px;
+  color: var(--ink-muted);
+  font-family: var(--font-latin);
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  border-bottom: 1px solid rgba(175, 138, 82, 0.3);
+}
+
+.archive-top span:first-child {
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+}
+
+.archive-visual {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 170px;
+  margin: 9px 0 5px;
+  overflow: hidden;
+}
+
+.archive-mountains {
+  width: 100%;
+  height: 100%;
+  opacity: 0.95;
+}
+
+.archive-question {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  color: rgba(32, 42, 37, 0.78);
+  font-family: var(--font-display);
+  font-size: clamp(88px, 11vw, 140px);
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 5px 7px 0 rgba(255, 249, 238, 0.2);
+  transform: translate(-50%, -50%);
+}
+
+.archive-vertical-seal {
+  position: absolute;
+  top: 37%;
+  right: 2px;
+  padding: 9px 7px;
+  color: var(--cinnabar);
+  font-family: var(--font-kai);
+  font-size: 11px;
+  line-height: 1.35;
+  letter-spacing: 0.25em;
+  background: rgba(249, 242, 230, 0.4);
+  border: 1px solid rgba(168, 59, 48, 0.55);
+  writing-mode: vertical-rl;
+  transform: translateY(-50%) rotate(2deg);
+}
+
+.archive-bottom {
+  padding-top: 12px;
+  border-top: 1px solid rgba(175, 138, 82, 0.3);
+}
+
+.archive-question-line {
+  color: var(--ink-soft);
+  font-family: var(--font-kai);
+  font-size: 15px;
+  line-height: 1.75;
+  letter-spacing: 0.08em;
+}
+
+.archive-tags {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+  margin-top: 13px;
+}
+
+.archive-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 5px 3px 4px;
+  color: var(--ink-muted);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  border: 1px solid rgba(32, 42, 37, 0.12);
+  background: rgba(255, 251, 243, 0.3);
+}
+
+.archive-tags i {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  color: var(--cinnabar);
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-style: normal;
+  border: 1px solid rgba(168, 59, 48, 0.25);
+}
+
+.archive-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: rgba(168, 59, 48, 0.42);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.archive-corner--tl {
+  top: 13px;
+  left: 13px;
+  border-width: 1px 0 0 1px;
+}
+
+.archive-corner--br {
+  right: 13px;
+  bottom: 13px;
+  border-width: 0 1px 1px 0;
+}
+
+.art-footnote {
+  margin-top: 17px;
+  color: var(--ink-muted);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.intro-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 21px 0 34px;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+}
+
+.intro-footer p {
+  color: var(--ink-soft);
+  font-family: var(--font-kai);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+}
+
+.intro-footer span {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+/* ---------- 答题 ---------- */
+
+.quiz-shell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: min(790px, 100%);
+  min-height: calc(100vh - 130px);
+  min-height: calc(100svh - 130px);
+  margin: 0 auto;
+  padding: clamp(32px, 6vh, 66px) 0 56px;
+}
+
+.quiz-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.quiz-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.chapter-chip {
+  position: relative;
+  padding-left: 14px;
+  color: var(--cinnabar);
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+}
+
+.chapter-chip::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--cinnabar);
+  content: "";
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.quiz-count {
+  color: var(--ink-muted);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.quiz-percent {
+  color: var(--ink-muted);
+  font-family: var(--font-latin);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.progress-track {
+  position: relative;
+  height: 3px;
+  margin: 14px 0 33px;
+  overflow: hidden;
+  background: rgba(32, 42, 37, 0.1);
+}
+
+.progress-fill {
+  display: block;
+  width: 3%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--cinnabar-deep), var(--cinnabar-soft));
+  transition: width 0.48s var(--ease);
+}
+
+.question-card {
+  position: relative;
+  padding: clamp(27px, 4.7vw, 48px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 93% 8%, rgba(175, 138, 82, 0.08), transparent 14rem),
+    rgba(251, 247, 239, 0.6);
+  border: 1px solid rgba(32, 42, 37, 0.17);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.question-card::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 78px;
+  background: var(--cinnabar);
+  content: "";
+}
+
+.question-card.is-entering {
+  animation: questionIn 0.44s var(--ease) both;
+}
+
+.question-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.question-index {
+  color: var(--ink-faint);
+  font-family: var(--font-latin);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+}
+
+.question-glyph {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-top: -4px;
+  margin-right: -3px;
+  color: var(--cinnabar);
+  font-family: var(--font-display);
+  font-size: 13px;
+  border: 1px solid rgba(168, 59, 48, 0.33);
+  transform: rotate(2deg);
+}
+
+.question-title {
+  max-width: 660px;
+  margin: 20px 0 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(23px, 3.1vw, 33px);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.015em;
+}
+
+.question-title:focus {
+  outline: none;
+}
+
+.options {
+  display: grid;
+  gap: 11px;
+  margin-top: 31px;
+}
+
+.option {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  width: 100%;
+  padding: 15px 17px;
+  color: var(--ink-soft);
+  text-align: left;
+  background: rgba(255, 252, 246, 0.58);
+  border: 1px solid rgba(32, 42, 37, 0.13);
+  border-radius: 1px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(7px);
+  animation: optionIn 0.4s var(--ease) forwards;
+  animation-delay: calc(var(--i, 0) * 42ms + 80ms);
+  transition:
+    background-color 0.22s var(--ease),
+    border-color 0.22s var(--ease),
+    box-shadow 0.22s var(--ease),
+    transform 0.22s var(--ease);
+}
+
+.option:hover {
+  background: rgba(255, 252, 246, 0.96);
+  border-color: rgba(168, 59, 48, 0.52);
+  box-shadow: 0 8px 22px rgba(56, 43, 28, 0.06);
+  transform: translateX(4px);
+}
+
+.option__key {
+  display: grid;
+  flex: 0 0 27px;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  margin-top: 1px;
+  color: var(--ink-muted);
+  font-family: var(--font-display);
+  font-size: 11px;
+  border: 1px solid rgba(32, 42, 37, 0.23);
+  border-radius: 50%;
+  transition:
+    color 0.22s var(--ease),
+    background-color 0.22s var(--ease),
+    border-color 0.22s var(--ease);
+}
+
+.option__text {
+  flex: 1;
+  font-size: 14.5px;
+  line-height: 1.65;
+  letter-spacing: 0.015em;
+}
+
+.option.is-selected {
+  color: var(--ink);
+  background: rgba(168, 59, 48, 0.065);
+  border-color: rgba(168, 59, 48, 0.72);
+  box-shadow: inset 3px 0 0 var(--cinnabar);
+  transform: translateX(4px);
+}
+
+.option.is-selected .option__key {
+  color: var(--paper-soft);
+  background: var(--cinnabar);
+  border-color: var(--cinnabar);
+}
+
+.option.is-selected .option__text {
+  font-weight: 500;
+}
+
+.quiz-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 21px;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 0;
+  color: var(--ink-muted);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.back-btn:hover:not(:disabled) {
+  color: var(--cinnabar);
+}
+
+.back-btn:disabled {
+  cursor: default;
+  opacity: 0.32;
+}
+
+.keyboard-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink-faint);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.keyboard-hint span {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin-right: 1px;
+  color: var(--ink-muted);
+  font-family: var(--font-latin);
+  font-size: 8px;
+  border: 1px solid rgba(32, 42, 37, 0.16);
+}
+
+/* ---------- 计算中 ---------- */
+
+.screen--loading {
+  min-height: calc(100vh - 160px);
+  min-height: calc(100svh - 160px);
+}
+
+.loading-shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 160px);
+  min-height: calc(100svh - 160px);
+  padding: 40px 0;
+  text-align: center;
+}
+
+.loading-seal {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  margin-bottom: 33px;
+  color: #f8f1e5;
+  font-family: var(--font-display);
+  font-size: 34px;
+  background: var(--cinnabar);
+  border: 1px solid rgba(125, 42, 34, 0.28);
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 248, 236, 0.13),
+    0 18px 35px rgba(125, 42, 34, 0.16);
+  transform: rotate(-3deg);
+}
+
+.loading-seal::before,
+.loading-seal::after {
+  position: absolute;
+  inset: -12px;
+  border: 1px solid rgba(168, 59, 48, 0.28);
+  content: "";
+  animation: ringPulse 2.2s ease-out infinite;
+}
+
+.loading-seal::after {
+  inset: -24px;
+  animation-delay: 0.6s;
+}
+
+.loading-title {
+  margin-top: 18px;
+  font-family: var(--font-display);
+  font-size: clamp(25px, 3.2vw, 34px);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.loading-text {
+  min-height: 26px;
+  margin-top: 13px;
+  color: var(--ink-muted);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  transition: opacity 0.2s ease;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 5px;
+  margin-top: 25px;
+}
+
+.loading-dots i {
+  width: 4px;
+  height: 4px;
+  background: var(--cinnabar);
+  border-radius: 50%;
+  animation: dotBlink 1.2s ease-in-out infinite;
+}
+
+.loading-dots i:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.loading-dots i:nth-child(3) {
+  animation-delay: 0.32s;
+}
+
+/* ---------- 结果页 ---------- */
+
+.screen--result {
+  position: relative;
+}
+
+.result-shell {
+  padding: 33px 0 55px;
+}
+
+.result-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 418px);
+  gap: clamp(38px, 5.5vw, 82px);
+  align-items: center;
+}
+
+.result-copy {
+  min-width: 0;
+}
+
+.result-name-row {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  margin-top: 10px;
+}
+
+.result-name {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(68px, 8.6vw, 108px);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: 0.06em;
+}
+
+.result-name:focus {
+  outline: none;
+}
+
+.result-seal {
+  display: grid;
+  place-items: center;
+  width: clamp(54px, 6vw, 74px);
+  height: clamp(54px, 6vw, 74px);
+  color: var(--cinnabar);
+  font-family: var(--font-kai);
+  font-size: clamp(24px, 2.6vw, 32px);
+  border: 1.5px solid rgba(168, 59, 48, 0.65);
+  box-shadow: inset 0 0 0 3px rgba(168, 59, 48, 0.07);
+  transform: rotate(-4deg);
+}
+
+.result-role {
+  margin-top: 7px;
+  color: var(--cinnabar);
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.1vw, 25px);
+  letter-spacing: 0.13em;
+}
+
+.result-dynasty {
+  margin-top: 10px;
+  color: var(--ink-muted);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+}
+
+.result-tagline {
+  max-width: 560px;
+  margin-top: 29px;
+  padding-left: 19px;
+  color: var(--ink-soft);
+  font-family: var(--font-kai);
+  font-size: clamp(17px, 1.7vw, 21px);
+  line-height: 1.85;
+  letter-spacing: 0.035em;
+  border-left: 2px solid var(--cinnabar);
+}
+
+.keyword-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 26px;
+}
+
+.keyword-list li {
+  padding: 5px 12px;
+  color: var(--ink-soft);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  background: rgba(255, 252, 246, 0.36);
+  border: 1px solid rgba(32, 42, 37, 0.16);
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+  margin-top: 30px;
+}
+
+.result-actions .btn {
+  min-height: 50px;
+}
+
+.result-actions .btn--primary {
+  min-width: 164px;
+}
+
+.share-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.share-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: min(100%, 418px);
+  aspect-ratio: 3 / 4;
+  padding: clamp(19px, 2.7vw, 27px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 87% 13%, rgba(168, 59, 48, 0.1), transparent 12rem),
+    radial-gradient(circle at 12% 96%, rgba(66, 104, 91, 0.09), transparent 13rem),
+    linear-gradient(155deg, #fcf8ef 0%, #f2e7d5 100%);
+  border: 1px solid rgba(76, 67, 52, 0.24);
+  box-shadow:
+    7px 9px 0 rgba(168, 59, 48, 0.035),
+    0 24px 64px rgba(65, 49, 31, 0.16);
+}
+
+.share-card::before {
+  position: absolute;
+  inset: 7px;
+  z-index: 0;
+  border: 1px solid rgba(175, 138, 82, 0.37);
+  content: "";
+  pointer-events: none;
+}
+
+.share-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  opacity: 0.06;
+  content: "";
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.card-top,
+.card-body,
+.card-quote,
+.card-dims,
+.card-foot {
+  position: relative;
+  z-index: 1;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(175, 138, 82, 0.32);
+}
+
+.card-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: clamp(9px, 1.25vw, 11px);
+  letter-spacing: 0.09em;
+}
+
+.card-brand__seal {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  color: #fbf5ea;
+  font-family: var(--font-display);
+  font-size: 10px;
+  line-height: 1;
+  background: var(--cinnabar);
+  transform: rotate(-2deg);
+}
+
+.card-no {
+  color: var(--ink-muted);
+  font-family: var(--font-latin);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.card-body {
+  padding: 3px 0 0;
+}
+
+.card-kicker {
+  margin-top: 3px;
+  color: var(--ink-muted);
+  font-family: var(--font-latin);
+  font-size: clamp(6px, 0.87vw, 8px);
+  letter-spacing: 0.16em;
+}
+
+.card-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.card-name {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(34px, 9.7vw, 56px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: 0.07em;
+}
+
+.card-seal {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: clamp(32px, 7vw, 43px);
+  height: clamp(32px, 7vw, 43px);
+  color: var(--cinnabar);
+  font-family: var(--font-kai);
+  font-size: clamp(15px, 3.6vw, 21px);
+  border: 1px solid rgba(168, 59, 48, 0.58);
+  transform: rotate(-3deg);
+}
+
+.card-role {
+  margin-top: 3px;
+  color: var(--cinnabar);
+  font-family: var(--font-display);
+  font-size: clamp(11px, 2.8vw, 14px);
+  letter-spacing: 0.09em;
+}
+
+.card-keywords {
+  margin-top: 8px;
+  color: var(--ink-muted);
+  font-size: clamp(8px, 2.05vw, 10px);
+  letter-spacing: 0.13em;
+}
+
+.card-quote {
+  position: relative;
+  margin: 4px 0;
+  padding: 10px 0 10px 15px;
+  color: var(--ink-soft);
+  font-family: var(--font-kai);
+  font-size: clamp(11px, 3.5vw, 15px);
+  line-height: 1.8;
+  letter-spacing: 0.025em;
+  border-left: 1px solid rgba(168, 59, 48, 0.55);
+}
+
+.card-quote__mark {
+  position: absolute;
+  top: -2px;
+  left: 3px;
+  color: var(--cinnabar);
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1;
+  opacity: 0.55;
+}
+
+.card-dims {
+  display: grid;
+  gap: 7px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(175, 138, 82, 0.27);
+}
+
+.card-dim {
+  display: grid;
+  grid-template-columns: 33px minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 7px;
+}
+
+.card-dim__name {
+  color: var(--ink-muted);
+  font-family: var(--font-display);
+  font-size: clamp(8px, 2vw, 10px);
+  letter-spacing: 0.08em;
+}
+
+.card-dim__track {
+  height: 2px;
+  overflow: hidden;
+  background: rgba(32, 42, 37, 0.12);
+}
+
+.card-dim__fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--cinnabar);
+  transition: width 0.8s var(--ease);
+}
+
+.card-dim__value {
+  color: var(--ink-muted);
+  font-family: var(--font-latin);
+  font-size: clamp(7px, 1.8vw, 9px);
+  letter-spacing: 0.02em;
+  text-align: right;
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 9px;
+  color: var(--ink-faint);
+  font-size: clamp(6px, 1.65vw, 8px);
+  letter-spacing: 0.06em;
+  border-top: 1px solid rgba(175, 138, 82, 0.27);
+}
+
+.card-watermark {
+  position: absolute;
+  right: -12px;
+  bottom: 84px;
+  z-index: 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(170px, 38vw, 260px);
+  line-height: 1;
+  opacity: 0.035;
+  pointer-events: none;
+  user-select: none;
+}
+
+.share-hint {
+  color: var(--ink-faint);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+/* ---------- 结果详情 ---------- */
+
+.result-details {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: clamp(48px, 6vw, 78px);
+}
+
+.detail-card {
+  position: relative;
+  padding: clamp(23px, 3vw, 32px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(175, 138, 82, 0.07), transparent 12rem),
+    rgba(251, 247, 239, 0.57);
+  border: 1px solid rgba(32, 42, 37, 0.14);
+  box-shadow: 0 10px 30px rgba(56, 43, 28, 0.035);
+}
+
+.detail-card::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 2px;
+  background: var(--cinnabar);
+  content: "";
+  opacity: 0.7;
+}
+
+.detail-card--wide {
+  grid-column: span 12;
+}
+
+.detail-card--reason {
+  grid-column: span 5;
+}
+
+.detail-card--dimensions {
+  grid-column: span 7;
+}
+
+.detail-card--advantage,
+.detail-card--easter {
+  grid-column: span 6;
+}
+
+.detail-card--modern {
+  grid-column: span 12;
+}
+
+.detail-head {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  margin-bottom: 17px;
+}
+
+.detail-num {
+  color: var(--cinnabar);
+  font-family: var(--font-latin);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.detail-head h3 {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.detail-card p {
+  color: var(--ink-muted);
+  font-size: 13.5px;
+  line-height: 1.95;
+}
+
+.detail-summary {
+  max-width: 970px;
+  color: var(--ink-soft) !important;
+  font-family: var(--font-display);
+  font-size: clamp(17px, 1.65vw, 20px) !important;
+  line-height: 1.95 !important;
+  letter-spacing: 0.02em;
+}
+
+.detail-match {
+  margin-bottom: 10px;
+  color: var(--cinnabar) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.04em;
+}
+
+.detail-highlight {
+  margin-bottom: 10px;
+  color: var(--cinnabar) !important;
+  font-family: var(--font-display);
+  font-size: 21px !important;
+  letter-spacing: 0.06em;
+}
+
+.detail-note {
+  margin-top: 15px;
+  color: var(--ink-faint) !important;
+  font-size: 9px !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0.02em;
+}
+
+.dimension-list {
+  display: grid;
+  gap: 12px;
+}
+
+.dimension-row {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 35px;
+  align-items: center;
+  gap: 10px;
+}
+
+.dimension-row__name {
+  color: var(--ink-muted);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.07em;
+}
+
+.dimension-row.is-top .dimension-row__name {
+  color: var(--cinnabar);
+}
+
+.dimension-track {
+  height: 5px;
+  overflow: hidden;
+  background: rgba(32, 42, 37, 0.1);
+}
+
+.dimension-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--jade-soft);
+  transition: width 0.9s var(--ease);
+}
+
+.dimension-row.is-top .dimension-fill {
+  background: linear-gradient(90deg, var(--cinnabar-deep), var(--cinnabar-soft));
+}
+
+.dimension-row__value {
+  color: var(--ink-muted);
+  font-family: var(--font-latin);
+  font-size: 10px;
+  text-align: right;
+}
+
+.dimension-row.is-top .dimension-row__value {
+  color: var(--cinnabar);
+}
+
+.modern-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.modern-tags span {
+  padding: 10px 17px;
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  background: rgba(255, 252, 246, 0.48);
+  border: 1px solid rgba(175, 138, 82, 0.35);
+}
+
+.modern-tags span::before {
+  margin-right: 9px;
+  color: var(--gold);
+  content: "·";
+}
+
+.result-outro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  margin-top: 47px;
+  padding-top: 31px;
+  border-top: 1px solid var(--line);
+}
+
+.result-outro p {
+  color: var(--ink-soft);
+  font-family: var(--font-kai);
+  font-size: 19px;
+  line-height: 1.75;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- 页脚 / 提示 ---------- */
+
+.site-foot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: min(var(--container), calc(100% - 48px));
+  margin: 18px auto 0;
+  padding: 21px 0 31px;
+  color: var(--ink-faint);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  border-top: 1px solid rgba(32, 42, 37, 0.1);
+}
+
+.site-foot p:first-child {
+  color: var(--ink-muted);
+  letter-spacing: 0.12em;
+}
+
+.site-foot span {
+  margin: 0 5px;
+  color: var(--gold);
+}
+
+.toast {
+  position: fixed;
+  bottom: calc(25px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  z-index: 1000;
+  max-width: min(88vw, 420px);
+  padding: 12px 20px;
+  color: var(--paper-soft);
+  font-size: 12px;
+  line-height: 1.65;
+  text-align: center;
+  letter-spacing: 0.04em;
+  background: rgba(32, 42, 37, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(32, 42, 37, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition: opacity 0.25s ease, transform 0.25s var(--ease);
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ---------- 动效 ---------- */
+
+@keyframes screenReveal {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFloat {
+  0%,
+  100% {
+    transform: rotate(1.1deg) translateY(0);
+  }
+  50% {
+    transform: rotate(0.7deg) translateY(-7px);
+  }
+}
+
+@keyframes questionIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes optionIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ringPulse {
+  0% {
+    opacity: 0.65;
+    transform: scale(0.88);
+  }
+  75%,
+  100% {
+    opacity: 0;
+    transform: scale(1.28);
+  }
+}
+
+@keyframes dotBlink {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+/* ---------- 中等屏幕 ---------- */
+
+@media (max-width: 1120px) {
+  .intro-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(330px, 0.7fr);
+    gap: 45px;
+  }
+
+  .art-side-note {
+    display: none;
+  }
+
+  .result-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
+    gap: 42px;
+  }
+
+  .result-actions .btn {
+    padding: 0 18px;
+  }
+}
+
+@media (max-width: 940px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    min-height: auto;
+    padding: 34px 0 48px;
+  }
+
+  .intro-copy {
+    max-width: 700px;
+  }
+
+  .intro-art {
+    padding: 0 0 6px;
+  }
+
+  .archive-card {
+    width: min(78vw, 370px);
+    animation: none;
+    transform: rotate(0.7deg);
+  }
+
+  .result-hero {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .result-copy {
+    max-width: 690px;
+  }
+
+  .share-wrap {
+    align-items: flex-start;
+    padding-left: 0;
+  }
+
+  .share-card {
+    width: min(100%, 410px);
+  }
+
+  .detail-card--reason,
+  .detail-card--dimensions,
+  .detail-card--advantage,
+  .detail-card--easter {
+    grid-column: span 12;
+  }
+}
+
+/* ---------- 手机 ---------- */
+
+@media (max-width: 720px) {
+  main,
+  .site-head,
+  .site-foot {
+    width: calc(100% - 36px);
+  }
+
+  .site-head {
+    min-height: 72px;
+  }
+
+  .head-note {
+    display: none;
+  }
+
+  .brand__seal {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+
+  .brand__word {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+  }
+
+  .brand__en {
+    font-size: 7px;
+  }
+
+  .intro-grid {
+    padding: 22px 0 39px;
+    gap: 37px;
+  }
+
+  .intro-title {
+    margin-top: 17px;
+    font-size: clamp(51px, 13.2vw, 74px);
+  }
+
+  .intro-lead {
+    margin-top: 25px;
+    font-size: 22px;
+  }
+
+  .intro-body {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .intro-meta {
+    margin-top: 23px;
+    font-size: 10px;
+  }
+
+  .intro-meta li {
+    padding: 0 11px;
+  }
+
+  .intro-actions {
+    margin-top: 28px;
+  }
+
+  .btn--start {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .archive-card {
+    width: min(88vw, 355px);
+    padding: 16px 17px 14px;
+  }
+
+  .archive-visual {
+    min-height: 155px;
+  }
+
+  .archive-question {
+    font-size: 105px;
+  }
+
+  .archive-question-line {
+    font-size: 14px;
+  }
+
+  .archive-tags {
+    gap: 4px 5px;
+    margin-top: 10px;
+  }
+
+  .archive-tags span {
+    padding: 3px 5px 3px 3px;
+    font-size: 8px;
+  }
+
+  .archive-tags i {
+    width: 14px;
+    height: 14px;
+    font-size: 8px;
+  }
+
+  .art-footnote {
+    margin-top: 13px;
+  }
+
+  .intro-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 17px 0 29px;
+  }
+
+  .intro-footer p {
+    font-size: 14px;
+  }
+
+  .quiz-shell {
+    min-height: auto;
+    padding: 27px 0 42px;
+  }
+
+  .progress-track {
+    margin-bottom: 20px;
+  }
+
+  .question-card {
+    padding: 24px 18px 23px;
+  }
+
+  .question-card::before {
+    height: 54px;
+  }
+
+  .question-glyph {
+    width: 25px;
+    height: 25px;
+    font-size: 11px;
+  }
+
+  .question-title {
+    margin-top: 17px;
+    font-size: clamp(21px, 5.5vw, 27px);
+    line-height: 1.58;
+  }
+
+  .options {
+    gap: 9px;
+    margin-top: 24px;
+  }
+
+  .option {
+    gap: 11px;
+    padding: 13px 13px;
+  }
+
+  .option__key {
+    flex-basis: 25px;
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+  }
+
+  .option__text {
+    font-size: 13.5px;
+    line-height: 1.62;
+  }
+
+  .quiz-foot {
+    margin-top: 16px;
+  }
+
+  .keyboard-hint {
+    display: none;
+  }
+
+  .screen--loading,
+  .loading-shell {
+    min-height: calc(100svh - 100px);
+  }
+
+  .result-shell {
+    padding: 21px 0 40px;
+  }
+
+  .result-hero {
+    gap: 34px;
+  }
+
+  .result-name-row {
+    gap: 13px;
+    margin-top: 6px;
+  }
+
+  .result-name {
+    font-size: clamp(58px, 15vw, 82px);
+  }
+
+  .result-role {
+    font-size: 20px;
+  }
+
+  .result-tagline {
+    margin-top: 23px;
+    padding-left: 15px;
+    font-size: 16px;
+    line-height: 1.85;
+  }
+
+  .keyword-list {
+    margin-top: 21px;
+  }
+
+  .result-actions {
+    margin-top: 25px;
+  }
+
+  .result-actions .btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 48px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  .share-wrap {
+    align-items: center;
+  }
+
+  .share-card {
+    width: 100%;
+    max-width: 430px;
+  }
+
+  .result-details {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 39px;
+  }
+
+  .detail-card,
+  .detail-card--wide,
+  .detail-card--reason,
+  .detail-card--dimensions,
+  .detail-card--advantage,
+  .detail-card--easter {
+    grid-column: span 1;
+  }
+
+  .detail-card {
+    padding: 22px 19px;
+  }
+
+  .detail-head {
+    margin-bottom: 14px;
+  }
+
+  .detail-head h3 {
+    font-size: 18px;
+  }
+
+  .detail-summary {
+    font-size: 17px !important;
+    line-height: 1.9 !important;
+  }
+
+  .modern-tags span {
+    padding: 8px 13px;
+    font-size: 15px;
+  }
+
+  .result-outro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+
+  .result-outro p {
+    font-size: 17px;
+  }
+
+  .site-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding-bottom: 24px;
+    line-height: 1.7;
+  }
+
+  .toast {
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 430px) {
+  main,
+  .site-head,
+  .site-foot {
+    width: calc(100% - 30px);
+  }
+
+  .intro-title {
+    font-size: clamp(47px, 13.8vw, 57px);
+  }
+
+  .intro-lead {
+    font-size: 20px;
+  }
+
+  .intro-meta {
+    gap: 7px 0;
+  }
+
+  .intro-meta li {
+    padding: 0 9px;
+  }
+
+  .archive-card {
+    width: min(91vw, 340px);
+  }
+
+  .archive-top span:first-child {
+    font-size: 9px;
+  }
+
+  .archive-top {
+    font-size: 7px;
+  }
+
+  .archive-question-line {
+    font-size: 13px;
+  }
+
+  .archive-vertical-seal {
+    top: 35%;
+    font-size: 9px;
+    padding: 7px 5px;
+  }
+
+  .quiz-meta {
+    gap: 10px;
+  }
+
+  .chapter-chip {
+    font-size: 13px;
+  }
+
+  .question-card {
+    padding: 21px 15px 20px;
+  }
+
+  .question-title {
+    font-size: 21px;
+  }
+
+  .option {
+    padding: 12px;
+  }
+
+  .option__text {
+    font-size: 13px;
+  }
+
+  .result-name {
+    font-size: clamp(54px, 15vw, 67px);
+  }
+
+  .result-seal {
+    width: 51px;
+    height: 51px;
+    font-size: 23px;
+  }
+
+  .result-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .result-actions .btn {
+    min-height: 47px;
+    padding: 0 9px;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+  }
+
+  .card-dim {
+    grid-template-columns: 29px minmax(0, 1fr) 25px;
+    gap: 5px;
+  }
+
+  .card-name {
+    font-size: clamp(32px, 10.5vw, 43px);
+  }
+
+  .card-role {
+    font-size: 11px;
+  }
+
+  .card-quote {
+    padding-left: 12px;
+    font-size: 11.5px;
+  }
+
+  .card-foot {
+    font-size: 6.5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .intro-title {
+    font-size: 45px;
+  }
+
+  .intro-meta li {
+    padding: 0 7px;
+    font-size: 9px;
+  }
+
+  .result-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .card-keywords {
+    letter-spacing: 0.05em;
+  }
+}
+
+@media (hover: none) {
+  .keyboard-hint {
+    display: none;
+  }
+
+  .option:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .intro-title__line,
+  .option {
+    opacity: 1;
+    transform: none;
+  }
+
+  .archive-card {
+    animation: none;
+  }
+}
+
+  </style>
+</head>
+<body id="top" data-screen="intro">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <noscript>
+    <div class="noscript">这个测试需要开启 JavaScript 才能运行，请开启后刷新页面。</div>
+  </noscript>
+
+  <div class="ambient" aria-hidden="true">
+    <span class="ambient__sun"></span>
+    <span class="ambient__wash ambient__wash--one"></span>
+    <span class="ambient__wash ambient__wash--two"></span>
+    <span class="ambient__grid"></span>
+    <span class="ambient__grain"></span>
+  </div>
+
+  <header class="site-head">
+    <a class="brand" href="#top" id="brandHome" aria-label="穿越古代身份图鉴，回到顶部">
+      <span class="brand__seal" aria-hidden="true">古</span>
+      <span class="brand__text">
+        <span class="brand__word">穿越古代身份图鉴</span>
+        <span class="brand__en">ANCIENT SOUL ARCHIVE</span>
+      </span>
+    </a>
+    <p class="head-note"><span aria-hidden="true"></span>不考历史 · 只测灵魂</p>
+  </header>
+
+  <main id="main">
+    <!-- ================= 首页 ================= -->
+    <section class="screen screen--intro is-active" id="screen-intro" aria-labelledby="introTitle" aria-hidden="false">
+      <div class="intro-grid">
+        <div class="intro-copy">
+          <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>A PERSONALITY TEST · 古代灵魂档案</p>
+          <h1 class="intro-title" id="introTitle">
+            <span class="intro-title__line">穿越古代</span>
+            <span class="intro-title__line intro-title__line--accent">身份图鉴<span class="intro-title__dot" aria-hidden="true">。</span></span>
+          </h1>
+          <p class="intro-lead">如果带着现在的灵魂回到古代，<br>你会是谁？</p>
+          <p class="intro-body">不考历史，也不用背朝代。40 道生活化选择题，从你的习惯、社交、情绪和偏好里，找到与你同频的那位古人。</p>
+          <ul class="intro-meta" aria-label="测试信息">
+            <li><span aria-hidden="true">壹</span>40 道生活题</li>
+            <li><span aria-hidden="true">贰</span>约 3 分钟</li>
+            <li><span aria-hidden="true">叁</span>7 种古代身份</li>
+          </ul>
+          <div class="intro-actions">
+            <button class="btn btn--primary btn--start" type="button" id="startBtn">
+              <span>启封我的古代身份</span>
+              <span class="btn__arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+          <p class="fineprint">无需注册 · 答完即出结果 · <span>仅供娱乐</span></p>
+        </div>
+
+        <aside class="intro-art" aria-label="七种古代身份档案">
+          <span class="art-side-note" aria-hidden="true">灵魂有朝代</span>
+          <div class="archive-card">
+            <div class="archive-top">
+              <span>古代灵魂档案</span>
+              <span>NO. 001—007</span>
+            </div>
+
+            <div class="archive-visual" aria-hidden="true">
+              <svg class="archive-mountains" viewBox="0 0 460 300" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <defs>
+                  <linearGradient id="sunFade" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#B4493B" stop-opacity=".96"/>
+                    <stop offset="1" stop-color="#883027" stop-opacity=".78"/>
+                  </linearGradient>
+                  <linearGradient id="ridgeFade" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#49665A" stop-opacity=".26"/>
+                    <stop offset="1" stop-color="#49665A" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="344" cy="82" r="46" fill="url(#sunFade)"/>
+                <path d="M0 264C48 231 91 224 137 242C178 216 211 220 248 246C284 216 320 208 361 229C399 250 431 257 460 248V300H0V264Z" fill="url(#ridgeFade)"/>
+                <path d="M8 256C54 222 87 225 125 241C158 214 195 212 224 236C255 206 284 205 314 228C340 246 370 247 397 236C424 225 444 228 458 239" stroke="#3D564B" stroke-opacity=".5" stroke-width="1.2"/>
+                <path d="M82 279C123 248 155 249 184 269C214 238 249 238 276 262C302 283 340 278 370 258C397 241 425 246 446 263" stroke="#3D564B" stroke-opacity=".3" stroke-width="1"/>
+                <path d="M188 72C198 66 207 66 218 72M222 60C231 54 239 55 247 61M148 96C154 92 160 92 166 96" stroke="#3D564B" stroke-opacity=".36" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="M21 291C67 265 98 270 132 288" stroke="#B08A52" stroke-opacity=".34" stroke-width="1"/>
+              </svg>
+              <span class="archive-question">?</span>
+              <span class="archive-vertical-seal">待启封</span>
+            </div>
+
+            <div class="archive-bottom">
+              <p class="archive-question-line">若灵魂有朝代，<br>你会落在哪一页？</p>
+              <div class="archive-tags" aria-hidden="true">
+                <span><i>谋</i>谋士</span>
+                <span><i>权</i>帝王</span>
+                <span><i>雅</i>文人</span>
+                <span><i>义</i>侠客</span>
+                <span><i>灵</i>诗人</span>
+                <span><i>勇</i>将领</span>
+                <span><i>隐</i>隐士</span>
+              </div>
+            </div>
+            <i class="archive-corner archive-corner--tl" aria-hidden="true"></i>
+            <i class="archive-corner archive-corner--br" aria-hidden="true"></i>
+          </div>
+          <p class="art-footnote">七种古代身份 · 等你认领</p>
+        </aside>
+      </div>
+
+      <div class="intro-footer">
+        <p>每一种灵魂，都有自己的朝代。</p>
+        <span>向下不是重点，点“开始”才是。</span>
+      </div>
+    </section>
+
+    <!-- ================= 答题 ================= -->
+    <section class="screen screen--quiz" id="screen-quiz" aria-labelledby="questionTitle" aria-hidden="true">
+      <div class="quiz-shell">
+        <div class="quiz-top">
+          <div class="quiz-meta">
+            <span class="chapter-chip" id="chapterLabel">日常习惯</span>
+            <span class="quiz-count" id="progressText">第 1 / 40 题</span>
+          </div>
+          <span class="quiz-percent" id="progressPercent" aria-hidden="true">3%</span>
+        </div>
+        <div class="progress-track" id="progressBar" role="progressbar" aria-label="答题进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="3" aria-valuetext="第 1 / 40 题">
+          <span class="progress-fill" id="progressFill"></span>
+        </div>
+
+        <div class="question-card" id="questionCard">
+          <div class="question-top">
+            <p class="question-index" id="questionIndex">QUESTION 01</p>
+            <span class="question-glyph" aria-hidden="true">问</span>
+          </div>
+          <h2 class="question-title" id="questionTitle" tabindex="-1"></h2>
+          <div class="options" id="options" role="group" aria-labelledby="questionTitle"></div>
+        </div>
+
+        <div class="quiz-foot">
+          <button class="back-btn" type="button" id="backBtn" disabled>
+            <span aria-hidden="true">←</span> 上一题
+          </button>
+          <p class="keyboard-hint"><span>A</span><span>B</span><span>C</span><span>D</span> 也可以选</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 计算中 ================= -->
+    <section class="screen screen--loading" id="screen-loading" aria-labelledby="loadingTitle" aria-hidden="true">
+      <div class="loading-shell">
+        <div class="loading-seal" aria-hidden="true">寻</div>
+        <p class="eyebrow eyebrow--center"><span class="eyebrow__line" aria-hidden="true"></span>ANALYSING YOUR SOUL</p>
+        <h2 class="loading-title" id="loadingTitle">正在翻阅你的古代档案</h2>
+        <p class="loading-text" id="loadingText" aria-live="polite">先看看，你的灵魂落在哪一页……</p>
+        <div class="loading-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <!-- ================= 结果 ================= -->
+    <section class="screen screen--result" id="screen-result" aria-labelledby="resultName" aria-hidden="true">
+      <div class="result-shell">
+        <div class="result-hero">
+          <div class="result-copy">
+            <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span><span id="resultArchetypeLabel">你的古代身份 · 谋士</span></p>
+            <div class="result-name-row">
+              <h2 class="result-name" id="resultName" tabindex="-1">张良</h2>
+              <span class="result-seal" id="resultSeal" aria-hidden="true">谋</span>
+            </div>
+            <p class="result-role" id="resultRole">谋士 · 幕后执棋人</p>
+            <p class="result-dynasty" id="resultDynasty">历史原型 · 西汉开国谋臣</p>
+            <blockquote class="result-tagline" id="resultTagline">“你不出手时，天下无事；你一出手，风向就变了。”</blockquote>
+            <ul class="keyword-list" id="resultKeywords" aria-label="性格关键词"></ul>
+            <div class="result-actions">
+              <button class="btn btn--primary" type="button" id="saveBtn">
+                <span>保存分享卡</span>
+                <span class="btn__arrow" aria-hidden="true">↓</span>
+              </button>
+              <button class="btn btn--ghost" type="button" id="copyBtn">复制分享文案</button>
+            </div>
+            <button class="text-btn" type="button" id="restartBtn">重新测一次 <span aria-hidden="true">↻</span></button>
+          </div>
+
+          <div class="share-wrap">
+            <div class="share-card" id="shareCard" role="img" aria-label="我的古代身份分享卡">
+              <span class="card-watermark" id="cardWatermark" aria-hidden="true">谋</span>
+              <div class="card-top">
+                <div class="card-brand">
+                  <span class="card-brand__seal" aria-hidden="true">古</span>
+                  <span>穿越古代身份图鉴</span>
+                </div>
+                <span class="card-no" id="cardNo">NO.01 / 07</span>
+              </div>
+              <div class="card-body">
+                <p class="card-kicker">MY ANCIENT IDENTITY · 我的古代身份</p>
+                <div class="card-name-row">
+                  <h3 class="card-name" id="cardName">张良</h3>
+                  <span class="card-seal" id="cardSeal">谋</span>
+                </div>
+                <p class="card-role" id="cardRole">谋士 · 幕后执棋人</p>
+                <p class="card-keywords" id="cardKeywords">洞察 · 布局 · 克制 · 借力</p>
+              </div>
+              <blockquote class="card-quote">
+                <span class="card-quote__mark" aria-hidden="true">“</span>
+                <span id="cardQuote">你不出手时，天下无事；你一出手，风向就变了。</span>
+              </blockquote>
+              <div class="card-dims" id="cardDims" aria-label="人格倾向前三名"></div>
+              <div class="card-foot">
+                <span>40 题趣味人格测试</span>
+                <span>仅供娱乐 · 请勿当真</span>
+              </div>
+            </div>
+            <p class="share-hint">3:4 分享卡 · 截图也很出片</p>
+          </div>
+        </div>
+
+        <div class="result-details">
+          <article class="detail-card detail-card--wide">
+            <div class="detail-head">
+              <span class="detail-num">01</span>
+              <h3>你的性格侧写</h3>
+            </div>
+            <p class="detail-summary" id="resultSummary"></p>
+          </article>
+
+          <article class="detail-card detail-card--reason">
+            <div class="detail-head">
+              <span class="detail-num">02</span>
+              <h3>为什么是你</h3>
+            </div>
+            <p class="detail-match" id="resultMatchLead"></p>
+            <p id="resultReason"></p>
+          </article>
+
+          <article class="detail-card detail-card--dimensions">
+            <div class="detail-head">
+              <span class="detail-num">03</span>
+              <h3>你的人格倾向</h3>
+            </div>
+            <div class="dimension-list" id="resultDimensions"></div>
+            <p class="detail-note">倾向强度以你选择的选项与该维度的最高可得分为参照，仅供娱乐参考。</p>
+          </article>
+
+          <article class="detail-card detail-card--advantage">
+            <div class="detail-head">
+              <span class="detail-num">04</span>
+              <h3>隐藏优势</h3>
+            </div>
+            <p class="detail-highlight" id="resultAdvantageTitle"></p>
+            <p id="resultAdvantage"></p>
+          </article>
+
+          <article class="detail-card detail-card--easter">
+            <div class="detail-head">
+              <span class="detail-num">05</span>
+              <h3>趣味彩蛋</h3>
+            </div>
+            <p id="resultEaster"></p>
+          </article>
+
+          <article class="detail-card detail-card--modern">
+            <div class="detail-head">
+              <span class="detail-num">06</span>
+              <h3>如果活在今天</h3>
+            </div>
+            <div class="modern-tags" id="resultModern"></div>
+          </article>
+        </div>
+
+        <div class="result-outro">
+          <p>把测试发给你的古代搭子，<br>看看你们是不是同一朝的人。</p>
+          <button class="btn btn--outline" type="button" id="restartBtnBottom">再测一次</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <p>穿越古代身份图鉴 <span>·</span> 40 题趣味人格测试</p>
+    <p>本测试仅供娱乐，不构成任何专业心理评估或历史诊断。</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+/* =========================================================
+   穿越古代身份图鉴 · 内容数据
+   40 道生活化单选题 · 7 个性格维度 · 7 位历史人物
+   ========================================================= */
+(function (root) {
+  "use strict";
+
+  var DATA = {
+    version: "1.0.0",
+    title: "穿越古代身份图鉴",
+    subtitle: "测测你的古代灵魂是哪一位",
+    disclaimer: "本测试为趣味人格内容，不构成任何专业心理评估或历史诊断。",
+
+    dimensions: [
+      { code: "mou",  name: "谋略", glyph: "谋", role: "谋士", hint: "洞察与布局" },
+      { code: "wang", name: "掌局", glyph: "权", role: "帝王", hint: "格局与决断" },
+      { code: "wen",  name: "文心", glyph: "雅", role: "文人", hint: "审美与共情" },
+      { code: "xia",  name: "侠气", glyph: "义", role: "侠客", hint: "血性与担当" },
+      { code: "shi",  name: "诗性", glyph: "灵", role: "诗人", hint: "浪漫与自由" },
+      { code: "jiang",name: "将略", glyph: "勇", role: "将领", hint: "执行与胆识" },
+      { code: "yin",  name: "隐逸", glyph: "隐", role: "隐士", hint: "边界与自洽" }
+    ],
+
+    results: {
+      mou: {
+        code: "mou",
+        person: "张良",
+        dynasty: "西汉 · 开国谋臣",
+        archetype: "谋士",
+        title: "幕后执棋人",
+        glyph: "谋",
+        index: "01",
+        keywords: ["洞察", "布局", "克制", "借力"],
+        tagline: "你不出手时，天下无事；你一出手，风向就变了。",
+        summary: "你习惯站在半步之后看全局。别人被情绪推着走时，你在找规律；别人急着表态时，你在等那个最合适的时机。你不是没有野心，只是你更相信——真正的高手，赢在别人看不见的地方。",
+        reason: "你总能先一步看见事情的走向，也懂得把人和资源放到对的位置。比起站在台前，你更擅长用一句话、一个动作，悄悄改变结果。这种“不争一时，只争全局”的气质，与张良如出一辙。",
+        advantageTitle: "风险雷达 × 系统思维",
+        advantage: "你能在混乱里快速抓到关键变量，提前绕开坑。别人靠运气，你靠预判。",
+        easter: "你可能是群聊里话最少的人，但每次大家吵到不可开交，最后被 @ 出来总结局面的也是你。",
+        modern: ["战略顾问", "品牌操盘手", "幕后军师"]
+      },
+      wang: {
+        code: "wang",
+        person: "武则天",
+        dynasty: "唐 · 一代女帝",
+        archetype: "帝王",
+        title: "天生中心位",
+        glyph: "权",
+        index: "02",
+        keywords: ["格局", "野心", "决断", "掌控"],
+        tagline: "你不需要被允许，你只需要一个目标。",
+        summary: "你身上有一种很稀缺的笃定：不等着被挑选，而是自己定规则。你能在复杂局面里迅速抓到主动权，也愿意为想要的结果承担代价。柔韧是你的外壳，坚定才是你的底色。",
+        reason: "你不害怕做决定，更不害怕成为那个被看见的人。当别人还在权衡“可不可以”，你已经在想“怎么做成”。这份魄力、野心与掌控感，让你与武则天同频。",
+        advantageTitle: "破局力 × 资源整合",
+        advantage: "你天然会抓重点、定方向、聚人心。越是没有标准答案的局面，越能显出你的价值。",
+        easter: "你进群三分钟，群名可能就改了；朋友做重大决定前，最后都会来问你一句。",
+        modern: ["创业者", "CEO", "项目总负责人"]
+      },
+      wen: {
+        code: "wen",
+        person: "苏轼",
+        dynasty: "北宋 · 旷达文豪",
+        archetype: "文人",
+        title: "人间生活家",
+        glyph: "雅",
+        index: "03",
+        keywords: ["审美", "共情", "松弛", "风趣"],
+        tagline: "别人在赶路，你在把路边的风写成诗。",
+        summary: "你对生活的细节有天然的感知力：一顿饭、一束光、一句没说完的话，都能被你接住。你也不是没有烦恼，只是你有一种把苦日子过出滋味的能力。你的温柔不软弱，是看透之后仍然愿意热爱。",
+        reason: "你既感性又清醒，懂人情却不世故。你能在平凡里发现美，也能在低谷里给自己找台阶。这份才情、幽默与旷达，与苏轼很像——不是没有风雨，而是风雨里也要好好吃饭。",
+        advantageTitle: "情绪复原力 × 审美表达",
+        advantage: "你能把复杂感受翻译成别人听得懂的话，也能把普通日子过得有质感。这是很高级的治愈力。",
+        easter: "你嘴上说“随便吃点”，最后端上桌的菜比谁都讲究；你的朋友圈文案经常被朋友直接复制。",
+        modern: ["内容创作者", "品牌文案", "生活方式主理人"]
+      },
+      xia: {
+        code: "xia",
+        person: "荆轲",
+        dynasty: "战国 · 传奇刺客",
+        archetype: "侠客",
+        title: "孤勇行动派",
+        glyph: "义",
+        index: "04",
+        keywords: ["义气", "胆识", "直接", "血性"],
+        tagline: "不是所有路都有人同行，但总有人要先走。",
+        summary: "你见不得恃强凌弱，也受不了拐弯抹角。别人还在计算得失时，你已经站起来。你重承诺、护短、认死理，有时冲动，但那份“该出手时就出手”的赤诚，在人群里非常亮。",
+        reason: "你做决定靠的是一股“过不去心里这关”的劲。你愿意为在乎的人挡在前面，也敢为认定的义冒险。这份孤勇和血性，与荆轲同频——不是不知道危险，而是知道了还选择出发。",
+        advantageTitle: "绝境行动力 × 信任号召力",
+        advantage: "越到关键时刻，你越能站出来。你的勇气会传染，让身边的人也敢往前一步。",
+        easter: "看影视剧最容易被“明知不可为而为之”戳中；朋友受委屈时，你比本人还先炸。",
+        modern: ["危机公关", "公益行动者", "先锋创业者"]
+      },
+      shi: {
+        code: "shi",
+        person: "李白",
+        dynasty: "唐 · 诗仙",
+        archetype: "诗人",
+        title: "人间逍遥客",
+        glyph: "灵",
+        index: "05",
+        keywords: ["浪漫", "自由", "想象", "感染"],
+        tagline: "你负责把人间，过成一场盛大的灵感。",
+        summary: "你靠感受活着。灵感来时能通宵，没感觉时一秒都不想多待。你讨厌被定义，喜欢新鲜、辽阔、有故事感的东西。你的情绪浓度很高，也因此特别能把别人从庸常里拽出来。",
+        reason: "你的选择里写满了“随性、热烈、想去更远的地方”。你不追求稳定正确，更在意这一刻是否尽兴。这份浪漫、才气和不被驯服的劲儿，与李白如出一辙。",
+        advantageTitle: "创意爆发力 × 情绪感染力",
+        advantage: "你能把无聊场面变有趣，把模糊感受说漂亮。你身上那点“不靠谱”，恰恰是灵感最爱的入口。",
+        easter: "旅行攻略永远只做一半，剩下全靠现场发挥；深夜两点是你灵感最旺的时候。",
+        modern: ["创意总监", "旅行博主", "自由艺术家"]
+      },
+      jiang: {
+        code: "jiang",
+        person: "霍去病",
+        dynasty: "西汉 · 少年将军",
+        archetype: "将领",
+        title: "破阵先锋",
+        glyph: "勇",
+        index: "06",
+        keywords: ["行动", "胆识", "效率", "胜负欲"],
+        tagline: "别人还在商量，你已经把答案拿回来了。",
+        summary: "你是典型的“先干了再说”。目标一旦明确，你能迅速收拢注意力，直插问题核心。你不喜欢内耗，也不爱演苦情，赢就痛快赢，输就认了再练。你的存在，会让一个团队的节奏突然变快。",
+        reason: "你身上最鲜明的气质是“结果导向”——少废话，先解决。你并非莽撞，而是敢于在信息不全时拍板，在压力之下往前冲。这份锐气与执行力，很像少年将军霍去病。",
+        advantageTitle: "快速破局 × 逆风执行",
+        advantage: "别人还在犹豫时，你已经试过错、拿到反馈。你不怕重来，所以总比别人快一轮。",
+        easter: "最听不得“再想想”；打游戏输了会立刻开下一把，嘴上说随便，手上比谁都认真。",
+        modern: ["项目攻坚负责人", "销售操盘手", "连续创业者"]
+      },
+      yin: {
+        code: "yin",
+        person: "陶渊明",
+        dynasty: "东晋 · 田园诗人",
+        archetype: "隐士",
+        title: "人间清醒客",
+        glyph: "隐",
+        index: "07",
+        keywords: ["边界", "自洽", "淡然", "自足"],
+        tagline: "你不逃离世界，你只是挑了个舒服的位置看世界。",
+        summary: "你对“别人的热闹”没有太多执念，更在意自己的节奏。你擅长在心里修一道篱笆，把消耗挡在外面。你不是冷淡，只是把有限的热情留给真正重要的人和事。独处对你不是惩罚，是充电。",
+        reason: "你一次次选择了“不勉强自己”：不合适的局不去，不值得的人不追，不喜欢的生活不硬撑。这份清醒、边界感与自足，与陶渊明同频——你未必真的归隐，但心里一直有一片南山。",
+        advantageTitle: "内核稳定 × 低耗生存",
+        advantage: "你不容易被外界评价带走，能在高噪音里保住自己的节奏。这是稀缺的长期主义。",
+        easter: "群消息常年免打扰，但偶尔一句冷幽默能笑翻全场；你的理想假期是“谁也别找我”。",
+        modern: ["自由职业者", "独立研究者", "生活方式设计师"]
+      }
+    },
+
+    questions: [
+      {
+        chapter: "日常习惯",
+        text: "早上闹钟响到第二遍，你通常会……",
+        options: [
+          { main: "mou", sub: "wang", text: "按掉闹钟，先闭眼把今天过一遍，抓出最要紧的事。" },
+          { main: "wang", sub: "xia", text: "立刻起身，先把今天最关键的一件事拿下。" },
+          { main: "wen", sub: "shi", text: "赖两分钟，顺手把昨晚的梦记成一句话。" },
+          { main: "xia", sub: "jiang", text: "直接起床出门，先动起来，身体醒了脑子才醒。" }
+        ]
+      },
+      {
+        chapter: "日常习惯",
+        text: "周末突然空出完整的一天，你更想……",
+        options: [
+          { main: "shi", sub: "yin", text: "临时买张票去附近走走，路上再决定去哪。" },
+          { main: "jiang", sub: "xia", text: "把拖了很久的事列出来，先清掉最难的。" },
+          { main: "yin", sub: "wen", text: "在家收拾、泡茶、看部老电影，谁也别来找我。" },
+          { main: "mou", sub: "wang", text: "盘一下最近的状态，给下周做个轻量计划。" }
+        ]
+      },
+      {
+        chapter: "日常习惯",
+        text: "出门前的最后五分钟，你通常在……",
+        options: [
+          { main: "wang", sub: "mou", text: "在群里确认好碰头时间和安排，确保一切可控。" },
+          { main: "wen", sub: "shi", text: "对着镜子调整穿搭和配饰，细节得顺眼。" },
+          { main: "xia", sub: "shi", text: "钥匙手机一抓就出门，路线路上再说。" },
+          { main: "shi", sub: "yin", text: "突然想换一身更有感觉的衣服，凭直觉走。" }
+        ]
+      },
+      {
+        chapter: "日常习惯",
+        text: "你的房间或工位，最能暴露你的一点是……",
+        options: [
+          { main: "jiang", sub: "mou", text: "桌面干净，待办按优先级排好，随时能开工。" },
+          { main: "yin", sub: "wen", text: "舒服最重要，床和窗边是我的精神领地。" },
+          { main: "mou", sub: "yin", text: "看着乱，但我清楚每样东西在哪，找起来很快。" },
+          { main: "wang", sub: "mou", text: "有明显的目标墙，所有布置都服务于“我要做成”。" }
+        ]
+      },
+      {
+        chapter: "日常习惯",
+        text: "吃饭这件事，你更常……",
+        options: [
+          { main: "wen", sub: "shi", text: "环境、摆盘、氛围都要对，吃饭也是一种审美。" },
+          { main: "xia", sub: "wen", text: "叫上朋友，边吃边聊，热热闹闹才香。" },
+          { main: "shi", sub: "xia", text: "今天想吃什么全凭灵感，菜单越陌生越有意思。" },
+          { main: "jiang", sub: "mou", text: "十分钟解决，吃饭是为了继续干活。" }
+        ]
+      },
+      {
+        chapter: "日常习惯",
+        text: "手机里最舍不得删的，是哪一类东西？",
+        options: [
+          { main: "yin", sub: "shi", text: "自己的独处片段：散步时拍的云、收藏的歌单。" },
+          { main: "mou", sub: "yin", text: "各种攻略、干货截图和“以后一定用得上”的资料。" },
+          { main: "wang", sub: "jiang", text: "工作成果、日程记录和让我有底气的成绩。" },
+          { main: "wen", sub: "shi", text: "和朋友的长聊天记录、票根、随手写下的句子。" }
+        ]
+      },
+      {
+        chapter: "日常习惯",
+        text: "下班或放学后，你最想……",
+        options: [
+          { main: "xia", sub: "wen", text: "约人喝一杯或打场球，把今天的憋屈散掉。" },
+          { main: "shi", sub: "yin", text: "去没去过的地方乱走，让脑子放空。" },
+          { main: "jiang", sub: "wang", text: "去运动，把电量耗光，洗完澡又是一条好汉。" },
+          { main: "yin", sub: "wen", text: "直接回家，换衣服、关消息，谁也别来消耗我。" }
+        ]
+      },
+      {
+        chapter: "日常习惯",
+        text: "如果明天不用早起，今晚你会……",
+        options: [
+          { main: "mou", sub: "yin", text: "把明天要做的事顺一遍，然后安心睡。" },
+          { main: "wang", sub: "mou", text: "趁安静把最重要的目标推进一段，享受超前感。" },
+          { main: "wen", sub: "shi", text: "熬夜看完那本书或那部电影，舍不得断。" },
+          { main: "xia", sub: "shi", text: "临时出门，见想见的人，做想做的事。" }
+        ]
+      },
+      {
+        chapter: "处事方式",
+        text: "突然接到一个紧急任务，你先……",
+        options: [
+          { main: "jiang", sub: "mou", text: "立刻开干，边做边改，先把第一版交出去。" },
+          { main: "yin", sub: "mou", text: "先问清要求和边界，不接糊涂账。" },
+          { main: "mou", sub: "wang", text: "拆目标、排优先级，再决定谁来做。" },
+          { main: "wang", sub: "jiang", text: "先把关键资源和人抓在手里，再定打法。" }
+        ]
+      },
+      {
+        chapter: "处事方式",
+        text: "团队讨论卡住时，你通常会……",
+        options: [
+          { main: "wen", sub: "mou", text: "先把大家的观点写下来，找出共同点。" },
+          { main: "xia", sub: "jiang", text: "谁也别争了，先按一个方向试，错了再改。" },
+          { main: "shi", sub: "yin", text: "抛出一个没人想过的角度，把僵局炸开。" },
+          { main: "jiang", sub: "xia", text: "直接拍板，给出时间点，先动起来。" }
+        ]
+      },
+      {
+        chapter: "处事方式",
+        text: "发现自己犯了一个暂时没人发现的错，你会……",
+        options: [
+          { main: "yin", sub: "wen", text: "先确认是不是自己的问题，是就认，不是不背锅。" },
+          { main: "mou", sub: "wang", text: "评估影响范围，想清楚怎么说、什么时候说。" },
+          { main: "wang", sub: "xia", text: "主动说明并给出补救方案，把主动权拿回来。" },
+          { main: "wen", sub: "shi", text: "先照顾大家的情绪，再一起想办法补上。" }
+        ]
+      },
+      {
+        chapter: "处事方式",
+        text: "别人临时放你鸽子，你的第一反应是……",
+        options: [
+          { main: "xia", sub: "jiang", text: "直接问清楚原因，不喜欢猜来猜去。" },
+          { main: "shi", sub: "wen", text: "有点失落，但很快被别的新鲜事带走。" },
+          { main: "jiang", sub: "wang", text: "不多说，先把接下来要做的补上。" },
+          { main: "yin", sub: "shi", text: "算了，正好省下时间做自己的事。" }
+        ]
+      },
+      {
+        chapter: "处事方式",
+        text: "面对一个“大家都说好”的机会，你更在意……",
+        options: [
+          { main: "mou", sub: "wang", text: "先算投入产出，值不值得 all in。" },
+          { main: "wang", sub: "jiang", text: "先拿下再说，机会不等人。" },
+          { main: "wen", sub: "shi", text: "想想这件事有没有意思，能不能做出美感。" },
+          { main: "xia", sub: "shi", text: "看直觉，心动就上，错过更难受。" }
+        ]
+      },
+      {
+        chapter: "处事方式",
+        text: "需要麻烦别人帮忙时，你通常会……",
+        options: [
+          { main: "shi", sub: "wen", text: "把请求说得有趣一点，让人不好意思拒绝。" },
+          { main: "jiang", sub: "xia", text: "直接说需求和时限，行不行一句话。" },
+          { main: "yin", sub: "mou", text: "能自己扛就自己扛，不太想欠人情。" },
+          { main: "mou", sub: "wang", text: "先想好对方能得到什么，再开口。" }
+        ]
+      },
+      {
+        chapter: "处事方式",
+        text: "计划被突发状况打乱时，你更可能……",
+        options: [
+          { main: "wang", sub: "jiang", text: "立刻重排优先级，先保住最重要的目标。" },
+          { main: "wen", sub: "yin", text: "先稳住大家的情绪，再慢慢理清。" },
+          { main: "xia", sub: "jiang", text: "不管了，先解决眼前最急的事。" },
+          { main: "shi", sub: "xia", text: "顺势换条路，说不定会有意外的收获。" }
+        ]
+      },
+      {
+        chapter: "处事方式",
+        text: "如果要把一件事做到极致，你更相信……",
+        options: [
+          { main: "jiang", sub: "wen", text: "死磕细节，反复打磨到满意。" },
+          { main: "yin", sub: "shi", text: "按自己的节奏来，不为了快而牺牲舒服。" },
+          { main: "mou", sub: "wang", text: "找到最省力的关键点，一击即中。" },
+          { main: "wang", sub: "jiang", text: "定高标准，整合资源，带着大家一起够到。" }
+        ]
+      },
+      {
+        chapter: "社交模式",
+        text: "参加一个没什么熟人的聚会，你会……",
+        options: [
+          { main: "xia", sub: "wang", text: "主动认识几个人，很快成为场子里最自在的人。" },
+          { main: "shi", sub: "yin", text: "和一个人聊到深夜，其他人都不重要了。" },
+          { main: "jiang", sub: "wang", text: "先观察谁值得认识，然后直接聊正事。" },
+          { main: "yin", sub: "mou", text: "找个角落待着，等有意思的人自己出现。" }
+        ]
+      },
+      {
+        chapter: "社交模式",
+        text: "群聊里有人阴阳怪气，你通常……",
+        options: [
+          { main: "mou", sub: "yin", text: "懒得接话，先看他想干什么。" },
+          { main: "wang", sub: "jiang", text: "一句话把场子稳住，让对方知道边界。" },
+          { main: "wen", sub: "shi", text: "用玩笑把气氛揭过去，谁都不难堪。" },
+          { main: "xia", sub: "jiang", text: "正面回怼，不惯着。" }
+        ]
+      },
+      {
+        chapter: "社交模式",
+        text: "朋友深夜找你倒苦水，你第一反应是……",
+        options: [
+          { main: "shi", sub: "wen", text: "先陪着骂，让情绪先落地。" },
+          { main: "jiang", sub: "xia", text: "直接问“需要我做什么”，能帮就帮。" },
+          { main: "yin", sub: "wen", text: "安静听着，不急着给答案。" },
+          { main: "mou", sub: "wang", text: "帮他理清问题，给几种可选方案。" }
+        ]
+      },
+      {
+        chapter: "社交模式",
+        text: "需要当众表达自己时，你更可能……",
+        options: [
+          { main: "wang", sub: "mou", text: "提前准备，逻辑清楚，最好还有数据。" },
+          { main: "wen", sub: "shi", text: "讲个故事，把大家带进情境。" },
+          { main: "xia", sub: "wang", text: "直接说，气场先立住。" },
+          { main: "shi", sub: "xia", text: "临场发挥，说到哪算哪，反而容易出彩。" }
+        ]
+      },
+      {
+        chapter: "社交模式",
+        text: "你理想中的朋友关系是……",
+        options: [
+          { main: "jiang", sub: "xia", text: "能一起扛事，关键时候不掉链子。" },
+          { main: "yin", sub: "wen", text: "各忙各的，见面还能接上话。" },
+          { main: "mou", sub: "yin", text: "能聊很深的东西，彼此启发。" },
+          { main: "wang", sub: "mou", text: "彼此成就，关键时候能互相托举。" }
+        ]
+      },
+      {
+        chapter: "社交模式",
+        text: "看到朋友做了一件你不太认同的事，你会……",
+        options: [
+          { main: "wen", sub: "mou", text: "先理解他的处境，再慢慢聊。" },
+          { main: "xia", sub: "jiang", text: "直说，哪怕当下有点尴尬。" },
+          { main: "shi", sub: "xia", text: "先陪他疯一次，也许他只是想被看见。" },
+          { main: "jiang", sub: "xia", text: "不绕弯子，直接告诉他后果，让他自己选。" }
+        ]
+      },
+      {
+        chapter: "社交模式",
+        text: "如果朋友做了让你不舒服的事，你更常……",
+        options: [
+          { main: "yin", sub: "wen", text: "不说，但会悄悄调整自己的距离。" },
+          { main: "mou", sub: "wang", text: "看值不值得管，先评估关系成本。" },
+          { main: "wang", sub: "jiang", text: "私下把话说清楚，定好以后的规则。" },
+          { main: "wen", sub: "shi", text: "先放一放，等情绪过去再决定要不要聊。" }
+        ]
+      },
+      {
+        chapter: "社交模式",
+        text: "朋友想拉你一起做一件有点疯狂的事，你会……",
+        options: [
+          { main: "xia", sub: "jiang", text: "只要不违背原则，我奉陪到底。" },
+          { main: "shi", sub: "xia", text: "来都来了，先答应再说。" },
+          { main: "jiang", sub: "wang", text: "问清楚时间地点，立刻开始准备。" },
+          { main: "yin", sub: "wen", text: "不去，我在家等你们回来讲。" }
+        ]
+      },
+      {
+        chapter: "情绪反应",
+        text: "精心准备的事情搞砸了，你会……",
+        options: [
+          { main: "wang", sub: "mou", text: "先处理问题，再把情绪放到后面。" },
+          { main: "wen", sub: "shi", text: "先难过一会儿，然后写点什么纪念它。" },
+          { main: "xia", sub: "jiang", text: "出去跑一圈或打一场，把情绪甩掉。" },
+          { main: "shi", sub: "yin", text: "允许自己丧一天，明天再说。" }
+        ]
+      },
+      {
+        chapter: "情绪反应",
+        text: "有人当众夸你，你通常会……",
+        options: [
+          { main: "jiang", sub: "mou", text: "大方接住：“谢谢，我确实不错。”" },
+          { main: "yin", sub: "shi", text: "有点害羞，赶紧把话题转到别人身上。" },
+          { main: "mou", sub: "wang", text: "表面不动声色，心里已经开始调整下一步。" },
+          { main: "wang", sub: "xia", text: "把这次认可变成下一次的筹码，继续往前。" }
+        ]
+      },
+      {
+        chapter: "情绪反应",
+        text: "你最容易因为什么破防？",
+        options: [
+          { main: "wen", sub: "yin", text: "被误解、被冤枉，却没人愿意听我解释。" },
+          { main: "xia", sub: "shi", text: "重要的人不告而别，连句再见都没有。" },
+          { main: "shi", sub: "yin", text: "努力了很久，却始终没有等到结果。" },
+          { main: "jiang", sub: "wang", text: "失去掌控感，别人替我做决定。" }
+        ]
+      },
+      {
+        chapter: "情绪反应",
+        text: "压力大的时候，你的“回血方式”是……",
+        options: [
+          { main: "yin", sub: "wen", text: "睡觉、散步、发呆，什么都不做。" },
+          { main: "mou", sub: "jiang", text: "把待办全部列出来，一个个划掉。" },
+          { main: "wang", sub: "mou", text: "先把局面稳住，不让情绪影响判断。" },
+          { main: "wen", sub: "shi", text: "写字、拍照、听歌，把情绪变成作品。" }
+        ]
+      },
+      {
+        chapter: "情绪反应",
+        text: "突然收到一个坏消息，你先……",
+        options: [
+          { main: "xia", sub: "wen", text: "找信任的人说出来，不想一个人扛。" },
+          { main: "shi", sub: "yin", text: "先允许自己难过，情绪过去再处理。" },
+          { main: "jiang", sub: "xia", text: "立刻行动，能补救多少补多少。" },
+          { main: "yin", sub: "shi", text: "先静一静，等自己想清楚了再回应。" }
+        ]
+      },
+      {
+        chapter: "情绪反应",
+        text: "被亲近的人误解时，你会……",
+        options: [
+          { main: "mou", sub: "jiang", text: "深呼吸，问自己最坏会怎样、能不能兜住。" },
+          { main: "wang", sub: "mou", text: "先把话讲清楚，不给误会继续发酵的空间。" },
+          { main: "wen", sub: "yin", text: "给自己泡杯茶，慢慢消化，不急着回击。" },
+          { main: "xia", sub: "jiang", text: "直接问对方到底怎么想的，当面解决。" }
+        ]
+      },
+      {
+        chapter: "情绪反应",
+        text: "如果最近一直不顺，你会……",
+        options: [
+          { main: "shi", sub: "yin", text: "很难受，但会写成文字或日记。" },
+          { main: "jiang", sub: "xia", text: "换掉一个关键习惯，先动起来。" },
+          { main: "yin", sub: "wen", text: "不解释，懂我的人自然会懂。" },
+          { main: "mou", sub: "wang", text: "先冷静，等对方情绪过去再谈。" }
+        ]
+      },
+      {
+        chapter: "情绪反应",
+        text: "面对别人的成功，你心里的第一反应是……",
+        options: [
+          { main: "wang", sub: "mou", text: "服气，但已经开始规划怎么超过他。" },
+          { main: "wen", sub: "xia", text: "真心为他高兴，甚至想帮他庆祝。" },
+          { main: "xia", sub: "jiang", text: "有点羡慕，但更想快点做出自己的成绩。" },
+          { main: "shi", sub: "yin", text: "把复杂心情写成文字，发出去就放下了。" }
+        ]
+      },
+      {
+        chapter: "兴趣偏好",
+        text: "你更容易被哪一种故事吸引？",
+        options: [
+          { main: "yin", sub: "wen", text: "一个人把日子过成诗，远离喧嚣也自在。" },
+          { main: "mou", sub: "wang", text: "高智商博弈，层层反转，最后一步才见分晓。" },
+          { main: "wang", sub: "jiang", text: "主角从零开始，建立自己的规则和版图。" },
+          { main: "wen", sub: "shi", text: "小人物在乱世里守住底线，文字也很美。" }
+        ]
+      },
+      {
+        chapter: "兴趣偏好",
+        text: "如果只能选一种兴趣长期坚持，你会选……",
+        options: [
+          { main: "xia", sub: "jiang", text: "运动、格斗或户外，不断挑战身体极限。" },
+          { main: "shi", sub: "yin", text: "旅行、漫游，去没去过的地方。" },
+          { main: "jiang", sub: "mou", text: "健身或技能训练，能看见明确进步。" },
+          { main: "yin", sub: "wen", text: "养花、做饭、独处，把日常过舒服。" }
+        ]
+      },
+      {
+        chapter: "兴趣偏好",
+        text: "看到一片很好看的晚霞，你会……",
+        options: [
+          { main: "mou", sub: "wen", text: "先找最佳角度，研究光线和构图。" },
+          { main: "wang", sub: "xia", text: "立刻拍照发出去，让今天的朋友圈赢一下。" },
+          { main: "wen", sub: "yin", text: "站着看完，什么都不做，让这一刻留在心里。" },
+          { main: "xia", sub: "shi", text: "拉上身边的人一起看，好东西要一起见证。" }
+        ]
+      },
+      {
+        chapter: "兴趣偏好",
+        text: "你更愿意把钱花在哪一类东西上？",
+        options: [
+          { main: "shi", sub: "xia", text: "体验：旅行、演出、没吃过的餐厅。" },
+          { main: "jiang", sub: "wang", text: "提升：课程、工具、能立刻用上的技能。" },
+          { main: "yin", sub: "mou", text: "安全感：存款、保险、应急储备。" },
+          { main: "mou", sub: "wang", text: "资产：能增值、能带来被动收入的东西。" }
+        ]
+      },
+      {
+        chapter: "兴趣偏好",
+        text: "学一个新东西时，你通常……",
+        options: [
+          { main: "wang", sub: "jiang", text: "先定目标和截止时间，用结果倒逼自己。" },
+          { main: "wen", sub: "shi", text: "先看别人怎么做，再找到自己喜欢的风格。" },
+          { main: "xia", sub: "jiang", text: "直接上手，边错边学。" },
+          { main: "shi", sub: "yin", text: "找一个最有趣的切口，凭热爱钻进去。" }
+        ]
+      },
+      {
+        chapter: "兴趣偏好",
+        text: "如果让你在团队里负责一件事，你最想负责……",
+        options: [
+          { main: "jiang", sub: "xia", text: "带团队打硬仗，把结果拿回来。" },
+          { main: "yin", sub: "wen", text: "做那个不抢戏、但把后勤稳稳托住的人。" },
+          { main: "mou", sub: "wang", text: "定方向、做战略、看清整个局势。" },
+          { main: "wang", sub: "mou", text: "对外拿资源、定合作、最后拍板。" }
+        ]
+      },
+      {
+        chapter: "兴趣偏好",
+        text: "如果一夜暴富，你第一件事会做……",
+        options: [
+          { main: "wen", sub: "yin", text: "买一间有院子的房子，按自己的审美慢慢布置。" },
+          { main: "xia", sub: "wen", text: "组个局，把在乎的人全都聚在一起。" },
+          { main: "shi", sub: "xia", text: "买张票去远方，走到哪算哪。" },
+          { main: "jiang", sub: "mou", text: "做资产配置，让钱继续生钱。" }
+        ]
+      },
+      {
+        chapter: "兴趣偏好",
+        text: "穿越故事的最后一幕，你希望是……",
+        options: [
+          { main: "xia", sub: "shi", text: "骑马出城，没人知道我要去哪。" },
+          { main: "shi", sub: "yin", text: "灯下写完最后一首诗，窗外正好下雨。" },
+          { main: "jiang", sub: "wang", text: "站在城楼上，看自己亲手打下的天下。" },
+          { main: "yin", sub: "wen", text: "在院子里晒太阳，猫在脚边，谁也不催我。" }
+        ]
+      }
+    ]
+  };
+
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = DATA;
+  }
+  root.ANCIENT_DATA = DATA;
+})(typeof globalThis !== "undefined" ? globalThis : this);
+
+
+/* =========================================================
+   穿越古代身份图鉴 · 评分内核
+   规则：
+   - 每个选项有 1 个主维度（+3）和 1 个副维度（+1）
+   - 每个维度的“可获最高分”按该维度在每道题中的最高可得权重累计
+   - 最终以归一化后的倾向强度排序，强度相同再比较主维度命中次数
+   ========================================================= */
+(function (root) {
+  "use strict";
+
+  var DATA = root.ANCIENT_DATA ||
+    (typeof require === "function" ? require("./data.js") : null);
+
+  if (!DATA) {
+    throw new Error("ANCIENT_DATA 未加载，无法启动评分内核。");
+  }
+
+  var DIMENSIONS = DATA.dimensions;
+  var CODES = DIMENSIONS.map(function (dimension) { return dimension.code; });
+  var DIMENSION_MAP = {};
+
+  DIMENSIONS.forEach(function (dimension) {
+    DIMENSION_MAP[dimension.code] = dimension;
+  });
+
+  var MAIN_WEIGHT = 3;
+  var SUB_WEIGHT = 1;
+
+  function optionWeight(option, code) {
+    var score = 0;
+    if (option.main === code) score += MAIN_WEIGHT;
+    if (option.sub === code) score += SUB_WEIGHT;
+    return score;
+  }
+
+  function buildMaximumScores() {
+    var maximums = {};
+    CODES.forEach(function (code) { maximums[code] = 0; });
+
+    DATA.questions.forEach(function (question) {
+      CODES.forEach(function (code) {
+        var bestForQuestion = 0;
+        question.options.forEach(function (option) {
+          var weight = optionWeight(option, code);
+          if (weight > bestForQuestion) bestForQuestion = weight;
+        });
+        maximums[code] += bestForQuestion;
+      });
+    });
+
+    return maximums;
+  }
+
+  var MAXIMUM_SCORES = buildMaximumScores();
+
+  function isCompleteAnswers(answers) {
+    return Array.isArray(answers) &&
+      answers.length === DATA.questions.length &&
+      answers.every(function (choice, index) {
+        return Number.isInteger(choice) &&
+          choice >= 0 &&
+          choice < DATA.questions[index].options.length;
+      });
+  }
+
+  function assertCompleteAnswers(answers) {
+    if (!isCompleteAnswers(answers)) {
+      throw new Error("请先完成全部 " + DATA.questions.length + " 道题。");
+    }
+  }
+
+  function scoreAnswers(answers) {
+    assertCompleteAnswers(answers);
+
+    var raw = {};
+    var mainHits = {};
+    var subHits = {};
+    var maximums = {};
+
+    CODES.forEach(function (code) {
+      raw[code] = 0;
+      mainHits[code] = 0;
+      subHits[code] = 0;
+      maximums[code] = MAXIMUM_SCORES[code];
+    });
+
+    answers.forEach(function (choice, questionIndex) {
+      var option = DATA.questions[questionIndex].options[choice];
+      raw[option.main] += MAIN_WEIGHT;
+      raw[option.sub] += SUB_WEIGHT;
+      mainHits[option.main] += 1;
+      subHits[option.sub] += 1;
+    });
+
+    var ranked = CODES.map(function (code) {
+      var dimension = DIMENSION_MAP[code];
+      var max = maximums[code];
+      var ratio = max > 0 ? raw[code] / max : 0;
+      return {
+        code: code,
+        name: dimension.name,
+        glyph: dimension.glyph,
+        role: dimension.role,
+        hint: dimension.hint,
+        raw: raw[code],
+        max: max,
+        pct: Math.round(ratio * 100),
+        mainHits: mainHits[code],
+        subHits: subHits[code],
+        ratio: ratio
+      };
+    });
+
+    ranked.sort(function (a, b) {
+      if (b.ratio !== a.ratio) return b.ratio - a.ratio;
+      if (b.mainHits !== a.mainHits) return b.mainHits - a.mainHits;
+      if (b.raw !== a.raw) return b.raw - a.raw;
+      return CODES.indexOf(a.code) - CODES.indexOf(b.code);
+    });
+
+    return {
+      raw: raw,
+      maximums: maximums,
+      ranked: ranked,
+      winner: ranked[0]
+    };
+  }
+
+  function calculateResult(answers) {
+    var scores = scoreAnswers(answers);
+    var result = DATA.results[scores.winner.code];
+
+    if (!result) {
+      throw new Error("未找到对应的历史身份结果：" + scores.winner.code);
+    }
+
+    return {
+      result: result,
+      winner: scores.winner,
+      ranked: scores.ranked,
+      top3: scores.ranked.slice(0, 3),
+      scores: scores
+    };
+  }
+
+  function personaAnswers(code) {
+    if (CODES.indexOf(code) === -1) {
+      throw new Error("未知维度：" + code);
+    }
+
+    return DATA.questions.map(function (question) {
+      var bestIndex = 0;
+      var bestWeight = -1;
+      question.options.forEach(function (option, index) {
+        var weight = optionWeight(option, code);
+        if (weight > bestWeight) {
+          bestWeight = weight;
+          bestIndex = index;
+        }
+      });
+      return bestIndex;
+    });
+  }
+
+  function validateData() {
+    var errors = [];
+    var warnings = [];
+    var mainCounts = {};
+    var subCounts = {};
+    var totalOptions = 0;
+
+    CODES.forEach(function (code) {
+      mainCounts[code] = 0;
+      subCounts[code] = 0;
+    });
+
+    if (!Array.isArray(DATA.questions) || DATA.questions.length !== 40) {
+      errors.push("题目数量必须为 40。");
+    }
+
+    if (!Array.isArray(DIMENSIONS) || DIMENSIONS.length !== 7) {
+      errors.push("性格维度必须为 7 个。");
+    }
+
+    CODES.forEach(function (code) {
+      if (!DATA.results[code]) errors.push("缺少结果：" + code);
+    });
+
+    var seenTexts = new Set();
+
+    DATA.questions.forEach(function (question, questionIndex) {
+      if (!question.text || !question.text.trim()) {
+        errors.push("第 " + (questionIndex + 1) + " 题缺少题干。");
+      }
+      if (seenTexts.has(question.text)) {
+        errors.push("第 " + (questionIndex + 1) + " 题题干重复。");
+      }
+      seenTexts.add(question.text);
+
+      if (!Array.isArray(question.options) || question.options.length !== 4) {
+        errors.push("第 " + (questionIndex + 1) + " 题必须恰好有 4 个选项。");
+        return;
+      }
+
+      question.options.forEach(function (option, optionIndex) {
+        totalOptions += 1;
+
+        if (!option.text || !option.text.trim()) {
+          errors.push("第 " + (questionIndex + 1) + " 题第 " + (optionIndex + 1) + " 个选项缺少文字。");
+        }
+        if (CODES.indexOf(option.main) === -1) {
+          errors.push("第 " + (questionIndex + 1) + " 题存在非法主维度：" + option.main);
+        } else {
+          mainCounts[option.main] += 1;
+        }
+        if (CODES.indexOf(option.sub) === -1) {
+          errors.push("第 " + (questionIndex + 1) + " 题存在非法副维度：" + option.sub);
+        } else {
+          subCounts[option.sub] += 1;
+        }
+        if (option.main === option.sub) {
+          errors.push("第 " + (questionIndex + 1) + " 题的选项主副维度不能相同。");
+        }
+      });
+    });
+
+    if (totalOptions !== 160) {
+      errors.push("选项总数应 160，当前为 " + totalOptions + "。");
+    }
+
+    CODES.forEach(function (code) {
+      if (mainCounts[code] < 15) {
+        warnings.push("维度 " + code + " 的主选项偏少：" + mainCounts[code]);
+      }
+      if (MAXIMUM_SCORES[code] <= 0) {
+        errors.push("维度 " + code + " 的最高可得分异常。");
+      }
+    });
+
+    return {
+      ok: errors.length === 0,
+      errors: errors,
+      warnings: warnings,
+      stats: {
+        questions: DATA.questions.length,
+        totalOptions: totalOptions,
+        mainCounts: mainCounts,
+        subCounts: subCounts,
+        maximums: MAXIMUM_SCORES
+      }
+    };
+  }
+
+  var API = {
+    DATA: DATA,
+    DIMENSIONS: DIMENSIONS,
+    CODES: CODES,
+    DIMENSION_MAP: DIMENSION_MAP,
+    MAIN_WEIGHT: MAIN_WEIGHT,
+    SUB_WEIGHT: SUB_WEIGHT,
+    MAXIMUM_SCORES: MAXIMUM_SCORES,
+    scoreAnswers: scoreAnswers,
+    calculateResult: calculateResult,
+    personaAnswers: personaAnswers,
+    isCompleteAnswers: isCompleteAnswers,
+    validateData: validateData
+  };
+
+  root.ANCIENT_CORE = API;
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = API;
+  }
+})(typeof globalThis !== "undefined" ? globalThis : this);
+
+
+/* =========================================================
+   穿越古代身份图鉴 · 页面交互
+   ========================================================= */
+(function () {
+  "use strict";
+
+  var DATA = window.ANCIENT_DATA;
+  var CORE = window.ANCIENT_CORE;
+
+  if (!DATA || !CORE) {
+    throw new Error("页面数据未正确加载。");
+  }
+
+  var QUESTIONS = DATA.questions;
+  var TOTAL = QUESTIONS.length;
+  var LETTERS = ["A", "B", "C", "D"];
+  var ORIGINAL_TITLE = document.title;
+  var LOADING_PHRASES = [
+    "先看看，你的灵魂落在哪一页……",
+    "比对七种古代身份的频率……",
+    "寻找与你同频的那位古人……",
+    "把你的隐藏天赋也一起翻出来……"
+  ];
+
+  var els = {};
+  var state = {
+    index: 0,
+    answers: new Array(TOTAL).fill(null),
+    locked: false,
+    activeScreen: "intro",
+    result: null
+  };
+  var timers = {
+    advance: 0,
+    loading: 0,
+    phrase: 0,
+    toast: 0
+  };
+
+  function byId(id) {
+    return document.getElementById(id);
+  }
+
+  function all(selector, scope) {
+    return Array.prototype.slice.call((scope || document).querySelectorAll(selector));
+  }
+
+  function pad2(number) {
+    return String(number).padStart(2, "0");
+  }
+
+  function reducedMotion() {
+    return window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function scrollToTop(behavior) {
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: behavior || "auto" });
+    } catch (error) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  function scrollToTopOnMobile(behavior) {
+    if (window.matchMedia && window.matchMedia("(max-width: 720px)").matches) {
+      scrollToTop(behavior || (reducedMotion() ? "auto" : "smooth"));
+    }
+  }
+
+  function cacheDom() {
+    els.intro = byId("screen-intro");
+    els.quiz = byId("screen-quiz");
+    els.loading = byId("screen-loading");
+    els.result = byId("screen-result");
+    els.startBtn = byId("startBtn");
+    els.brandHome = byId("brandHome");
+    els.chapterLabel = byId("chapterLabel");
+    els.progressText = byId("progressText");
+    els.progressPercent = byId("progressPercent");
+    els.progressBar = byId("progressBar");
+    els.progressFill = byId("progressFill");
+    els.questionCard = byId("questionCard");
+    els.questionIndex = byId("questionIndex");
+    els.questionTitle = byId("questionTitle");
+    els.options = byId("options");
+    els.backBtn = byId("backBtn");
+    els.loadingText = byId("loadingText");
+    els.resultArchetypeLabel = byId("resultArchetypeLabel");
+    els.resultName = byId("resultName");
+    els.resultSeal = byId("resultSeal");
+    els.resultRole = byId("resultRole");
+    els.resultDynasty = byId("resultDynasty");
+    els.resultTagline = byId("resultTagline");
+    els.resultKeywords = byId("resultKeywords");
+    els.saveBtn = byId("saveBtn");
+    els.copyBtn = byId("copyBtn");
+    els.restartBtn = byId("restartBtn");
+    els.restartBtnBottom = byId("restartBtnBottom");
+    els.cardWatermark = byId("cardWatermark");
+    els.cardNo = byId("cardNo");
+    els.cardName = byId("cardName");
+    els.cardSeal = byId("cardSeal");
+    els.cardRole = byId("cardRole");
+    els.cardKeywords = byId("cardKeywords");
+    els.cardQuote = byId("cardQuote");
+    els.cardDims = byId("cardDims");
+    els.card = byId("shareCard");
+    els.resultSummary = byId("resultSummary");
+    els.resultMatchLead = byId("resultMatchLead");
+    els.resultReason = byId("resultReason");
+    els.resultDimensions = byId("resultDimensions");
+    els.resultAdvantageTitle = byId("resultAdvantageTitle");
+    els.resultAdvantage = byId("resultAdvantage");
+    els.resultEaster = byId("resultEaster");
+    els.resultModern = byId("resultModern");
+    els.toast = byId("toast");
+  }
+
+  function bindEvents() {
+    els.startBtn.addEventListener("click", startTest);
+    els.backBtn.addEventListener("click", goBack);
+    els.saveBtn.addEventListener("click", saveShareCard);
+    els.copyBtn.addEventListener("click", copyShareText);
+    els.restartBtn.addEventListener("click", startTest);
+    els.restartBtnBottom.addEventListener("click", startTest);
+
+    els.brandHome.addEventListener("click", function (event) {
+      event.preventDefault();
+      if (state.activeScreen === "quiz") {
+        showToast("先把这 40 题答完，你的古代身份马上揭晓。");
+        return;
+      }
+      if (state.activeScreen === "loading") return;
+      scrollToTop(reducedMotion() ? "auto" : "smooth");
+    });
+
+    document.addEventListener("keydown", handleKeyboard);
+  }
+
+  function setScreen(name) {
+    var screenMap = {
+      intro: els.intro,
+      quiz: els.quiz,
+      loading: els.loading,
+      result: els.result
+    };
+
+    if (document.activeElement && typeof document.activeElement.blur === "function") {
+      document.activeElement.blur();
+    }
+
+    Object.keys(screenMap).forEach(function (key) {
+      var screen = screenMap[key];
+      var active = key === name;
+      screen.classList.toggle("is-active", active);
+      screen.setAttribute("aria-hidden", active ? "false" : "true");
+    });
+
+    document.body.setAttribute("data-screen", name);
+    state.activeScreen = name;
+
+    if (name === "loading") {
+      els.loading.setAttribute("aria-busy", "true");
+    } else {
+      els.loading.setAttribute("aria-busy", "false");
+    }
+
+    scrollToTop("auto");
+  }
+
+  function startTest() {
+    clearTimeout(timers.advance);
+    clearTimeout(timers.loading);
+    clearInterval(timers.phrase);
+
+    state.index = 0;
+    state.answers = new Array(TOTAL).fill(null);
+    state.locked = false;
+    state.result = null;
+
+    document.title = ORIGINAL_TITLE;
+    els.saveBtn.disabled = false;
+    setSaveButtonLabel("保存分享卡");
+    els.copyBtn.textContent = "复制分享文案";
+
+    setScreen("quiz");
+    renderQuestion("start");
+  }
+
+  function renderQuestion(direction) {
+    var question = QUESTIONS[state.index];
+    var progress = Math.round(((state.index + 1) / TOTAL) * 100);
+
+    els.chapterLabel.textContent = question.chapter;
+    els.progressText.textContent = "第 " + (state.index + 1) + " / " + TOTAL + " 题";
+    els.progressPercent.textContent = progress + "%";
+    els.progressFill.style.width = progress + "%";
+    els.progressBar.setAttribute("aria-valuenow", String(progress));
+    els.progressBar.setAttribute("aria-valuetext", "第 " + (state.index + 1) + " / " + TOTAL + " 题，已完成 " + progress + "%");
+
+    els.questionIndex.textContent = "QUESTION " + pad2(state.index + 1);
+    els.questionTitle.textContent = question.text;
+    els.backBtn.disabled = state.index === 0;
+
+    els.options.innerHTML = "";
+
+    question.options.forEach(function (option, optionIndex) {
+      var button = document.createElement("button");
+      var selected = state.answers[state.index] === optionIndex;
+      var key = document.createElement("span");
+      var text = document.createElement("span");
+
+      button.type = "button";
+      button.className = "option" + (selected ? " is-selected" : "");
+      button.setAttribute("aria-pressed", selected ? "true" : "false");
+      button.style.setProperty("--i", String(optionIndex));
+
+      key.className = "option__key";
+      key.setAttribute("aria-hidden", "true");
+      key.textContent = LETTERS[optionIndex];
+
+      text.className = "option__text";
+      text.textContent = option.text;
+
+      button.appendChild(key);
+      button.appendChild(text);
+      button.addEventListener("click", function () {
+        chooseOption(optionIndex);
+      });
+
+      els.options.appendChild(button);
+    });
+
+    els.questionCard.classList.remove("is-entering");
+    void els.questionCard.offsetWidth;
+    els.questionCard.classList.add("is-entering");
+
+    window.setTimeout(function () {
+      if (state.activeScreen === "quiz") {
+        try {
+          els.questionTitle.focus({ preventScroll: true });
+        } catch (error) {
+          els.questionTitle.focus();
+        }
+      }
+    }, reducedMotion() ? 20 : 90);
+
+    if (direction === "next" || direction === "back") {
+      scrollToTopOnMobile();
+    }
+  }
+
+  function chooseOption(optionIndex) {
+    if (state.locked) return;
+
+    var question = QUESTIONS[state.index];
+    if (optionIndex < 0 || optionIndex >= question.options.length) return;
+
+    state.locked = true;
+    state.answers[state.index] = optionIndex;
+
+    all(".option", els.options).forEach(function (button, index) {
+      var selected = index === optionIndex;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-pressed", selected ? "true" : "false");
+    });
+
+    clearTimeout(timers.advance);
+    timers.advance = window.setTimeout(function () {
+      state.locked = false;
+
+      if (state.index >= TOTAL - 1) {
+        completeTest();
+        return;
+      }
+
+      state.index += 1;
+      renderQuestion("next");
+    }, reducedMotion() ? 70 : 250);
+  }
+
+  function goBack() {
+    if (state.index <= 0) return;
+
+    clearTimeout(timers.advance);
+    state.locked = false;
+    state.index -= 1;
+    renderQuestion("back");
+  }
+
+  function handleKeyboard(event) {
+    if (state.activeScreen !== "quiz") return;
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+
+    var key = String(event.key).toLowerCase();
+    var keyMap = {
+      a: 0, b: 1, c: 2, d: 3,
+      "1": 0, "2": 1, "3": 2, "4": 3
+    };
+
+    if (Object.prototype.hasOwnProperty.call(keyMap, key)) {
+      var target = event.target;
+      var tag = target && target.tagName ? target.tagName.toLowerCase() : "";
+      if (tag === "input" || tag === "textarea") return;
+      event.preventDefault();
+      chooseOption(keyMap[key]);
+      return;
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goBack();
+    }
+  }
+
+  function completeTest() {
+    if (!CORE.isCompleteAnswers(state.answers)) {
+      showToast("还有题目没有完成，请检查一下再提交。");
+      return;
+    }
+
+    clearTimeout(timers.advance);
+    clearTimeout(timers.loading);
+    clearInterval(timers.phrase);
+
+    setScreen("loading");
+    runLoadingCopy();
+
+    var wait = reducedMotion() ? 280 : 1450;
+
+    timers.loading = window.setTimeout(function () {
+      clearInterval(timers.phrase);
+
+      try {
+        var analysis = CORE.calculateResult(state.answers);
+        state.result = analysis;
+        renderResult(analysis);
+        setScreen("result");
+        document.title = "我的古代身份是" + analysis.result.archetype + "·" + analysis.result.person + "｜穿越古代身份图鉴";
+
+        window.setTimeout(function () {
+          revealBars();
+          try {
+            els.resultName.focus({ preventScroll: true });
+          } catch (error) {
+            els.resultName.focus();
+          }
+        }, reducedMotion() ? 20 : 130);
+      } catch (error) {
+        console.error(error);
+        setScreen("quiz");
+        showToast("结果生成失败，请重新测试一次。");
+      }
+    }, wait);
+  }
+
+  function runLoadingCopy() {
+    var phraseIndex = 0;
+    els.loadingText.textContent = LOADING_PHRASES[0];
+
+    timers.phrase = window.setInterval(function () {
+      phraseIndex = (phraseIndex + 1) % LOADING_PHRASES.length;
+      els.loadingText.style.opacity = "0";
+      window.setTimeout(function () {
+        els.loadingText.textContent = LOADING_PHRASES[phraseIndex];
+        els.loadingText.style.opacity = "1";
+      }, 150);
+    }, reducedMotion() ? 600 : 390);
+  }
+
+  function clearChildren(node) {
+    while (node.firstChild) {
+      node.removeChild(node.firstChild);
+    }
+  }
+
+  function renderKeywords(keywords) {
+    clearChildren(els.resultKeywords);
+    keywords.forEach(function (word) {
+      var item = document.createElement("li");
+      item.textContent = word;
+      els.resultKeywords.appendChild(item);
+    });
+  }
+
+  function renderDimensions(ranked) {
+    clearChildren(els.resultDimensions);
+
+    ranked.forEach(function (dimension, index) {
+      var row = document.createElement("div");
+      var name = document.createElement("span");
+      var track = document.createElement("span");
+      var fill = document.createElement("span");
+      var value = document.createElement("span");
+
+      row.className = "dimension-row" + (index === 0 ? " is-top" : "");
+
+      name.className = "dimension-row__name";
+      name.textContent = dimension.name;
+
+      track.className = "dimension-track";
+      fill.className = "dimension-fill";
+      fill.dataset.width = String(dimension.pct);
+
+      value.className = "dimension-row__value";
+      value.textContent = dimension.pct + "%";
+
+      track.appendChild(fill);
+      row.appendChild(name);
+      row.appendChild(track);
+      row.appendChild(value);
+      els.resultDimensions.appendChild(row);
+    });
+  }
+
+  function renderCardDimensions(top3) {
+    clearChildren(els.cardDims);
+
+    top3.forEach(function (dimension) {
+      var row = document.createElement("div");
+      var name = document.createElement("span");
+      var track = document.createElement("span");
+      var fill = document.createElement("span");
+      var value = document.createElement("span");
+
+      row.className = "card-dim";
+
+      name.className = "card-dim__name";
+      name.textContent = dimension.name;
+
+      track.className = "card-dim__track";
+      fill.className = "card-dim__fill";
+      fill.dataset.width = String(dimension.pct);
+
+      value.className = "card-dim__value";
+      value.textContent = dimension.pct + "%";
+
+      track.appendChild(fill);
+      row.appendChild(name);
+      row.appendChild(track);
+      row.appendChild(value);
+      els.cardDims.appendChild(row);
+    });
+  }
+
+  function renderModern(items) {
+    clearChildren(els.resultModern);
+    items.forEach(function (item) {
+      var tag = document.createElement("span");
+      tag.textContent = item;
+      els.resultModern.appendChild(tag);
+    });
+  }
+
+  function renderResult(analysis) {
+    var result = analysis.result;
+    var top3 = analysis.top3;
+    var topNames = top3.map(function (dimension) { return dimension.name; });
+
+    els.resultArchetypeLabel.textContent = "你的古代身份 · " + result.archetype;
+    els.resultName.textContent = result.person;
+    els.resultSeal.textContent = result.glyph;
+    els.resultRole.textContent = result.archetype + " · " + result.title;
+    els.resultDynasty.textContent = "历史原型 · " + result.dynasty;
+    els.resultTagline.textContent = "“" + result.tagline + "”";
+
+    renderKeywords(result.keywords);
+
+    els.resultSummary.textContent = result.summary;
+    els.resultMatchLead.textContent = "你的「" + topNames[0] + "」倾向最明显（" + top3[0].pct + "%），其次是「" + topNames[1] + "」与「" + topNames[2] + "」。这些日常选择，把你指向了同一个人。";
+    els.resultReason.textContent = result.reason;
+    els.resultAdvantageTitle.textContent = result.advantageTitle;
+    els.resultAdvantage.textContent = result.advantage;
+    els.resultEaster.textContent = result.easter;
+    renderModern(result.modern);
+    renderDimensions(analysis.ranked);
+
+    els.cardWatermark.textContent = result.glyph;
+    els.cardNo.textContent = "NO." + result.index + " / 07";
+    els.cardName.textContent = result.person;
+    els.cardSeal.textContent = result.glyph;
+    els.cardRole.textContent = result.archetype + " · " + result.title;
+    els.cardKeywords.textContent = result.keywords.join(" · ");
+    els.cardQuote.textContent = result.tagline;
+    renderCardDimensions(top3);
+
+    els.card.setAttribute(
+      "aria-label",
+      "我的古代身份分享卡：" + result.archetype + "，历史原型" + result.person + "，" + result.title
+    );
+
+    els.saveBtn.disabled = false;
+    setSaveButtonLabel("保存分享卡");
+    els.copyBtn.textContent = "复制分享文案";
+  }
+
+  function revealBars() {
+    all(".dimension-fill, .card-dim__fill").forEach(function (fill) {
+      fill.style.width = (fill.dataset.width || "0") + "%";
+    });
+  }
+
+  function setSaveButtonLabel(label) {
+    var labelNode = els.saveBtn.querySelector("span:first-child");
+    if (labelNode) labelNode.textContent = label;
+  }
+
+  function buildShareText() {
+    if (!state.result) return "";
+
+    var result = state.result.result;
+    var top3 = state.result.top3;
+    var topNames = top3.map(function (dimension) { return dimension.name; }).join(" / ");
+    var isWeb = /^https?:/i.test(window.location.href);
+    var lines = [
+      "我的古代身份是「" + result.person + "」——" + result.archetype + " · " + result.title,
+      "“" + result.tagline + "”",
+      "主气质：" + topNames,
+      isWeb ? "来测测你的古代身份：" + window.location.href : "来测测你的古代身份。",
+      "#穿越古代身份图鉴 #古代身份测试 #人格测试 #趣味测试"
+    ];
+
+    return lines.join("\n");
+  }
+
+  function copyShareText() {
+    if (!state.result) return;
+
+    var text = buildShareText();
+    var originalLabel = els.copyBtn.textContent;
+
+    copyText(text).then(function () {
+      els.copyBtn.textContent = "已复制";
+      showToast("分享文案已复制，去发给你的古代搭子吧。");
+      window.setTimeout(function () {
+        els.copyBtn.textContent = originalLabel;
+      }, 1800);
+    }).catch(function () {
+      showToast("复制失败，请手动选中结果文案。");
+    });
+  }
+
+  function copyText(text) {
+    return new Promise(function (resolve, reject) {
+      function fallbackCopy() {
+        var textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.top = "-1000px";
+        textarea.style.left = "-1000px";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        textarea.setSelectionRange(0, textarea.value.length);
+
+        var ok = false;
+        try {
+          ok = document.execCommand("copy");
+        } catch (error) {
+          ok = false;
+        }
+
+        document.body.removeChild(textarea);
+        if (ok) resolve();
+        else reject(new Error("copy failed"));
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(resolve).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+    });
+  }
+
+  function saveShareCard() {
+    if (!state.result) return;
+
+    var originalLabel = "保存分享卡";
+    els.saveBtn.disabled = true;
+    setSaveButtonLabel("正在生成…");
+
+    try {
+      var canvas = drawShareImage(state.result.result, state.result.top3);
+      var finish = function (ok) {
+        els.saveBtn.disabled = false;
+        setSaveButtonLabel(originalLabel);
+        if (ok) {
+          showToast("分享卡已生成。如未自动下载，可以直接截图上方卡片。");
+        } else {
+          showToast("图片生成失败，请直接截图上方分享卡。");
+        }
+      };
+
+      if (!canvas.toBlob) {
+        downloadUrl(canvas.toDataURL("image/png"), "古代身份卡-" + state.result.result.person + ".png");
+        finish(true);
+        return;
+      }
+
+      canvas.toBlob(function (blob) {
+        if (!blob) {
+          finish(false);
+          return;
+        }
+
+        var url = URL.createObjectURL(blob);
+        downloadUrl(url, "古代身份卡-" + state.result.result.person + ".png");
+        window.setTimeout(function () {
+          URL.revokeObjectURL(url);
+        }, 4000);
+        finish(true);
+      }, "image/png");
+    } catch (error) {
+      console.error(error);
+      els.saveBtn.disabled = false;
+      setSaveButtonLabel(originalLabel);
+      showToast("图片生成失败，请直接截图上方分享卡。");
+    }
+  }
+
+  function downloadUrl(url, filename) {
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.rel = "noopener";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  function showToast(message) {
+    clearTimeout(timers.toast);
+    els.toast.textContent = message;
+    els.toast.classList.add("is-visible");
+    timers.toast = window.setTimeout(function () {
+      els.toast.classList.remove("is-visible");
+    }, 3200);
+  }
+
+  /* =======================================================
+     分享卡图片绘制：1080 × 1440 PNG
+     ======================================================= */
+
+  function drawShareImage(result, top3) {
+    var W = 1080;
+    var H = 1440;
+    var canvas = document.createElement("canvas");
+    canvas.width = W;
+    canvas.height = H;
+
+    var ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Canvas 2D context unavailable");
+
+    var colors = {
+      paper: "#F8F1E5",
+      paperDeep: "#EADCC7",
+      ink: "#202A25",
+      inkSoft: "#3A463F",
+      muted: "#6B736C",
+      faint: "#8F958E",
+      cinnabar: "#A83B30",
+      cinnabarDeep: "#7D2A22",
+      jade: "#42685B",
+      gold: "#AF8A52",
+      line: "rgba(32, 42, 37, 0.25)"
+    };
+
+    // 背景
+    var bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, "#FCF8EF");
+    bg.addColorStop(0.55, "#F3E9D9");
+    bg.addColorStop(1, "#E9DBC6");
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    var sunGlow = ctx.createRadialGradient(884, 192, 10, 884, 192, 430);
+    sunGlow.addColorStop(0, "rgba(168, 59, 48, 0.16)");
+    sunGlow.addColorStop(1, "rgba(168, 59, 48, 0)");
+    ctx.fillStyle = sunGlow;
+    ctx.fillRect(0, 0, W, 820);
+
+    var jadeGlow = ctx.createRadialGradient(150, 1280, 20, 150, 1280, 480);
+    jadeGlow.addColorStop(0, "rgba(66, 104, 91, 0.12)");
+    jadeGlow.addColorStop(1, "rgba(66, 104, 91, 0)");
+    ctx.fillStyle = jadeGlow;
+    ctx.fillRect(0, 800, W, 640);
+
+    // 淡淡格线
+    ctx.save();
+    ctx.strokeStyle = "rgba(32, 42, 37, 0.04)";
+    ctx.lineWidth = 1;
+    for (var gridX = 120; gridX < W; gridX += 120) {
+      ctx.beginPath();
+      ctx.moveTo(gridX, 0);
+      ctx.lineTo(gridX, H);
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    // 远山
+    ctx.save();
+    ctx.globalAlpha = 0.1;
+    ctx.fillStyle = colors.jade;
+    ctx.beginPath();
+    ctx.moveTo(0, 1205);
+    ctx.bezierCurveTo(150, 1020, 280, 1110, 418, 1160);
+    ctx.bezierCurveTo(560, 1018, 680, 1080, 820, 1140);
+    ctx.bezierCurveTo(920, 1080, 1000, 1105, 1080, 1160);
+    ctx.lineTo(1080, 1440);
+    ctx.lineTo(0, 1440);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+
+    // 纸纹噪点
+    ctx.save();
+    ctx.globalAlpha = 0.025;
+    ctx.fillStyle = colors.ink;
+    var seed = 20261124;
+    function random() {
+      seed = (seed * 1664525 + 1013904223) >>> 0;
+      return seed / 4294967296;
+    }
+    for (var dot = 0; dot < 1700; dot += 1) {
+      var px = random() * W;
+      var py = random() * H;
+      ctx.fillRect(px, py, 1.2, 1.2);
+    }
+    ctx.restore();
+
+    // 双线边框
+    ctx.strokeStyle = "rgba(32, 42, 37, 0.3)";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(44, 44, W - 88, H - 88);
+    ctx.strokeStyle = "rgba(175, 138, 82, 0.49)";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(63, 63, W - 126, H - 126);
+
+    // 顶部印记与品牌
+    roundedRect(ctx, 96, 92, 58, 58, 4);
+    ctx.fillStyle = colors.cinnabar;
+    ctx.fill();
+    ctx.fillStyle = "#FBF5EA";
+    ctx.font = '600 30px "Songti SC", "STSong", "SimSun", serif';
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("古", 125, 123);
+
+    ctx.textAlign = "left";
+    ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = colors.ink;
+    ctx.font = '600 27px "Songti SC", "STSong", "SimSun", serif';
+    ctx.fillText("穿越古代身份图鉴", 174, 122);
+
+    ctx.fillStyle = colors.muted;
+    ctx.font = '400 14px "Optima", "Candara", "Times New Roman", serif';
+    ctx.fillText("A N C I E N T   S O U L   A R C H I V E", 175, 148);
+
+    ctx.textAlign = "right";
+    ctx.fillStyle = colors.faint;
+    ctx.font = '400 14px "Optima", "Candara", serif';
+    ctx.fillText("NO. " + result.index + " / 07", W - 96, 125);
+
+    ctx.strokeStyle = "rgba(175, 138, 82, 0.46)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(96, 181);
+    ctx.lineTo(W - 96, 181);
+    ctx.stroke();
+
+    // 标题区
+    ctx.textAlign = "left";
+    ctx.fillStyle = colors.cinnabar;
+    ctx.font = '600 15px "Optima", "Candara", "Times New Roman", serif';
+    ctx.fillText("MY ANCIENT IDENTITY", 96, 239);
+
+    ctx.fillStyle = colors.muted;
+    ctx.font = '400 20px "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.fillText("我 的 古 代 身 份", 96, 276);
+
+    // 巨大身份名
+    ctx.fillStyle = colors.ink;
+    ctx.font = '600 122px "Songti SC", "STSong", "KaiTi", "SimSun", serif';
+    ctx.fillText(result.person, 91, 413);
+
+    // 角色
+    ctx.fillStyle = colors.cinnabar;
+    ctx.font = '400 37px "Songti SC", "STSong", "KaiTi", "SimSun", serif';
+    ctx.fillText(result.archetype + "  ·  " + result.title, 96, 477);
+
+    // 印章
+    drawCanvasSeal(ctx, 832, 314, 126, result.glyph);
+
+    // 专属签文
+    roundedRect(ctx, 96, 544, W - 192, 228, 2);
+    ctx.fillStyle = "rgba(255, 252, 246, 0.46)";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(175, 138, 82, 0.42)";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.fillStyle = "rgba(168, 59, 48, 0.3)";
+    ctx.font = '400 90px "Songti SC", "STSong", "SimSun", serif';
+    ctx.fillText("“", 112, 616);
+
+    ctx.fillStyle = colors.inkSoft;
+    ctx.font = '400 34px "KaiTi", "STKaiti", "Songti SC", "SimSun", serif';
+    var quoteLines = wrapCanvasText(ctx, result.tagline, 780);
+    quoteLines.slice(0, 3).forEach(function (line, index) {
+      ctx.fillText(line, 138, 620 + index * 51);
+    });
+
+    // 关键词
+    ctx.fillStyle = colors.muted;
+    ctx.font = '400 20px "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.fillText(result.keywords.join("  ·  "), 96, 824);
+
+    // 人格成分
+    ctx.strokeStyle = "rgba(32, 42, 37, 0.13)";
+    ctx.beginPath();
+    ctx.moveTo(96, 870);
+    ctx.lineTo(W - 96, 870);
+    ctx.stroke();
+
+    ctx.fillStyle = colors.ink;
+    ctx.font = '500 24px "Songti SC", "STSong", "SimSun", serif';
+    ctx.fillText("人 格 倾 向", 96, 918);
+    ctx.fillStyle = colors.faint;
+    ctx.font = '400 12px "Optima", "Candara", serif';
+    ctx.textAlign = "right";
+    ctx.fillText("PERSONALITY PROFILE", W - 96, 916);
+    ctx.textAlign = "left";
+
+    var barTop = 963;
+    top3.forEach(function (dimension, index) {
+      var y = barTop + index * 66;
+      ctx.fillStyle = index === 0 ? colors.cinnabar : colors.muted;
+      ctx.font = '400 21px "Songti SC", "STSong", "SimSun", serif';
+      ctx.fillText(dimension.name, 96, y);
+
+      ctx.fillStyle = "rgba(32, 42, 37, 0.1)";
+      ctx.fillRect(208, y - 11, 636, 5);
+
+      ctx.fillStyle = index === 0 ? colors.cinnabar : "rgba(66, 104, 91, 0.62)";
+      ctx.fillRect(208, y - 11, 636 * (dimension.pct / 100), 5);
+
+      ctx.fillStyle = colors.muted;
+      ctx.font = '400 18px "Optima", "Candara", serif';
+      ctx.textAlign = "right";
+      ctx.fillText(dimension.pct + "%", 916, y);
+      ctx.textAlign = "left";
+    });
+
+    // 水印
+    ctx.save();
+    ctx.globalAlpha = 0.035;
+    ctx.fillStyle = colors.ink;
+    ctx.font = '600 380px "Songti SC", "STSong", "SimSun", serif';
+    ctx.textAlign = "right";
+    ctx.fillText(result.glyph, W - 65, 1240);
+    ctx.restore();
+
+    // 页脚
+    ctx.strokeStyle = "rgba(175, 138, 82, 0.4)";
+    ctx.beginPath();
+    ctx.moveTo(96, 1278);
+    ctx.lineTo(W - 96, 1278);
+    ctx.stroke();
+
+    ctx.fillStyle = colors.inkSoft;
+    ctx.font = '400 17px "Songti SC", "STSong", "SimSun", serif';
+    ctx.fillText("把测试发给你的古代搭子，看看你们是不是同一朝的人。", 96, 1320);
+
+    ctx.fillStyle = colors.faint;
+    ctx.font = '400 12px "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.fillText("40 题趣味人格测试  ·  仅供娱乐，请勿当真", 96, 1358);
+
+    ctx.textAlign = "right";
+    ctx.fillStyle = "rgba(168, 59, 48, 0.72)";
+    ctx.font = '400 13px "Optima", "Candara", serif';
+    ctx.fillText("ANCIENT SOUL ARCHIVE", W - 96, 1358);
+    ctx.textAlign = "left";
+
+    // 底部小印
+    ctx.strokeStyle = "rgba(168, 59, 48, 0.45)";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(930, 1212, 54, 54);
+    ctx.fillStyle = colors.cinnabar;
+    ctx.font = '400 20px "KaiTi", "STKaiti", "Songti SC", serif';
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("测", 957, 1240);
+    ctx.textAlign = "left";
+    ctx.textBaseline = "alphabetic";
+
+    return canvas;
+  }
+
+  function drawCanvasSeal(ctx, x, y, size, glyph) {
+    ctx.save();
+    ctx.strokeStyle = "rgba(168, 59, 48, 0.63)";
+    ctx.lineWidth = 2;
+    roundedRect(ctx, x, y, size, size, 3);
+    ctx.stroke();
+
+    ctx.strokeStyle = "rgba(168, 59, 48, 0.17)";
+    ctx.lineWidth = 1;
+    roundedRect(ctx, x + 8, y + 8, size - 16, size - 16, 1);
+    ctx.stroke();
+
+    ctx.fillStyle = "#A83B30";
+    ctx.font = '400 50px "KaiTi", "STKaiti", "Songti SC", "SimSun", serif';
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(glyph, x + size / 2, y + size / 2 + 2);
+    ctx.restore();
+  }
+
+  function roundedRect(ctx, x, y, width, height, radius) {
+    var r = Math.min(radius, width / 2, height / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + width, y, x + width, y + height, r);
+    ctx.arcTo(x + width, y + height, x, y + height, r);
+    ctx.arcTo(x, y + height, x, y, r);
+    ctx.arcTo(x, y, x + width, y, r);
+    ctx.closePath();
+  }
+
+  function wrapCanvasText(ctx, text, maxWidth) {
+    var lines = [];
+    var current = "";
+
+    String(text).split("").forEach(function (character) {
+      var candidate = current + character;
+      if (ctx.measureText(candidate).width > maxWidth && current) {
+        lines.push(current);
+        current = character;
+      } else {
+        current = candidate;
+      }
+    });
+
+    if (current) lines.push(current);
+    return lines;
+  }
+
+  function init() {
+    try {
+      cacheDom();
+      bindEvents();
+
+      var validation = CORE.validateData();
+      if (!validation.ok) {
+        console.error("内容数据校验未通过：", validation.errors);
+      }
+
+      setScreen("intro");
+      document.documentElement.classList.add("is-ready");
+    } catch (error) {
+      console.error(error);
+      var message = document.getElementById("toast");
+      if (message) {
+        message.textContent = "页面初始化失败，请刷新后重试。";
+        message.classList.add("is-visible");
+      }
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+
+  </script>
+</body>
+</html>
