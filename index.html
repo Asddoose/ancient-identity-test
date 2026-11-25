@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#F3EBDD">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='5' fill='%23A83B30'/%3E%3Ctext x='32' y='46' font-size='40' text-anchor='middle' fill='%23F8F1E5' font-family='serif'%3E%E5%8F%A4%3C/text%3E%3C/svg%3E">
-  <title>穿越古代身份图鉴｜测测你在古代会是什么身份</title>
-  <meta name="description" content="不考历史，只测灵魂。40道生活化选择题，约3分钟测出你穿越到古代的身份：谋士、帝王、文人、侠客、诗人、将领还是隐士。">
+  <title>穿越古代身份图鉴｜测测你在古代是什么身份，解锁武侠立绘</title>
+  <meta name="description" content="不考历史，只测灵魂。40道生活化选择题，约3分钟测出你的古代身份，解锁武侠风角色立绘与专属本命绝学：谋士、帝王、文人、侠客、诗人、将领还是隐士？">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="穿越古代身份图鉴｜测测你在古代会是什么身份">
-  <meta property="og:description" content="如果带着现在的灵魂回到古代，你会是谁？40道生活题，找到与你同频的那位古人。">
+  <meta property="og:title" content="穿越古代身份图鉴｜测测你的古代身份与武侠绝学">
+  <meta property="og:description" content="如果带着现在的灵魂回到古代，你会是谁？40道生活题，测出与你同频的古人，解锁角色立绘、本命绝学与武学面板。">
   <style>
 /* =========================================================
    穿越古代身份图鉴 · 视觉样式
@@ -1268,11 +1268,47 @@ main {
   border: 1px solid rgba(32, 42, 37, 0.16);
 }
 
+.result-skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 17px;
+  padding: 6px 12px 6px 6px;
+  color: var(--ink-soft);
+  background: rgba(255, 252, 246, 0.42);
+  border: 1px solid rgba(175, 138, 82, 0.34);
+}
+
+.result-skill-badge__mark {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  color: #f8f1e5;
+  font-family: var(--font-display);
+  font-size: 12px;
+  background: var(--cinnabar);
+}
+
+.result-skill-badge__label {
+  color: var(--ink-muted);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+
+.result-skill-badge strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+}
+
 .result-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 11px;
-  margin-top: 30px;
+  margin-top: 24px;
 }
 
 .result-actions .btn {
@@ -1436,6 +1472,32 @@ main {
   letter-spacing: 0.13em;
 }
 
+.card-skill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 8px;
+  color: var(--ink-muted);
+  font-size: clamp(7px, 1.9vw, 9px);
+  letter-spacing: 0.05em;
+}
+
+.card-skill span {
+  padding: 2px 5px;
+  color: var(--cinnabar);
+  font-size: clamp(6px, 1.7vw, 8px);
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(168, 59, 48, 0.3);
+}
+
+.card-skill strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(9px, 2.5vw, 12px);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
 .card-quote {
   position: relative;
   margin: 4px 0;
@@ -1532,6 +1594,491 @@ main {
   color: var(--ink-faint);
   font-size: 9px;
   letter-spacing: 0.12em;
+}
+
+/* ---------- 江湖卷宗 ---------- */
+
+.wuxia-profile {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(18px, 2.4vw, 30px);
+  align-items: stretch;
+  margin-top: clamp(48px, 6.3vw, 83px);
+  animation: wuxiaReveal 0.7s var(--ease) both;
+}
+
+.portrait-card {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 600 / 760;
+  overflow: hidden;
+  background: #d8d5c5;
+  border: 1px solid rgba(32, 42, 37, 0.28);
+  box-shadow:
+    8px 10px 0 rgba(168, 59, 48, 0.035),
+    0 24px 55px rgba(53, 42, 28, 0.13);
+}
+
+.portrait-card::before {
+  position: absolute;
+  inset: 9px;
+  z-index: 3;
+  border: 1px solid rgba(255, 248, 236, 0.24);
+  content: "";
+  pointer-events: none;
+}
+
+.portrait-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+  opacity: 0.11;
+  content: "";
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.portrait-art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #d9d4c2;
+}
+
+.portrait-art svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform-origin: center 30%;
+  transition: transform 1.1s var(--ease);
+}
+
+.portrait-card:hover .portrait-art svg {
+  transform: scale(1.025);
+}
+
+.portrait-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(20, 27, 23, 0.12) 0%, transparent 28%, transparent 58%, rgba(20, 27, 23, 0.7) 100%),
+    linear-gradient(90deg, rgba(20, 27, 23, 0.15), transparent 32%);
+  pointer-events: none;
+}
+
+.portrait-index {
+  position: absolute;
+  top: 22px;
+  left: 23px;
+  z-index: 4;
+  color: rgba(250, 245, 235, 0.84);
+  font-family: var(--font-latin);
+  font-size: 9px;
+  letter-spacing: 0.19em;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.22);
+}
+
+.portrait-seal {
+  position: absolute;
+  top: 19px;
+  right: 19px;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: rgba(251, 244, 233, 0.9);
+  font-family: var(--font-kai);
+  font-size: 20px;
+  border: 1px solid rgba(251, 244, 233, 0.64);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  transform: rotate(3deg);
+}
+
+.portrait-caption {
+  position: absolute;
+  right: 23px;
+  bottom: 23px;
+  left: 23px;
+  z-index: 4;
+  color: #f8f1e5;
+}
+
+.portrait-caption__kicker {
+  display: block;
+  margin-bottom: 9px;
+  color: rgba(248, 241, 229, 0.62);
+  font-family: var(--font-latin);
+  font-size: 8px;
+  letter-spacing: 0.18em;
+}
+
+.portrait-caption__weapon {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-display);
+}
+
+.portrait-caption__weapon span {
+  color: rgba(248, 241, 229, 0.6);
+  font-family: var(--font-body);
+  font-size: 9px;
+  letter-spacing: 0.11em;
+}
+
+.portrait-caption__weapon strong {
+  font-size: clamp(18px, 1.9vw, 23px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.portrait-corner {
+  position: absolute;
+  z-index: 4;
+  width: 26px;
+  height: 26px;
+  border-color: rgba(255, 248, 236, 0.45);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.portrait-corner--tl {
+  top: 14px;
+  left: 14px;
+  border-width: 1px 0 0 1px;
+}
+
+.portrait-corner--br {
+  right: 14px;
+  bottom: 14px;
+  border-width: 0 1px 1px 0;
+}
+
+.wuxia-panel {
+  position: relative;
+  min-width: 0;
+  padding: clamp(24px, 3vw, 36px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(175, 138, 82, 0.1), transparent 18rem),
+    rgba(251, 247, 239, 0.65);
+  border: 1px solid rgba(32, 42, 37, 0.16);
+  box-shadow: var(--shadow-soft);
+}
+
+.wuxia-panel::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 74px;
+  height: 3px;
+  background: var(--cinnabar);
+  content: "";
+}
+
+.wuxia-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.wuxia-head h2 {
+  margin-top: 9px;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.1vw, 40px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+}
+
+.wuxia-realm {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  padding: 6px 10px;
+  color: var(--cinnabar);
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  background: rgba(168, 59, 48, 0.04);
+  border: 1px solid rgba(168, 59, 48, 0.3);
+}
+
+.wuxia-alias-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 17px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--line);
+}
+
+.wuxia-alias {
+  color: var(--cinnabar);
+  font-family: var(--font-kai);
+  font-size: clamp(17px, 1.8vw, 21px);
+  letter-spacing: 0.08em;
+}
+
+.wuxia-alias-note {
+  color: var(--ink-faint);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.signature-skill {
+  position: relative;
+  margin-top: 18px;
+  overflow: hidden;
+  color: var(--paper);
+  background:
+    radial-gradient(circle at 92% 14%, rgba(175, 138, 82, 0.24), transparent 13rem),
+    linear-gradient(135deg, #202a25, #101815);
+  border: 1px solid rgba(175, 138, 82, 0.3);
+  box-shadow: 0 15px 35px rgba(32, 42, 37, 0.16);
+}
+
+.signature-skill::after {
+  position: absolute;
+  right: 17px;
+  bottom: -31px;
+  color: rgba(248, 241, 229, 0.045);
+  font-family: var(--font-display);
+  font-size: 140px;
+  line-height: 1;
+  content: "绝";
+  pointer-events: none;
+}
+
+.signature-skill__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(215, 196, 163, 0.18);
+}
+
+.signature-skill__label {
+  color: var(--gold-soft);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+}
+
+.signature-skill__tier {
+  padding: 2px 7px;
+  color: #d6be91;
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(214, 190, 145, 0.35);
+}
+
+.signature-skill__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(15px, 2.1vw, 24px);
+  padding: 18px 20px 21px;
+}
+
+.signature-skill__seal {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  color: #e2c998;
+  font-family: var(--font-kai);
+  font-size: 28px;
+  border: 1px solid rgba(214, 190, 145, 0.52);
+  box-shadow: inset 0 0 0 4px rgba(214, 190, 145, 0.06);
+  transform: rotate(-2deg);
+}
+
+.signature-skill__content {
+  min-width: 0;
+}
+
+.signature-skill h3 {
+  color: #fbf4e7;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.4vw, 31px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+}
+
+.signature-skill__type {
+  margin-top: 5px;
+  color: #d6be91;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+
+.signature-skill__line {
+  margin-top: 13px;
+  color: #f1e4ce;
+  font-family: var(--font-kai);
+  font-size: clamp(14px, 1.5vw, 17px);
+  letter-spacing: 0.04em;
+}
+
+.signature-skill__desc {
+  max-width: 560px;
+  margin-top: 7px;
+  color: rgba(248, 241, 229, 0.62);
+  font-size: 11.5px;
+  line-height: 1.8;
+}
+
+.minor-skills {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 11px;
+}
+
+.minor-skill {
+  position: relative;
+  min-width: 0;
+  padding: 14px 14px 13px;
+  background: rgba(255, 252, 246, 0.46);
+  border: 1px solid rgba(32, 42, 37, 0.13);
+}
+
+.minor-skill::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 23px;
+  height: 1px;
+  background: var(--cinnabar);
+  content: "";
+}
+
+.minor-skill__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.minor-skill__num {
+  color: var(--gold);
+  font-family: var(--font-latin);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.minor-skill__type {
+  color: var(--ink-faint);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+
+.minor-skill h4 {
+  margin: 7px 0 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.8vw, 19px);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.minor-skill p {
+  margin-top: 5px;
+  color: var(--ink-muted);
+  font-size: 10.5px;
+  line-height: 1.7;
+}
+
+.minor-skill__tag {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 6px;
+  color: var(--cinnabar);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(168, 59, 48, 0.2);
+}
+
+.wuxia-stats {
+  margin-top: 17px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+
+.wuxia-stats__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.wuxia-stats__head small {
+  color: var(--ink-faint);
+  font-family: var(--font-latin);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+}
+
+.wuxia-stat-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 20px;
+  margin-top: 12px;
+}
+
+.wuxia-stat {
+  min-width: 0;
+}
+
+.wuxia-stat__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--ink-muted);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.wuxia-stat__meta strong {
+  color: var(--cinnabar);
+  font-family: var(--font-latin);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.wuxia-stat__track {
+  display: block;
+  height: 3px;
+  margin-top: 6px;
+  overflow: hidden;
+  background: rgba(32, 42, 37, 0.1);
+}
+
+.wuxia-stat__fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--jade-soft), var(--jade));
+  transition: width 1s var(--ease);
 }
 
 /* ---------- 结果详情 ---------- */
@@ -1861,6 +2408,17 @@ main {
   50% {
     opacity: 1;
     transform: translateY(-3px);
+  }
+}
+
+@keyframes wuxiaReveal {
+  from {
+    opacity: 0;
+    transform: translateY(17px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -2366,6 +2924,178 @@ main {
   }
 }
 
+@media (min-width: 1121px) {
+  .portrait-card {
+    height: 100%;
+    aspect-ratio: auto;
+    min-height: 560px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .wuxia-profile {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .portrait-card {
+    width: min(100%, 440px);
+    margin: 0 auto;
+  }
+
+  .wuxia-panel {
+    padding: 26px;
+  }
+
+  .signature-skill__seal {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 960px) {
+  .wuxia-profile {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .portrait-card {
+    width: min(100%, 440px);
+    margin: 0 auto;
+  }
+
+  .wuxia-panel {
+    padding: 28px;
+  }
+
+  .wuxia-head h2 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 720px) {
+  .wuxia-profile {
+    margin-top: 38px;
+    gap: 14px;
+  }
+
+  .portrait-card {
+    width: 100%;
+    max-width: 430px;
+  }
+
+  .wuxia-panel {
+    padding: 22px 18px;
+  }
+
+  .wuxia-head {
+    gap: 12px;
+  }
+
+  .wuxia-head h2 {
+    font-size: 29px;
+  }
+
+  .wuxia-realm {
+    padding: 5px 8px;
+    font-size: 9px;
+  }
+
+  .wuxia-alias-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .wuxia-alias {
+    font-size: 17px;
+  }
+
+  .signature-skill__body {
+    gap: 13px;
+    padding: 15px 14px 17px;
+  }
+
+  .signature-skill__seal {
+    width: 47px;
+    height: 47px;
+    font-size: 23px;
+  }
+
+  .signature-skill h3 {
+    font-size: 22px;
+  }
+
+  .signature-skill__desc {
+    font-size: 11px;
+  }
+
+  .minor-skills {
+    grid-template-columns: 1fr;
+  }
+
+  .wuxia-stat-list {
+    gap: 9px 14px;
+  }
+
+  .result-skill-badge {
+    flex-wrap: wrap;
+  }
+
+  .card-skill {
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 430px) {
+  .portrait-caption {
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+  }
+
+  .portrait-index {
+    top: 18px;
+    left: 18px;
+    font-size: 8px;
+  }
+
+  .portrait-seal {
+    top: 15px;
+    right: 15px;
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+  }
+
+  .wuxia-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .wuxia-realm {
+    margin-top: 0;
+  }
+
+  .signature-skill__body {
+    gap: 10px;
+  }
+
+  .signature-skill__seal {
+    width: 42px;
+    height: 42px;
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 360px) {
+  .wuxia-stat-list {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (hover: none) {
   .keyboard-hint {
     display: none;
@@ -2439,11 +3169,11 @@ main {
             <span class="intro-title__line intro-title__line--accent">身份图鉴<span class="intro-title__dot" aria-hidden="true">。</span></span>
           </h1>
           <p class="intro-lead">如果带着现在的灵魂回到古代，<br>你会是谁？</p>
-          <p class="intro-body">不考历史，也不用背朝代。40 道生活化选择题，从你的习惯、社交、情绪和偏好里，找到与你同频的那位古人。</p>
+          <p class="intro-body">不考历史，也不用背朝代。40 道生活化选择题，从你的习惯、社交、情绪和偏好里，找到与你同频的那位古人。测完还会解锁一张武侠风角色立绘，和一套只属于你的本命绝学。</p>
           <ul class="intro-meta" aria-label="测试信息">
             <li><span aria-hidden="true">壹</span>40 道生活题</li>
             <li><span aria-hidden="true">贰</span>约 3 分钟</li>
-            <li><span aria-hidden="true">叁</span>7 种古代身份</li>
+            <li><span aria-hidden="true">叁</span>7 种身份 · 7 套绝学</li>
           </ul>
           <div class="intro-actions">
             <button class="btn btn--primary btn--start" type="button" id="startBtn">
@@ -2500,7 +3230,7 @@ main {
             <i class="archive-corner archive-corner--tl" aria-hidden="true"></i>
             <i class="archive-corner archive-corner--br" aria-hidden="true"></i>
           </div>
-          <p class="art-footnote">七种古代身份 · 等你认领</p>
+          <p class="art-footnote">七种身份 · 七套武学 · 等你认领</p>
         </aside>
       </div>
 
@@ -2567,6 +3297,11 @@ main {
             <p class="result-dynasty" id="resultDynasty">历史原型 · 西汉开国谋臣</p>
             <blockquote class="result-tagline" id="resultTagline">“你不出手时，天下无事；你一出手，风向就变了。”</blockquote>
             <ul class="keyword-list" id="resultKeywords" aria-label="性格关键词"></ul>
+            <div class="result-skill-badge">
+              <span class="result-skill-badge__mark" aria-hidden="true">绝</span>
+              <span class="result-skill-badge__label">本命绝学</span>
+              <strong id="resultSkillChip">太虚弈天诀</strong>
+            </div>
             <div class="result-actions">
               <button class="btn btn--primary" type="button" id="saveBtn">
                 <span>保存分享卡</span>
@@ -2595,6 +3330,7 @@ main {
                 </div>
                 <p class="card-role" id="cardRole">谋士 · 幕后执棋人</p>
                 <p class="card-keywords" id="cardKeywords">洞察 · 布局 · 克制 · 借力</p>
+                <p class="card-skill"><span>本命绝学</span><strong id="cardSkill">太虚弈天诀</strong></p>
               </div>
               <blockquote class="card-quote">
                 <span class="card-quote__mark" aria-hidden="true">“</span>
@@ -2609,6 +3345,58 @@ main {
             <p class="share-hint">3:4 分享卡 · 截图也很出片</p>
           </div>
         </div>
+
+        <section class="wuxia-profile" aria-labelledby="wuxiaTitle">
+          <div class="portrait-card">
+            <div class="portrait-art" id="resultPortrait" aria-hidden="true"></div>
+            <div class="portrait-shade" aria-hidden="true"></div>
+            <span class="portrait-index" id="portraitIndex">PERSONA 01</span>
+            <span class="portrait-seal" id="portraitSeal" aria-hidden="true">谋</span>
+            <span class="portrait-corner portrait-corner--tl" aria-hidden="true"></span>
+            <span class="portrait-corner portrait-corner--br" aria-hidden="true"></span>
+            <div class="portrait-caption">
+              <span class="portrait-caption__kicker">WUXIA PORTRAIT · 角色立绘</span>
+              <p class="portrait-caption__weapon"><span>本命神兵</span><strong id="portraitWeapon">素白羽扇</strong></p>
+            </div>
+          </div>
+
+          <div class="wuxia-panel">
+            <div class="wuxia-head">
+              <div>
+                <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>WUXIA PROFILE · 武学面板</p>
+                <h2 id="wuxiaTitle">江湖卷宗</h2>
+              </div>
+              <span class="wuxia-realm" id="wuxiaRealm">天机境 · 大圆满</span>
+            </div>
+            <div class="wuxia-alias-row">
+              <span class="wuxia-alias" id="wuxiaAlias">留侯 · 白衣卿相</span>
+              <span class="wuxia-alias-note">你的武侠身份 · 仅供娱乐</span>
+            </div>
+
+            <article class="signature-skill">
+              <div class="signature-skill__head">
+                <span class="signature-skill__label">本命绝学</span>
+                <span class="signature-skill__tier" id="skillTier">天阶上品</span>
+              </div>
+              <div class="signature-skill__body">
+                <span class="signature-skill__seal" aria-hidden="true">绝</span>
+                <div class="signature-skill__content">
+                  <h3 id="skillName">太虚弈天诀</h3>
+                  <p class="signature-skill__type" id="skillType">谋略心法</p>
+                  <p class="signature-skill__line" id="skillLine">“扇未开，局已定。”</p>
+                  <p class="signature-skill__desc" id="skillDesc">以天地为棋盘，以人心为子。你不需要抢先出手，只需要在所有人落子之前，看见最后一步。</p>
+                </div>
+              </div>
+            </article>
+
+            <div class="minor-skills" id="minorSkills" aria-label="江湖奇技"></div>
+
+            <div class="wuxia-stats">
+              <div class="wuxia-stats__head"><span>武学属性</span><small>PERSONAL COMBAT PROFILE</small></div>
+              <div class="wuxia-stat-list" id="wuxiaStats"></div>
+            </div>
+          </div>
+        </section>
 
         <div class="result-details">
           <article class="detail-card detail-card--wide">
@@ -2718,7 +3506,29 @@ main {
         advantageTitle: "风险雷达 × 系统思维",
         advantage: "你能在混乱里快速抓到关键变量，提前绕开坑。别人靠运气，你靠预判。",
         easter: "你可能是群聊里话最少的人，但每次大家吵到不可开交，最后被 @ 出来总结局面的也是你。",
-        modern: ["战略顾问", "品牌操盘手", "幕后军师"]
+        modern: ["战略顾问", "品牌操盘手", "幕后军师"],
+        wuxia: {
+          alias: "留侯 · 白衣卿相",
+          realm: "天机境 · 大圆满",
+          weapon: "素白羽扇",
+          signature: {
+            name: "太虚弈天诀",
+            type: "谋略心法",
+            tier: "天阶上品",
+            line: "扇未开，局已定。",
+            desc: "以天地为棋盘，以人心为子。你不需要抢先出手，只需要在所有人落子之前，看见最后一步。"
+          },
+          skills: [
+            { name: "观星落子", type: "被动天赋", tag: "洞察", desc: "别人看一步，你已经在心里推演了三步。越乱的局，你越清醒。" },
+            { name: "袖里乾坤", type: "特殊身法", tag: "布局", desc: "看似退后半步，实则已经换掉了整张棋盘。真正的后手，从不写在脸上。" }
+          ],
+          stats: [
+            { name: "谋略", value: 98 },
+            { name: "武力", value: 35 },
+            { name: "心境", value: 86 },
+            { name: "机缘", value: 92 }
+          ]
+        }
       },
       wang: {
         code: "wang",
@@ -2735,7 +3545,29 @@ main {
         advantageTitle: "破局力 × 资源整合",
         advantage: "你天然会抓重点、定方向、聚人心。越是没有标准答案的局面，越能显出你的价值。",
         easter: "你进群三分钟，群名可能就改了；朋友做重大决定前，最后都会来问你一句。",
-        modern: ["创业者", "CEO", "项目总负责人"]
+        modern: ["创业者", "CEO", "项目总负责人"],
+        wuxia: {
+          alias: "九霄凤主 · 掌局女帝",
+          realm: "山河境 · 大圆满",
+          weapon: "鎏金凤印",
+          signature: {
+            name: "山河镇岳掌",
+            type: "权谋掌法",
+            tier: "天阶上品",
+            line: "一掌落下，山河定音。",
+            desc: "你不接别人给的剧本，也不等谁递来权杖。你看似在破局，其实是在重新划定所有人的边界。"
+          },
+          skills: [
+            { name: "天命所归", type: "被动气场", tag: "掌控", desc: "你站在那里，别人就会自动等你先开口。存在感不是抢来的，是自带的。" },
+            { name: "翻云覆雨", type: "特殊权谋", tag: "破局", desc: "规则可以改，前提是——由你来写。别人看到的是风浪，你看到的是重新洗牌的机会。" }
+          ],
+          stats: [
+            { name: "谋略", value: 90 },
+            { name: "武力", value: 62 },
+            { name: "心境", value: 95 },
+            { name: "机缘", value: 88 }
+          ]
+        }
       },
       wen: {
         code: "wen",
@@ -2752,7 +3584,29 @@ main {
         advantageTitle: "情绪复原力 × 审美表达",
         advantage: "你能把复杂感受翻译成别人听得懂的话，也能把普通日子过得有质感。这是很高级的治愈力。",
         easter: "你嘴上说“随便吃点”，最后端上桌的菜比谁都讲究；你的朋友圈文案经常被朋友直接复制。",
-        modern: ["内容创作者", "品牌文案", "生活方式主理人"]
+        modern: ["内容创作者", "品牌文案", "生活方式主理人"],
+        wuxia: {
+          alias: "东坡居士 · 人间文豪",
+          realm: "自在境 · 大圆满",
+          weapon: "紫毫笔",
+          signature: {
+            name: "春风化雨笔",
+            type: "文心笔法",
+            tier: "天阶上品",
+            line: "一笔落处，苦日子也开出花来。",
+            desc: "你写的不是字，是让人重新活过来的那口气。再难的日子，到你笔下都能留一点甜。"
+          },
+          skills: [
+            { name: "此心安处", type: "被动心法", tag: "自愈", desc: "无论被生活扔到哪里，你都能给自己搭一张舒服的桌。这是很高级的生存能力。" },
+            { name: "人间清欢", type: "特殊技", tag: "生活", desc: "再普通的一顿饭，经你的手也能吃出仪式感。你擅长把“活着”过成“生活”。" }
+          ],
+          stats: [
+            { name: "谋略", value: 82 },
+            { name: "武力", value: 28 },
+            { name: "心境", value: 96 },
+            { name: "机缘", value: 90 }
+          ]
+        }
       },
       xia: {
         code: "xia",
@@ -2769,7 +3623,29 @@ main {
         advantageTitle: "绝境行动力 × 信任号召力",
         advantage: "越到关键时刻，你越能站出来。你的勇气会传染，让身边的人也敢往前一步。",
         easter: "看影视剧最容易被“明知不可为而为之”戳中；朋友受委屈时，你比本人还先炸。",
-        modern: ["危机公关", "公益行动者", "先锋创业者"]
+        modern: ["危机公关", "公益行动者", "先锋创业者"],
+        wuxia: {
+          alias: "孤鸿剑客 · 江湖大侠",
+          realm: "孤锋境 · 大圆满",
+          weapon: "寒月短剑",
+          signature: {
+            name: "九霄孤鸿剑",
+            type: "无招剑法",
+            tier: "天阶绝学",
+            line: "风起时无招，剑落时无悔。",
+            desc: "这一脉剑意，讲的是无招胜有招。练到极处，草木竹石皆可为剑；真正出手时，只凭心里那一点不肯退的义气。"
+          },
+          skills: [
+            { name: "赤心照胆", type: "被动血性", tag: "护短", desc: "在乎的人一受委屈，你的武力值当场翻倍。嘴上也许不说，身体已经先站过去了。" },
+            { name: "千里不留行", type: "特殊轻功", tag: "自由", desc: "想走的时候，没人拦得住；想留的时候，谁也赶不走。江湖再大，也大不过你的一口气。" }
+          ],
+          stats: [
+            { name: "谋略", value: 55 },
+            { name: "武力", value: 96 },
+            { name: "心境", value: 72 },
+            { name: "机缘", value: 65 }
+          ]
+        }
       },
       shi: {
         code: "shi",
@@ -2786,7 +3662,29 @@ main {
         advantageTitle: "创意爆发力 × 情绪感染力",
         advantage: "你能把无聊场面变有趣，把模糊感受说漂亮。你身上那点“不靠谱”，恰恰是灵感最爱的入口。",
         easter: "旅行攻略永远只做一半，剩下全靠现场发挥；深夜两点是你灵感最旺的时候。",
-        modern: ["创意总监", "旅行博主", "自由艺术家"]
+        modern: ["创意总监", "旅行博主", "自由艺术家"],
+        wuxia: {
+          alias: "青莲剑仙 · 醉月诗仙",
+          realm: "逍遥境 · 大圆满",
+          weapon: "青莲剑",
+          signature: {
+            name: "醉月飞星诀",
+            type: "剑意心法",
+            tier: "天阶上品",
+            line: "一剑挑明月，半壶醉江湖。",
+            desc: "别人练剑靠招式，你练剑靠一口气、一轮月、半壶酒。招式是死的，你的剑意活得像风。"
+          },
+          skills: [
+            { name: "天生我材", type: "被动灵感", tag: "才气", desc: "灵感来的时候，挡都挡不住。你随口一句，可能就是别人记很久的金句。" },
+            { name: "万里乘风", type: "特殊轻功", tag: "自由", desc: "别人赶路，你踏风。你未必知道下一站在哪，但每次落点都比原来更远。" }
+          ],
+          stats: [
+            { name: "谋略", value: 66 },
+            { name: "武力", value: 88 },
+            { name: "心境", value: 80 },
+            { name: "机缘", value: 99 }
+          ]
+        }
       },
       jiang: {
         code: "jiang",
@@ -2803,7 +3701,29 @@ main {
         advantageTitle: "快速破局 × 逆风执行",
         advantage: "别人还在犹豫时，你已经试过错、拿到反馈。你不怕重来，所以总比别人快一轮。",
         easter: "最听不得“再想想”；打游戏输了会立刻开下一把，嘴上说随便，手上比谁都认真。",
-        modern: ["项目攻坚负责人", "销售操盘手", "连续创业者"]
+        modern: ["项目攻坚负责人", "销售操盘手", "连续创业者"],
+        wuxia: {
+          alias: "冠军侯 · 少年战神",
+          realm: "破阵境 · 大圆满",
+          weapon: "龙脊长枪",
+          signature: {
+            name: "破阵龙城枪",
+            type: "沙场枪法",
+            tier: "天阶上品",
+            line: "枪出如龙，少年不回头。",
+            desc: "你的枪法没有花架子，只有一条线：从起点直取结果。别人排兵布阵，你已经在回来的路上。"
+          },
+          skills: [
+            { name: "封狼居胥", type: "被动军势", tag: "统率", desc: "你带的队，天然比别人的队快半拍。不是因为你喊得响，是因为你永远冲在前面。" },
+            { name: "千里奔袭", type: "特殊战术", tag: "速度", desc: "不绕路，不拖延，直接出现在答案面前。你的字典里没有“再想想”。" }
+          ],
+          stats: [
+            { name: "谋略", value: 78 },
+            { name: "武力", value: 99 },
+            { name: "心境", value: 84 },
+            { name: "机缘", value: 90 }
+          ]
+        }
       },
       yin: {
         code: "yin",
@@ -2820,7 +3740,29 @@ main {
         advantageTitle: "内核稳定 × 低耗生存",
         advantage: "你不容易被外界评价带走，能在高噪音里保住自己的节奏。这是稀缺的长期主义。",
         easter: "群消息常年免打扰，但偶尔一句冷幽默能笑翻全场；你的理想假期是“谁也别找我”。",
-        modern: ["自由职业者", "独立研究者", "生活方式设计师"]
+        modern: ["自由职业者", "独立研究者", "生活方式设计师"],
+        wuxia: {
+          alias: "五柳先生 · 南山隐士",
+          realm: "南山境 · 大圆满",
+          weapon: "南山锄",
+          signature: {
+            name: "归园听雨心法",
+            type: "自洽心法",
+            tier: "天阶上品",
+            line: "心远地自偏，雨落即清欢。",
+            desc: "你不与谁争锋，却自有一片江山。别人练的是杀伐，你练的是把心里的杂音一层层关掉。"
+          },
+          skills: [
+            { name: "南山有信", type: "被动心境", tag: "自洽", desc: "只要心里有座山，在哪里都能归隐。你不怕独处，你怕的是被人群吵丢自己。" },
+            { name: "采菊东篱", type: "特殊治愈", tag: "松弛", desc: "你往那儿一坐，周围的焦虑会自动静音。你不需要渡谁，光是自己稳着，就已经在渡人。" }
+          ],
+          stats: [
+            { name: "谋略", value: 70 },
+            { name: "武力", value: 21 },
+            { name: "心境", value: 99 },
+            { name: "机缘", value: 86 }
+          ]
+        }
       }
     },
 
@@ -3236,6 +4178,777 @@ main {
 
 
 /* =========================================================
+   穿越古代身份图鉴 · 原创武侠风角色立绘
+   全部使用内嵌 SVG，不依赖任何外部图片或字体。
+   ========================================================= */
+(function (root) {
+  "use strict";
+
+  var INK = "#202A25";
+  var INK_SOFT = "#35443C";
+  var PAPER = "#F7F0E4";
+  var CINNABAR = "#A83B30";
+  var GOLD = "#AF8A52";
+  var SKIN = "#E8C6A3";
+  var SKIN_SHADE = "#CDA17E";
+  var JADE = "#4A6C5E";
+
+  var PORTRAITS = {
+    mou: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-label="谋士张良的武侠风立绘">
+  <defs>
+    <linearGradient id="mou-bg" x1="0" y1="0" x2=".7" y2="1">
+      <stop offset="0" stop-color="#F2E8D7"/>
+      <stop offset=".56" stop-color="#E4E6D9"/>
+      <stop offset="1" stop-color="#C9D7CC"/>
+    </linearGradient>
+    <radialGradient id="mou-halo" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#B2493B" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#B2493B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mou-robe" x1="0" y1="0" x2=".8" y2="1">
+      <stop offset="0" stop-color="#F5EDDF"/>
+      <stop offset="1" stop-color="#D7DED3"/>
+    </linearGradient>
+    <linearGradient id="mou-sleeve" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E7E2D4"/>
+      <stop offset="1" stop-color="#BCCFC2"/>
+    </linearGradient>
+    <linearGradient id="mou-hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#436558" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#436558" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="760" fill="url(#mou-bg)"/>
+  <circle cx="438" cy="132" r="118" fill="url(#mou-halo)"/>
+  <circle cx="438" cy="132" r="51" fill="#B24739" opacity=".88"/>
+  <path d="M0 590C86 526 150 539 223 578C311 510 384 538 447 576C500 536 552 541 600 574V760H0Z" fill="url(#mou-hill)"/>
+  <path d="M0 638C64 602 119 606 173 629C229 594 281 598 328 626C384 589 444 592 492 620C530 600 566 602 600 620" fill="none" stroke="#49665A" stroke-opacity=".24" stroke-width="1.5"/>
+  <path d="M0 700C89 667 150 670 215 694C278 657 339 662 395 692C454 662 523 664 600 696" fill="none" stroke="#49665A" stroke-opacity=".16" stroke-width="1.2"/>
+  <g opacity=".42" stroke="#4E6E60" stroke-width="1.1" fill="none">
+    <path d="M74 526C67 460 75 410 96 350M92 456C122 428 136 401 143 374M84 483C59 456 47 430 43 399M106 406C139 391 160 370 174 343"/>
+    <path d="M527 500C519 432 528 380 552 322M545 427C574 399 589 371 599 345M530 462C506 433 492 405 487 376M557 386C527 363 512 338 502 310"/>
+    <path d="M133 381C160 365 184 358 208 360M149 348C172 336 193 331 214 332M504 354C480 337 458 330 434 330"/>
+  </g>
+  <g opacity=".22" stroke="#202A25" stroke-width="1">
+    <path d="M36 584H199M36 607H199M36 630H199M36 653H199M36 676H199"/>
+    <path d="M58 562V698M81 562V698M104 562V698M127 562V698M150 562V698M173 562V698"/>
+  </g>
+  <g opacity=".55">
+    <circle cx="93" cy="651" r="8" fill="#202A25"/>
+    <circle cx="129" cy="628" r="8" fill="#F5EDDF" stroke="#202A25" stroke-width="2"/>
+    <circle cx="163" cy="673" r="8" fill="#202A25"/>
+  </g>
+  <path d="M223 710C260 681 291 682 318 704C346 679 381 681 407 706" fill="none" stroke="#AF8A52" stroke-opacity=".32" stroke-width="1.2"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M258 278C264 303 273 318 302 325C332 318 342 301 345 276L333 336C324 355 280 354 269 336Z" fill="${SKIN_SHADE}"/>
+    <path d="M263 197C260 155 279 127 306 127C338 127 356 157 351 200C349 238 333 264 306 272C278 263 266 236 263 197Z" fill="${SKIN}"/>
+    <path d="M257 205C246 152 271 112 306 112C345 111 371 145 359 205C350 175 334 160 305 160C274 158 264 174 257 205Z" fill="${INK}"/>
+    <path d="M288 117C278 92 288 72 305 72C322 72 334 92 325 118Z" fill="${INK}"/>
+    <path d="M280 101L333 101" stroke="${GOLD}" stroke-width="3"/>
+    <path d="M310 72L310 51M295 56L325 56" stroke="${GOLD}" stroke-width="2.5"/>
+    <path d="M271 188C277 182 287 181 294 187" fill="none" stroke="${INK}" stroke-width="3.3"/>
+    <path d="M318 187C326 181 336 183 342 190" fill="none" stroke="${INK}" stroke-width="3.3"/>
+    <path d="M275 198C283 194 292 194 300 198C292 202 283 202 275 198Z" fill="${INK}"/>
+    <circle cx="290" cy="197" r="1" fill="#F8F1E5" opacity=".55"/>
+    <path d="M318 198C326 194 335 194 343 198C335 202 326 202 318 198Z" fill="${INK}"/>
+    <circle cx="333" cy="197" r="1" fill="#F8F1E5" opacity=".55"/>
+    <path d="M304 205C303 218 300 225 296 230" fill="none" stroke="${SKIN_SHADE}" stroke-width="2"/>
+    <path d="M292 249C300 253 312 253 321 248" fill="none" stroke="#9B5A4E" stroke-width="2.3"/>
+    <path d="M276 278L336 278L347 317L266 317Z" fill="${PAPER}" stroke="${INK}" stroke-width="2"/>
+    <path d="M292 315L288 360L269 397C252 378 245 354 244 331L261 305Z" fill="url(#mou-sleeve)"/>
+    <path d="M328 315L343 356L363 386C374 369 377 345 368 319L345 301Z" fill="url(#mou-sleeve)"/>
+    <path d="M211 365C243 327 287 310 323 314C361 316 397 333 426 366L465 760H128Z" fill="url(#mou-robe)" stroke="${INK_SOFT}" stroke-width="2.2"/>
+    <path d="M260 324C278 348 293 362 310 374C330 358 346 344 360 326L382 760H192Z" fill="#D2DED4"/>
+    <path d="M260 324L311 442L360 326" fill="none" stroke="${INK_SOFT}" stroke-width="2"/>
+    <path d="M311 442L296 760M311 442L325 760" stroke="${GOLD}" stroke-width="1.2" opacity=".66"/>
+    <path d="M210 389C175 419 151 471 141 548C137 589 144 626 165 657C183 640 191 615 193 589C200 527 216 477 244 446Z" fill="url(#mou-sleeve)" stroke="${INK_SOFT}" stroke-width="2.2"/>
+    <path d="M426 390C456 422 478 470 487 543C491 589 480 631 457 660C438 638 429 613 428 588C424 527 410 480 385 449Z" fill="url(#mou-sleeve)" stroke="${INK_SOFT}" stroke-width="2.2"/>
+    <path d="M167 532C181 552 187 581 184 613M449 528C438 552 434 585 440 618" stroke="${INK_SOFT}" stroke-opacity=".48" stroke-width="1.5" fill="none"/>
+    <path d="M232 540C253 565 272 576 293 586M390 531C371 558 350 574 334 585" fill="none" stroke="${GOLD}" stroke-opacity=".46" stroke-width="1.4"/>
+    <path d="M202 433C210 482 215 526 216 566" fill="none" stroke="${INK_SOFT}" stroke-opacity=".25" stroke-width="1.3"/>
+    <path d="M386 426C380 472 377 520 381 564" fill="none" stroke="${INK_SOFT}" stroke-opacity=".25" stroke-width="1.3"/>
+    <path d="M314 343L314 705" stroke="${GOLD}" stroke-opacity=".38" stroke-width="1.2"/>
+    <path d="M182 601L219 604L227 622L188 619Z" fill="${JADE}" stroke="${INK_SOFT}" stroke-width="1.5"/>
+    <path d="M195 622L195 658M219 622L219 658" stroke="${GOLD}" stroke-width="1.2"/>
+    <circle cx="195" cy="663" r="5" fill="${GOLD}" opacity=".75"/>
+    <circle cx="219" cy="663" r="5" fill="${GOLD}" opacity=".75"/>
+    <path d="M365 430C399 402 441 388 474 397C480 428 460 464 424 487C398 503 373 501 354 486C346 462 351 445 365 430Z" fill="#FBF5E9" stroke="${INK}" stroke-width="2.4"/>
+    <path d="M354 486C389 477 436 445 468 406M365 430C385 454 400 473 424 495M384 423C399 450 410 466 427 479M406 413C417 438 426 452 438 463M431 402C438 421 446 437 455 449" fill="none" stroke="${INK_SOFT}" stroke-opacity=".55" stroke-width="1.4"/>
+    <path d="M359 484C373 496 393 501 409 495" fill="none" stroke="${INK_SOFT}" stroke-width="4"/>
+    <path d="M409 495C421 491 424 477 417 468C410 460 396 468 399 479C400 487 406 492 417 485" fill="${SKIN}" stroke="${INK_SOFT}" stroke-width="1.8"/>
+    <path d="M468 406C483 420 486 436 479 448" fill="none" stroke="${CINNABAR}" stroke-width="2"/>
+    <path d="M477 447C472 466 482 480 495 483" fill="none" stroke="${CINNABAR}" stroke-width="2.2"/>
+    <circle cx="485" cy="400" r="4" fill="${CINNABAR}" opacity=".8"/>
+    <path d="M145 760L173 607L184 613L168 760Z" fill="#31483E" opacity=".35"/>
+  </g>
+  <g fill="none" stroke="${INK_SOFT}" stroke-opacity=".26" stroke-width="1.1">
+    <path d="M211 145C226 137 240 137 254 144M344 108C358 101 372 103 383 111M80 276C93 269 105 269 116 275"/>
+    <path d="M467 236C480 226 495 228 507 238"/>
+  </g>
+  <rect x="18" y="18" width="564" height="724" fill="none" stroke="${INK}" stroke-opacity=".15"/>
+</svg>`,
+
+    wang: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-label="帝王武则天的武侠风立绘">
+  <defs>
+    <linearGradient id="wang-bg" x1="0" y1="0" x2=".7" y2="1">
+      <stop offset="0" stop-color="#EFD9C4"/>
+      <stop offset=".5" stop-color="#D8A78F"/>
+      <stop offset="1" stop-color="#783D35"/>
+    </linearGradient>
+    <radialGradient id="wang-halo" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#F6DCA4" stop-opacity=".62"/>
+      <stop offset=".7" stop-color="#D1A45F" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#D1A45F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wang-robe" x1="0" y1="0" x2=".9" y2="1">
+      <stop offset="0" stop-color="#29221F"/>
+      <stop offset="1" stop-color="#4E211F"/>
+    </linearGradient>
+    <linearGradient id="wang-inner" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B44435"/>
+      <stop offset="1" stop-color="#762A25"/>
+    </linearGradient>
+    <linearGradient id="wang-sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9C982" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#B47D4A" stop-opacity=".08"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="760" fill="url(#wang-bg)"/>
+  <circle cx="300" cy="280" r="250" fill="url(#wang-halo)"/>
+  <circle cx="300" cy="230" r="172" fill="none" stroke="#F0D193" stroke-opacity=".38" stroke-width="1.2"/>
+  <circle cx="300" cy="230" r="152" fill="none" stroke="#F0D193" stroke-opacity=".2" stroke-width="1"/>
+  <path d="M0 606C97 560 168 566 234 594C305 554 381 557 442 594C501 558 558 561 600 586V760H0Z" fill="#4D2420" opacity=".48"/>
+  <path d="M0 680C90 636 163 641 231 673C300 637 373 638 435 674C500 640 555 646 600 676V760H0Z" fill="#2A1E1A" opacity=".4"/>
+  <g opacity=".22" fill="#F7DEAA">
+    <path d="M57 456C86 421 117 404 154 402L188 426C144 436 111 456 85 488Z"/>
+    <path d="M543 456C514 421 483 404 446 402L412 426C456 436 489 456 515 488Z"/>
+    <path d="M66 404C88 374 111 360 138 355L165 376C133 386 108 403 88 430Z"/>
+    <path d="M534 404C512 374 489 360 462 355L435 376C467 386 492 403 512 430Z"/>
+    <path d="M197 331C218 297 247 281 274 276L292 292C260 303 232 318 212 342Z"/>
+    <path d="M403 331C382 297 353 281 326 276L308 292C340 303 368 318 388 342Z"/>
+  </g>
+  <g opacity=".3" stroke="#F1D59E" stroke-width="1" fill="none">
+    <path d="M52 590C116 568 170 576 222 600M378 600C432 574 490 567 548 590"/>
+    <path d="M31 620C100 598 159 607 215 633M385 633C441 607 500 598 569 620"/>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M268 270C267 300 276 322 303 333C331 322 339 300 338 270L331 332C321 351 286 351 275 332Z" fill="${SKIN_SHADE}"/>
+    <path d="M257 197C255 153 275 123 303 123C335 123 354 154 350 199C348 241 332 269 303 278C276 268 259 239 257 197Z" fill="${SKIN}"/>
+    <path d="M246 205C236 146 263 105 302 105C342 104 370 142 360 207C351 173 333 157 303 157C271 155 256 174 246 205Z" fill="${INK}"/>
+    <path d="M259 157C254 126 266 99 301 94C336 99 351 125 347 157C333 139 318 132 302 132C283 132 269 140 259 157Z" fill="${INK}"/>
+    <path d="M269 96C269 74 282 57 302 55C323 57 336 74 336 96Z" fill="${INK}"/>
+    <path d="M243 123C233 100 238 77 256 62C269 83 272 105 265 126Z" fill="${INK}"/>
+    <path d="M356 123C366 100 361 77 343 62C330 83 327 105 334 126Z" fill="${INK}"/>
+    <path d="M282 109C288 100 299 95 313 97" fill="none" stroke="${GOLD}" stroke-width="4"/>
+    <path d="M267 121L337 121M278 109L282 77M302 104L302 66M326 109L323 77" stroke="${GOLD}" stroke-width="3"/>
+    <circle cx="279" cy="126" r="7" fill="${CINNABAR}" stroke="#F2D394" stroke-width="2"/>
+    <circle cx="302" cy="119" r="8" fill="${CINNABAR}" stroke="#F2D394" stroke-width="2"/>
+    <circle cx="325" cy="126" r="7" fill="${CINNABAR}" stroke="#F2D394" stroke-width="2"/>
+    <path d="M300 74L300 47M287 56L313 56M275 63L325 63" stroke="${GOLD}" stroke-width="3"/>
+    <path d="M300 47L288 36M300 47L312 36M300 47L300 31" stroke="${CINNABAR}" stroke-width="2.5"/>
+    <path d="M265 187C274 180 286 180 294 187" fill="none" stroke="${INK}" stroke-width="3.4"/>
+    <path d="M314 187C323 180 335 180 343 188" fill="none" stroke="${INK}" stroke-width="3.4"/>
+    <path d="M268 199C278 194 288 195 296 200C288 204 278 204 268 199Z" fill="${INK}"/>
+    <path d="M315 199C324 194 334 195 342 200C334 204 324 204 315 199Z" fill="${INK}"/>
+    <path d="M269 190C278 186 287 187 295 192M315 192C323 187 332 186 341 190" fill="none" stroke="#6D3B32" stroke-width="1.1" opacity=".7"/>
+    <path d="M302 204C301 219 299 229 295 236" fill="none" stroke="${SKIN_SHADE}" stroke-width="1.8"/>
+    <path d="M302 170V194" stroke="${CINNABAR}" stroke-width="2" opacity=".8"/>
+    <circle cx="302" cy="165" r="2.6" fill="${CINNABAR}" opacity=".8"/>
+    <path d="M289 250C297 254 307 254 315 250" fill="none" stroke="#8F3C33" stroke-width="3"/>
+    <path d="M281 252C288 267 299 274 307 275C317 273 326 263 329 251" fill="none" stroke="${CINNABAR}" stroke-width="2.2"/>
+    <path d="M267 284C274 278 284 277 291 282M317 282C326 277 335 278 342 284" fill="none" stroke="${GOLD}" stroke-width="1.6"/>
+    <path d="M232 374C248 332 278 310 303 311C329 310 357 329 374 372L455 760H148Z" fill="url(#wang-robe)" stroke="#1B1715" stroke-width="2.5"/>
+    <path d="M246 374C263 344 286 330 304 330C321 330 344 344 361 372L375 467C352 486 331 496 304 496C277 496 254 486 232 467Z" fill="url(#wang-inner)"/>
+    <path d="M269 336L304 401L341 335L354 377C337 411 323 430 304 438C284 430 271 412 256 378Z" fill="#D5B27A" opacity=".8"/>
+    <path d="M304 438L282 760M304 438L328 760" stroke="#E6C27F" stroke-width="2"/>
+    <path d="M208 435C183 467 169 510 167 558C165 611 177 658 198 695C214 662 221 622 219 584C216 526 225 486 244 452Z" fill="#2B211E" stroke="#1B1715" stroke-width="2"/>
+    <path d="M400 435C425 470 439 511 441 558C443 612 431 658 410 695C394 662 387 621 389 584C392 526 382 486 364 452Z" fill="#2B211E" stroke="#1B1715" stroke-width="2"/>
+    <path d="M213 500C230 532 239 573 239 621M399 500C382 532 373 573 373 621" fill="none" stroke="${GOLD}" stroke-width="1.4" opacity=".58"/>
+    <path d="M247 550C261 589 274 618 292 643M362 550C348 589 335 618 318 643" fill="none" stroke="#C99055" stroke-width="1.2" opacity=".6"/>
+    <path d="M273 538C277 567 286 592 300 609C315 592 324 567 330 537" fill="none" stroke="#E7C27D" stroke-width="1.8"/>
+    <path d="M300 609L300 760" stroke="#E7C27D" stroke-width="1.4" opacity=".65"/>
+    <path d="M166 540C184 568 192 601 190 641" stroke="#1B1715" stroke-width="3.5" fill="none" opacity=".6"/>
+    <path d="M435 540C417 568 409 601 411 641" stroke="#1B1715" stroke-width="3.5" fill="none" opacity=".6"/>
+    <path d="M263 604C278 592 296 589 310 597C327 588 345 597 351 613L337 655H276Z" fill="${SKIN}" stroke="#A77455" stroke-width="1.8"/>
+    <path d="M282 604C288 614 300 618 310 615C321 618 333 611 340 602" fill="none" stroke="#B78364" stroke-width="1.4"/>
+    <path d="M287 625L298 690L308 690L320 625" fill="#9B3029" stroke="${GOLD}" stroke-width="1.6"/>
+    <path d="M287 662H320M287 678H320" stroke="${GOLD}" stroke-width="1.2"/>
+    <path d="M174 472C191 453 214 449 237 460M426 472C409 453 386 449 363 460" fill="none" stroke="#D0A15E" stroke-width="2.4" opacity=".72"/>
+    <path d="M228 387C244 369 263 359 283 356M372 387C356 369 337 359 317 356" fill="none" stroke="#E1BE7C" stroke-width="1.5" opacity=".7"/>
+    <path d="M151 391C167 367 188 354 211 350M449 391C433 367 412 354 389 350" fill="none" stroke="#B55C45" stroke-width="1.4" opacity=".75"/>
+    <path d="M76 463C93 426 114 407 143 396M524 463C507 426 486 407 457 396" fill="none" stroke="#E4BD7A" stroke-width="1.2" opacity=".42"/>
+    <path d="M96 617C127 594 159 592 188 607M504 617C473 594 441 592 412 607" fill="none" stroke="#E9C781" stroke-width="1.2" opacity=".32"/>
+    <path d="M205 727L236 693L254 735M395 727L364 693L346 735" fill="#1D1816" opacity=".5"/>
+  </g>
+  <g opacity=".4" fill="none" stroke="#E9C17A" stroke-width="1">
+    <path d="M133 166C205 129 289 117 359 133C423 148 469 177 493 211"/>
+    <path d="M110 192C189 151 284 138 364 158C428 175 473 203 500 237"/>
+    <path d="M126 241C188 210 260 198 326 205M486 241C424 210 352 198 286 205"/>
+  </g>
+  <rect x="18" y="18" width="564" height="724" fill="none" stroke="#2B1B17" stroke-opacity=".18"/>
+</svg>`,
+
+    wen: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-label="文人苏轼的武侠风立绘">
+  <defs>
+    <linearGradient id="wen-bg" x1="0" y1="0" x2=".75" y2="1">
+      <stop offset="0" stop-color="#F8EED5"/>
+      <stop offset=".55" stop-color="#EBD6AA"/>
+      <stop offset="1" stop-color="#B59A6A"/>
+    </linearGradient>
+    <radialGradient id="wen-sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#C9873C" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#C9873C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wen-robe" x1="0" y1="0" x2=".8" y2="1">
+      <stop offset="0" stop-color="#F2E3C6"/>
+      <stop offset="1" stop-color="#C6A97D"/>
+    </linearGradient>
+    <linearGradient id="wen-sleeve" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EAD7B4"/>
+      <stop offset="1" stop-color="#A88558"/>
+    </linearGradient>
+    <linearGradient id="wen-hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6D6A47" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#6D6A47" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="760" fill="url(#wen-bg)"/>
+  <circle cx="330" cy="218" r="186" fill="url(#wen-sun)"/>
+  <circle cx="330" cy="218" r="88" fill="#C58F48" opacity=".18"/>
+  <path d="M0 604C89 552 156 562 222 596C300 547 371 557 433 596C492 558 548 562 600 592V760H0Z" fill="url(#wen-hill)"/>
+  <path d="M0 668C92 624 160 633 229 666C296 632 369 638 432 670C491 640 549 641 600 672V760H0Z" fill="#6C6346" opacity=".16"/>
+  <g opacity=".5" stroke="#64734F" stroke-width="1.3" fill="none">
+    <path d="M70 583C62 491 79 422 113 357M102 473C130 445 150 415 162 381M86 512C57 484 40 452 35 414M124 405C158 388 186 364 203 334"/>
+    <path d="M530 584C538 493 522 427 489 361M499 475C471 446 452 416 440 382M514 512C543 484 560 453 565 415M476 406C442 389 414 365 397 335"/>
+    <path d="M147 402C174 388 198 385 220 390M462 403C435 389 411 386 389 391"/>
+  </g>
+  <g opacity=".22" stroke="#5B5139" stroke-width="1">
+    <path d="M50 640C111 625 165 628 222 645M378 645C435 628 489 625 550 640"/>
+    <path d="M77 665C136 651 183 655 232 671M368 671C417 655 464 651 523 665"/>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M254 288C260 315 270 333 299 341C330 333 341 315 346 288L334 354C325 373 277 373 266 354Z" fill="${SKIN_SHADE}"/>
+    <path d="M255 204C252 161 273 132 301 132C333 132 353 162 349 207C347 249 330 275 302 284C274 274 258 247 255 204Z" fill="${SKIN}"/>
+    <path d="M242 204C237 154 263 118 300 118C339 117 366 149 356 207C347 177 330 161 301 161C269 159 252 177 242 204Z" fill="${INK}"/>
+    <path d="M257 159C256 129 271 105 301 103C331 105 348 130 346 159C329 142 315 135 299 135C282 135 269 143 257 159Z" fill="${INK}"/>
+    <path d="M267 132C266 112 281 96 300 96C319 96 334 112 333 132Z" fill="#3E4B41"/>
+    <path d="M260 122H342" stroke="${INK}" stroke-width="4"/>
+    <path d="M271 96V78H330V96" fill="#3E4B41" stroke="${INK}" stroke-width="2"/>
+    <path d="M264 188C273 181 286 181 295 188" fill="none" stroke="${INK}" stroke-width="3.4"/>
+    <path d="M311 188C320 181 333 181 342 189" fill="none" stroke="${INK}" stroke-width="3.4"/>
+    <path d="M272 202C280 207 288 207 295 202" fill="none" stroke="${INK}" stroke-width="2.7"/>
+    <path d="M311 202C319 207 328 207 336 201" fill="none" stroke="${INK}" stroke-width="2.7"/>
+    <path d="M300 205C299 220 297 230 293 238" fill="none" stroke="${SKIN_SHADE}" stroke-width="1.8"/>
+    <path d="M283 253C293 261 308 263 321 254" fill="none" stroke="#8F4E42" stroke-width="2.8"/>
+    <path d="M279 244C291 237 306 237 318 244" fill="none" stroke="#4A3729" stroke-width="3.4"/>
+    <path d="M288 262C292 281 286 300 273 311C289 313 297 307 301 299C305 307 314 313 329 311C316 300 311 281 315 262" fill="#56402F" opacity=".9"/>
+    <path d="M286 267C294 277 308 277 317 266" fill="none" stroke="${INK}" stroke-width="1.6"/>
+    <path d="M226 390C250 347 283 330 310 331C338 330 370 348 389 389L451 760H140Z" fill="url(#wen-robe)" stroke="#5B4B36" stroke-width="2.2"/>
+    <path d="M260 341L310 424L361 341L383 760H234Z" fill="#E7D1AA"/>
+    <path d="M260 341L310 424L361 341" fill="none" stroke="#6F5A3E" stroke-width="2.2"/>
+    <path d="M310 424L292 760M310 424L331 760" stroke="${GOLD}" stroke-opacity=".5" stroke-width="1.3"/>
+    <path d="M227 412C194 441 172 486 163 548C158 594 166 637 185 671C202 649 211 621 213 591C219 532 232 487 255 453Z" fill="url(#wen-sleeve)" stroke="#5B4B36" stroke-width="2.1"/>
+    <path d="M391 412C421 441 440 484 449 543C454 592 445 635 426 670C410 648 402 620 400 591C395 534 384 489 362 455Z" fill="url(#wen-sleeve)" stroke="#5B4B36" stroke-width="2.1"/>
+    <path d="M184 553C198 580 204 609 201 642M427 553C413 580 407 609 410 642" fill="none" stroke="#6B543A" stroke-opacity=".5" stroke-width="1.5"/>
+    <path d="M250 506C269 544 286 573 304 593M371 506C352 544 336 573 318 594" fill="none" stroke="${GOLD}" stroke-opacity=".42" stroke-width="1.3"/>
+    <path d="M228 445C225 493 226 539 232 579M386 444C388 493 387 536 382 576" fill="none" stroke="#6B543A" stroke-opacity=".25" stroke-width="1.2"/>
+    <path d="M288 617C300 611 317 611 328 619C334 633 327 650 313 656C299 660 286 650 283 636C282 628 283 622 288 617Z" fill="#F4E9D5" stroke="#6A553B" stroke-width="1.8"/>
+    <path d="M288 624C295 630 311 630 324 623" fill="none" stroke="#B9834C" stroke-width="1.3"/>
+    <path d="M308 611C311 600 311 589 307 578" fill="none" stroke="#6A553B" stroke-width="1.5"/>
+    <path d="M299 606C285 593 277 575 278 556" fill="none" stroke="#8C704C" stroke-width="1.1" opacity=".5"/>
+    <path d="M339 618C359 601 375 594 393 595C397 608 392 622 378 634C367 643 354 647 340 642Z" fill="${SKIN}" stroke="#A77E5C" stroke-width="1.6"/>
+    <path d="M360 615C367 613 374 613 380 616" fill="none" stroke="#9E6F51" stroke-width="1.3"/>
+    <path d="M399 626C421 615 441 621 452 640C451 658 435 674 414 679C398 682 385 674 381 661C386 646 392 636 399 626Z" fill="#F6EDDC" stroke="#6A553B" stroke-width="2"/>
+    <path d="M392 646C408 640 427 642 447 651" fill="none" stroke="#B9834C" stroke-width="1.4"/>
+    <path d="M411 677L405 704M425 675L430 704" stroke="#6B543A" stroke-width="1.3"/>
+    <path d="M178 610C193 630 203 650 206 674" fill="none" stroke="#7B6548" stroke-width="1.2" opacity=".6"/>
+    <path d="M160 553C169 531 184 519 202 515" fill="none" stroke="${GOLD}" stroke-width="1.2" opacity=".7"/>
+    <path d="M435 544C427 521 412 509 394 505" fill="none" stroke="${GOLD}" stroke-width="1.2" opacity=".7"/>
+    <path d="M171 662C194 645 216 645 236 661C253 645 274 647 287 663L279 735H176Z" fill="#8C714B" opacity=".3"/>
+    <path d="M207 690C218 680 229 681 239 690M224 708C234 699 244 700 253 708" fill="none" stroke="#665135" stroke-width="1.1" opacity=".5"/>
+    <path d="M66 456C86 429 109 412 136 402M530 456C511 429 488 412 461 402" fill="none" stroke="#7B8156" stroke-width="1.1" opacity=".35"/>
+    <path d="M111 344C120 332 132 326 146 326M488 344C479 332 467 326 453 326" fill="none" stroke="#646D4A" stroke-width="1.3" opacity=".44"/>
+  </g>
+  <g opacity=".35" fill="none" stroke="${GOLD}" stroke-width="1">
+    <path d="M118 222C170 194 225 181 281 184M482 222C430 194 375 181 319 184"/>
+    <path d="M96 250C161 220 227 209 292 214M504 250C439 220 373 209 308 214"/>
+  </g>
+  <rect x="18" y="18" width="564" height="724" fill="none" stroke="#4A3E2D" stroke-opacity=".16"/>
+</svg>`,
+
+    xia: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-label="侠客荆轲的武侠风立绘">
+  <defs>
+    <linearGradient id="xia-bg" x1="0" y1="0" x2=".8" y2="1">
+      <stop offset="0" stop-color="#DCE2D8"/>
+      <stop offset=".5" stop-color="#8B9A8F"/>
+      <stop offset="1" stop-color="#263630"/>
+    </linearGradient>
+    <radialGradient id="xia-moon" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#F8F2E4" stop-opacity=".95"/>
+      <stop offset=".72" stop-color="#E9DFC9" stop-opacity=".66"/>
+      <stop offset="1" stop-color="#E9DFC9" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="xia-cloak" x1="0" y1="0" x2=".8" y2="1">
+      <stop offset="0" stop-color="#2A3732"/>
+      <stop offset="1" stop-color="#101715"/>
+    </linearGradient>
+    <linearGradient id="xia-blade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#DFE4DC"/>
+      <stop offset=".5" stop-color="#F9F4E7"/>
+      <stop offset="1" stop-color="#A9B5AC"/>
+    </linearGradient>
+    <linearGradient id="xia-hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0F1B18" stop-opacity=".62"/>
+      <stop offset="1" stop-color="#0F1B18" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="760" fill="url(#xia-bg)"/>
+  <circle cx="144" cy="150" r="116" fill="url(#xia-moon)"/>
+  <circle cx="144" cy="150" r="69" fill="#F8F1E3" opacity=".74"/>
+  <path d="M0 550C84 498 149 509 216 548C294 499 369 509 436 550C491 516 550 518 600 544V760H0Z" fill="url(#xia-hill)"/>
+  <path d="M0 620C85 578 155 588 218 619C289 581 361 583 427 619C487 590 548 592 600 616V760H0Z" fill="#0D1714" opacity=".35"/>
+  <g fill="none" stroke="#EDF1E7" stroke-linecap="round">
+    <path d="M29 268C119 234 182 239 251 270" stroke-opacity=".22" stroke-width="1.3"/>
+    <path d="M51 295C123 270 180 274 233 300" stroke-opacity=".14" stroke-width="1"/>
+    <path d="M99 212C135 190 172 181 211 185" stroke-opacity=".25" stroke-width="1.2"/>
+    <path d="M386 163C430 148 471 152 506 173" stroke-opacity=".2" stroke-width="1.2"/>
+    <path d="M428 181C466 171 496 176 523 192" stroke-opacity=".12" stroke-width="1"/>
+  </g>
+  <g fill="none" stroke="#DDE6D9" stroke-linecap="round" opacity=".38">
+    <path d="M55 736C91 661 113 596 123 531M101 697C128 655 156 624 188 600M78 714C54 673 43 634 45 594"/>
+    <path d="M556 736C522 662 503 600 500 542M517 694C491 657 466 632 439 611M538 714C561 678 571 641 569 606"/>
+    <path d="M82 587C101 566 123 552 148 544M521 589C502 568 480 554 455 546"/>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M278 280C282 305 292 324 319 333C347 323 356 303 358 278L346 348C337 371 297 371 288 348Z" fill="${SKIN_SHADE}"/>
+    <path d="M265 200C262 158 281 128 309 128C341 128 359 159 353 203C350 245 332 272 305 281C277 271 267 243 265 200Z" fill="${SKIN}"/>
+    <path d="M249 208C241 151 268 111 306 112C346 112 373 148 361 212C352 177 334 162 306 162C272 160 257 178 249 208Z" fill="${INK}"/>
+    <path d="M287 119C272 94 286 67 309 67C333 67 346 94 330 121Z" fill="${INK}"/>
+    <path d="M255 117C226 99 209 103 192 122C216 127 236 140 251 155Z" fill="${INK}"/>
+    <path d="M359 119C391 96 413 101 432 122C406 128 385 144 367 161Z" fill="${INK}"/>
+    <path d="M281 184C288 178 296 178 303 184" fill="none" stroke="${INK}" stroke-width="3.3"/>
+    <path d="M318 183C326 176 336 177 343 184" fill="none" stroke="${INK}" stroke-width="3.3"/>
+    <path d="M276 198C284 191 294 192 301 198C294 201 284 201 276 198Z" fill="${INK}"/>
+    <circle cx="292" cy="196" r="1.1" fill="#F8F1E5" opacity=".6"/>
+    <path d="M318 196C326 189 336 190 343 198C336 201 326 201 318 196Z" fill="${INK}"/>
+    <circle cx="333" cy="194" r="1.1" fill="#F8F1E5" opacity=".6"/>
+    <path d="M307 202C306 217 303 228 298 235" fill="none" stroke="${SKIN_SHADE}" stroke-width="1.8"/>
+    <path d="M266 178L281 185" stroke="${CINNABAR}" stroke-width="2.2" opacity=".85"/>
+    <path d="M343 250L356 242" stroke="#A83B30" stroke-width="1.5" opacity=".5"/>
+    <path d="M294 251C304 255 316 254 325 247" fill="none" stroke="#8D443B" stroke-width="2.6"/>
+    <path d="M261 263C276 276 292 281 306 281C320 280 336 273 349 259" fill="none" stroke="#C7B08D" stroke-width="1.4" opacity=".6"/>
+    <path d="M228 401C245 350 278 324 309 326C340 324 376 347 397 400L457 760H137Z" fill="url(#xia-cloak)" stroke="#0D1412" stroke-width="2.4"/>
+    <path d="M265 344L309 451L355 344L376 760H238Z" fill="#384A42"/>
+    <path d="M265 344L309 451L355 344" fill="none" stroke="#B9C7BB" stroke-width="1.5" opacity=".55"/>
+    <path d="M219 410C178 447 152 509 143 582C138 642 149 691 169 728C187 695 196 652 199 608C204 540 220 486 247 449Z" fill="#1B2823" stroke="#0D1412" stroke-width="2.2"/>
+    <path d="M406 398C453 424 488 467 507 526C523 578 522 631 507 688C485 667 472 638 468 606C460 552 438 507 407 481Z" fill="#202E28" stroke="#0D1412" stroke-width="2.2"/>
+    <path d="M203 487C190 552 184 617 193 681M472 477C481 539 483 604 476 669" fill="none" stroke="#D7DFD3" stroke-opacity=".2" stroke-width="1.2"/>
+    <path d="M246 495C259 548 271 592 288 629M379 493C365 545 352 590 336 628" fill="none" stroke="#B3C1B5" stroke-opacity=".22" stroke-width="1.3"/>
+    <path d="M251 426C303 461 354 495 404 526" fill="none" stroke="${CINNABAR}" stroke-width="6" opacity=".62"/>
+    <path d="M243 414C300 450 354 486 409 518" fill="none" stroke="#762E27" stroke-width="2.2"/>
+    <path d="M310 445L309 538" stroke="#C8D3C7" stroke-width="1.6" opacity=".4"/>
+    <path d="M258 352C245 326 245 302 255 280" fill="none" stroke="#1D2621" stroke-width="6" opacity=".8"/>
+    <path d="M455 351C472 315 487 297 506 287" fill="none" stroke="#202B25" stroke-width="1.8"/>
+    <path d="M459 348C489 332 516 321 544 317" fill="none" stroke="${CINNABAR}" stroke-width="2.2" opacity=".6"/>
+    <path d="M410 424C437 424 458 435 468 454C456 469 438 475 419 469C404 463 399 449 403 439Z" fill="${SKIN}" stroke="#A77C5C" stroke-width="1.6"/>
+    <path d="M465 450C481 438 494 443 498 458C501 475 488 488 472 486" fill="${SKIN}" stroke="#A77C5C" stroke-width="1.5"/>
+    <path d="M491 457C513 427 534 382 552 323" stroke="#DDE4D7" stroke-width="2.2" opacity=".32"/>
+    <path d="M459 417L516 316" stroke="#2B3730" stroke-width="7" stroke-linecap="round"/>
+    <path d="M464 418L519 322" stroke="#AAB7AA" stroke-width="2"/>
+    <path d="M464 412L503 338" stroke="#FAF3E4" stroke-width="1.4" opacity=".55"/>
+    <path d="M457 415C472 421 480 434 481 449L465 453C459 440 452 430 446 424Z" fill="#51382D" stroke="#1A211D" stroke-width="1.6"/>
+    <path d="M531 311L552 323" stroke="#D8E0D6" stroke-width="3" opacity=".5"/>
+    <path d="M493 354L529 359" stroke="${CINNABAR}" stroke-width="2.2"/>
+    <path d="M446 360C481 372 512 388 539 409" fill="none" stroke="#C6D2C4" stroke-opacity=".23" stroke-width="1.2"/>
+    <path d="M278 286L292 303L304 281" fill="none" stroke="${CINNABAR}" stroke-width="2" opacity=".7"/>
+    <path d="M92 663C123 650 153 654 178 674C197 660 220 660 242 674L233 735H82Z" fill="#0F1814" opacity=".3"/>
+    <path d="M484 664C514 651 544 655 568 674L578 735H474Z" fill="#0F1814" opacity=".3"/>
+    <path d="M289 634L309 608L331 638L328 704L309 732L290 704Z" fill="#1A2721" stroke="#AF8A52" stroke-opacity=".45" stroke-width="1.2"/>
+    <path d="M296 661L309 680L323 660" fill="none" stroke="${CINNABAR}" stroke-width="2"/>
+    <path d="M115 182C143 163 171 158 198 168M474 217C496 198 519 193 543 201" fill="none" stroke="#EEF2E8" stroke-opacity=".22" stroke-width="1.2"/>
+    <g>
+      <path d="M462 420L576 223" stroke="#E9EEE3" stroke-width="9" stroke-linecap="round"/>
+      <path d="M466 416L575 228" stroke="#FBF6E9" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M463 421L575 226" stroke="#6A7B6D" stroke-width="1.2" opacity=".45"/>
+      <path d="M572 229L586 205" stroke="#D7DED2" stroke-width="3" stroke-linecap="round"/>
+      <path d="M444 452L465 423" stroke="#4A3026" stroke-width="11" stroke-linecap="round"/>
+      <path d="M449 447L466 424" stroke="#B6864D" stroke-width="2" opacity=".65"/>
+      <path d="M445 426L469 438" stroke="#B88A4C" stroke-width="4" stroke-linecap="round"/>
+      <path d="M474 442C485 451 493 465 495 480" fill="none" stroke="#A83B30" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M496 480L503 497" stroke="#A83B30" stroke-width="1.4"/>
+      <circle cx="454" cy="427" r="3" fill="#E8D4AA"/>
+    </g>
+  </g>
+  <rect x="18" y="18" width="564" height="724" fill="none" stroke="#0C1511" stroke-opacity=".22"/>
+</svg>`,
+
+    shi: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-label="诗人李白的武侠风立绘">
+  <defs>
+    <linearGradient id="shi-bg" x1="0" y1="0" x2=".8" y2="1">
+      <stop offset="0" stop-color="#E3ECEC"/>
+      <stop offset=".55" stop-color="#C5D6D6"/>
+      <stop offset="1" stop-color="#718C8C"/>
+    </linearGradient>
+    <radialGradient id="shi-moon" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FCF9EE" stop-opacity=".98"/>
+      <stop offset=".7" stop-color="#F2ECDA" stop-opacity=".65"/>
+      <stop offset="1" stop-color="#F2ECDA" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="shi-robe" x1="0" y1="0" x2=".9" y2="1">
+      <stop offset="0" stop-color="#FBF6E9"/>
+      <stop offset="1" stop-color="#CADCDA"/>
+    </linearGradient>
+    <linearGradient id="shi-sleeve" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F1EEE2"/>
+      <stop offset="1" stop-color="#AFC6C5"/>
+    </linearGradient>
+    <linearGradient id="shi-hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#43635D" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#43635D" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="760" fill="url(#shi-bg)"/>
+  <circle cx="140" cy="156" r="128" fill="url(#shi-moon)"/>
+  <circle cx="140" cy="156" r="78" fill="#FBF6E9" opacity=".82"/>
+  <path d="M0 563C89 508 164 515 228 553C304 505 376 513 445 555C500 523 553 526 600 551V760H0Z" fill="url(#shi-hill)"/>
+  <path d="M0 638C81 598 157 607 224 638C296 602 367 605 433 639C491 612 547 613 600 636V760H0Z" fill="#3F5E57" opacity=".2"/>
+  <g fill="none" stroke="#EDF5F1" stroke-opacity=".28" stroke-linecap="round">
+    <path d="M33 263C123 228 197 232 264 262"/>
+    <path d="M53 292C122 269 185 273 238 297"/>
+    <path d="M361 206C426 178 490 180 551 204"/>
+    <path d="M388 235C452 218 506 220 557 240"/>
+    <path d="M229 121C264 106 298 107 331 124"/>
+  </g>
+  <g opacity=".35" fill="none" stroke="#42605A" stroke-width="1.2">
+    <path d="M44 624C92 601 138 604 180 626M420 626C463 604 508 602 556 623"/>
+    <path d="M71 666C125 644 177 648 220 671M381 671C427 648 479 645 530 665"/>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M285 281C289 311 300 330 327 337C354 329 362 309 364 280L352 354C343 374 303 374 295 354Z" fill="${SKIN_SHADE}"/>
+    <path d="M272 205C270 162 287 134 314 132C345 131 364 160 359 205C356 246 339 274 313 282C285 273 274 246 272 205Z" fill="${SKIN}"/>
+    <path d="M253 213C244 157 272 116 311 116C350 116 377 154 365 216C356 182 337 165 312 165C279 163 261 182 253 213Z" fill="${INK}"/>
+    <path d="M292 122C280 96 294 73 316 73C341 73 354 99 337 124Z" fill="${INK}"/>
+    <path d="M263 123C239 100 215 94 192 105C215 119 232 136 244 157Z" fill="${INK}"/>
+    <path d="M369 125C397 99 422 96 444 107C421 121 402 141 389 161Z" fill="${INK}"/>
+    <path d="M281 193C290 186 300 187 307 194" fill="none" stroke="${INK}" stroke-width="3.2"/>
+    <path d="M322 191C331 184 342 186 349 194" fill="none" stroke="${INK}" stroke-width="3.2"/>
+    <path d="M284 207C292 212 300 211 307 206" fill="none" stroke="${INK}" stroke-width="2.4"/>
+    <path d="M323 206C331 212 340 211 347 204" fill="none" stroke="${INK}" stroke-width="2.4"/>
+    <path d="M314 210C314 224 311 234 306 241" fill="none" stroke="${SKIN_SHADE}" stroke-width="1.7"/>
+    <path d="M299 258C307 264 320 265 330 257" fill="none" stroke="#8D4B42" stroke-width="2.6"/>
+    <path d="M288 250C298 243 313 244 324 251" fill="none" stroke="#5A3C33" stroke-width="2.2"/>
+    <path d="M266 275C280 287 295 292 311 292C328 291 344 284 356 272" fill="none" stroke="#C9B08B" stroke-width="1.4" opacity=".65"/>
+    <path d="M235 395C250 351 280 328 309 328C342 327 374 349 390 394L457 760H139Z" fill="url(#shi-robe)" stroke="#4D625C" stroke-width="2.2"/>
+    <path d="M264 351L310 448L358 350L376 760H238Z" fill="#E9EBE0"/>
+    <path d="M264 351L310 448L358 350" fill="none" stroke="#61756D" stroke-width="1.8"/>
+    <path d="M310 448L289 760M310 448L333 760" stroke="${GOLD}" stroke-opacity=".4" stroke-width="1.2"/>
+    <path d="M229 412C187 447 159 508 149 579C144 635 154 686 174 725C190 690 199 648 203 606C208 544 224 489 251 452Z" fill="url(#shi-sleeve)" stroke="#4D625C" stroke-width="2.1"/>
+    <path d="M393 410C439 430 475 471 494 526C512 581 510 639 492 692C472 671 460 640 456 606C448 552 427 505 394 476Z" fill="url(#shi-sleeve)" stroke="#4D625C" stroke-width="2.1"/>
+    <path d="M211 520C205 577 208 633 221 680M466 500C474 559 474 620 463 675" fill="none" stroke="#577069" stroke-opacity=".38" stroke-width="1.4"/>
+    <path d="M247 487C259 540 272 590 292 634M373 487C361 541 348 591 331 636" fill="none" stroke="#6E8981" stroke-opacity=".42" stroke-width="1.3"/>
+    <path d="M258 407C284 438 311 459 340 470" fill="none" stroke="${CINNABAR}" stroke-width="4" opacity=".38"/>
+    <path d="M221 460C239 480 248 510 249 540" fill="none" stroke="${GOLD}" stroke-opacity=".6" stroke-width="1.3"/>
+    <path d="M395 454C376 477 366 506 365 538" fill="none" stroke="${GOLD}" stroke-opacity=".6" stroke-width="1.3"/>
+    <path d="M310 418L309 513" stroke="#738C84" stroke-width="1.2" opacity=".4"/>
+    <path d="M194 400C177 355 178 314 193 279" fill="none" stroke="#EFF2E7" stroke-width="12" opacity=".3"/>
+    <path d="M424 410C448 368 464 331 468 295" fill="none" stroke="#EFF2E7" stroke-width="10" opacity=".22"/>
+    <path d="M436 393C457 406 470 424 472 447C458 457 442 453 431 440C422 427 422 412 428 403Z" fill="${SKIN}" stroke="#A77C5C" stroke-width="1.6"/>
+    <path d="M469 447C480 457 482 471 472 482C461 490 450 484 445 474" fill="${SKIN}" stroke="#A77C5C" stroke-width="1.5"/>
+    <path d="M450 485C459 507 473 524 494 536C502 519 500 503 488 491C476 480 463 477 450 485Z" fill="#B7CBC6" stroke="#577069" stroke-width="1.8"/>
+    <path d="M457 513C466 515 474 520 480 528" fill="none" stroke="#6E8981" stroke-width="1.2"/>
+    <path d="M448 548C429 561 405 569 378 572" fill="none" stroke="#61756D" stroke-width="1.2" opacity=".5"/>
+    <path d="M499 537C518 524 538 517 558 516C566 531 562 546 550 558C538 570 520 574 505 568C498 560 496 549 499 537Z" fill="#B07A47" stroke="#5F4632" stroke-width="1.8"/>
+    <path d="M513 538C522 535 533 536 542 541" fill="none" stroke="#D9AF78" stroke-width="1.4"/>
+    <path d="M505 568C503 579 507 588 517 595" fill="none" stroke="${CINNABAR}" stroke-width="2"/>
+    <path d="M286 670C300 651 320 645 338 655C350 671 344 690 329 700C314 710 296 707 286 694C281 686 281 677 286 670Z" fill="#D6E3DD" opacity=".72" stroke="#647B73" stroke-width="1.2"/>
+    <path d="M158 682C181 663 207 660 230 672L239 735H144Z" fill="#46665E" opacity=".15"/>
+    <path d="M380 681C406 662 431 661 453 676L464 735H371Z" fill="#46665E" opacity=".15"/>
+    <path d="M99 352C118 333 139 327 162 331M506 383C520 365 537 357 555 358" fill="none" stroke="#EDF5F1" stroke-opacity=".36" stroke-width="1.1"/>
+    <g opacity=".92">
+      <path d="M224 604L398 497" stroke="#33483F" stroke-width="13" stroke-linecap="round"/>
+      <path d="M228 598L404 491" stroke="#C9D4C9" stroke-width="2" opacity=".4"/>
+      <path d="M390 501L408 490" stroke="#B08A52" stroke-width="5" stroke-linecap="round"/>
+      <path d="M214 609L232 598" stroke="#B08A52" stroke-width="6" stroke-linecap="round"/>
+      <path d="M235 585L252 615" stroke="#7A8F83" stroke-width="2" opacity=".6"/>
+      <path d="M389 482C397 491 400 502 396 512" fill="none" stroke="#A83B30" stroke-width="2"/>
+      <circle cx="403" cy="494" r="4" fill="#F5E9D1" stroke="#AF8A52" stroke-width="1.2"/>
+    </g>
+  </g>
+  <rect x="18" y="18" width="564" height="724" fill="none" stroke="#3C5852" stroke-opacity=".18"/>
+</svg>`,
+
+    jiang: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-label="少年将军霍去病的武侠风立绘">
+  <defs>
+    <linearGradient id="jiang-bg" x1="0" y1="0" x2=".8" y2="1">
+      <stop offset="0" stop-color="#E8DCC8"/>
+      <stop offset=".55" stop-color="#C8B294"/>
+      <stop offset="1" stop-color="#6C5C4C"/>
+    </linearGradient>
+    <radialGradient id="jiang-sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#B84A37" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#B84A37" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="jiang-armor" x1="0" y1="0" x2=".9" y2="1">
+      <stop offset="0" stop-color="#475851"/>
+      <stop offset=".45" stop-color="#283733"/>
+      <stop offset="1" stop-color="#101B18"/>
+    </linearGradient>
+    <linearGradient id="jiang-cape" x1="0" y1="0" x2=".8" y2="1">
+      <stop offset="0" stop-color="#A83B30"/>
+      <stop offset=".7" stop-color="#6D2621"/>
+      <stop offset="1" stop-color="#3D1C19"/>
+    </linearGradient>
+    <linearGradient id="jiang-blade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#D5D9CF"/>
+      <stop offset="1" stop-color="#F7F1E3"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="760" fill="url(#jiang-bg)"/>
+  <circle cx="440" cy="152" r="128" fill="url(#jiang-sun)"/>
+  <circle cx="440" cy="152" r="50" fill="#A83B30" opacity=".74"/>
+  <path d="M0 566C82 510 146 516 209 552C281 507 353 515 420 554C478 522 543 525 600 550V760H0Z" fill="#5E5547" opacity=".32"/>
+  <path d="M0 648C85 604 157 612 220 642C286 606 355 612 418 646C482 618 543 621 600 643V760H0Z" fill="#443B32" opacity=".34"/>
+  <g fill="#F3E8D4" opacity=".3">
+    <path d="M42 574L98 472L155 574Z"/>
+    <path d="M373 574L453 440L534 574Z"/>
+    <path d="M110 548L163 464L214 548Z"/>
+  </g>
+  <g fill="none" stroke="#F2E7D3" stroke-opacity=".23" stroke-width="1.2">
+    <path d="M0 598C73 573 132 578 184 600M395 598C455 575 517 575 582 596"/>
+    <path d="M42 574L98 472L155 574M373 574L453 440L534 574"/>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M267 282C271 306 281 327 307 336C335 327 344 306 347 282L336 350C327 371 288 371 279 350Z" fill="${SKIN_SHADE}"/>
+    <path d="M256 205C253 161 274 132 301 132C332 132 350 162 347 207C345 248 329 276 302 285C276 275 259 248 256 205Z" fill="${SKIN}"/>
+    <path d="M251 158C267 136 286 126 305 127C325 126 342 136 353 158C333 150 318 146 302 146C283 146 266 150 251 158Z" fill="${INK}"/>
+    <path d="M249 158C236 142 237 117 254 99C270 119 273 140 266 161Z" fill="#3A4B44"/>
+    <path d="M353 158C366 142 365 117 348 99C332 119 329 140 336 161Z" fill="#3A4B44"/>
+    <path d="M248 155C237 125 249 92 273 74C296 94 305 123 298 155C280 146 264 146 248 155Z" fill="#334740"/>
+    <path d="M353 155C364 125 352 92 328 74C305 94 296 123 303 155C321 146 337 146 353 155Z" fill="#334740"/>
+    <path d="M265 86C276 58 293 48 307 48C323 48 340 60 349 87C332 77 318 72 306 72C292 72 278 77 265 86Z" fill="${INK}"/>
+    <path d="M307 48C298 30 305 17 319 14C331 15 340 26 336 43C328 56 317 58 307 48Z" fill="${CINNABAR}" stroke="#6D2621" stroke-width="1.5"/>
+    <path d="M306 50C296 37 282 34 267 41C277 53 291 61 307 61Z" fill="${CINNABAR}" opacity=".85"/>
+    <path d="M306 50C318 37 333 35 347 44C337 55 323 60 306 61Z" fill="${CINNABAR}" opacity=".85"/>
+    <path d="M269 148C287 138 321 138 339 149" fill="none" stroke="${GOLD}" stroke-width="3.5"/>
+    <path d="M275 161L276 196M337 161L335 196" stroke="${GOLD}" stroke-width="2.4"/>
+    <path d="M272 191C281 185 290 185 297 191" fill="none" stroke="${INK}" stroke-width="3.2"/>
+    <path d="M315 191C324 185 334 185 342 192" fill="none" stroke="${INK}" stroke-width="3.2"/>
+    <path d="M272 203C281 197 291 198 298 203C291 207 281 206 272 203Z" fill="${INK}"/>
+    <circle cx="288" cy="201" r="1" fill="#F8F1E5" opacity=".55"/>
+    <path d="M315 203C324 197 333 198 340 203C333 207 324 206 315 203Z" fill="${INK}"/>
+    <circle cx="329" cy="201" r="1" fill="#F8F1E5" opacity=".55"/>
+    <path d="M305 207C304 222 301 232 296 239" fill="none" stroke="${SKIN_SHADE}" stroke-width="1.8"/>
+    <path d="M260 186L274 180" stroke="${CINNABAR}" stroke-width="1.8" opacity=".75"/>
+    <path d="M288 255C297 260 308 260 317 254" fill="none" stroke="#8C473E" stroke-width="2.6"/>
+    <path d="M218 409C235 361 270 333 305 333C341 332 378 359 397 409L464 760H137Z" fill="url(#jiang-armor)" stroke="#101815" stroke-width="2.4"/>
+    <path d="M234 404C247 371 269 355 294 352L284 760H196Z" fill="url(#jiang-cape)" opacity=".9"/>
+    <path d="M239 431C214 474 201 528 200 591C199 650 209 696 226 735C240 699 249 655 250 610C251 550 259 494 275 455Z" fill="url(#jiang-cape)" stroke="#4E211D" stroke-width="2"/>
+    <path d="M385 405C425 434 453 480 464 538C473 600 464 663 442 719C425 687 416 645 416 602C415 542 400 495 371 463Z" fill="#1B2823" stroke="#101815" stroke-width="2.2"/>
+    <path d="M255 474C270 511 279 551 283 596M442 486C430 529 425 575 427 622" fill="none" stroke="#D9C6A7" stroke-opacity=".22" stroke-width="1.2"/>
+    <path d="M240 602C254 621 267 632 286 639M427 603C413 625 401 636 384 644" fill="none" stroke="${CINNABAR}" stroke-opacity=".55" stroke-width="1.3"/>
+    <path d="M266 382L306 456L347 382L362 760H245Z" fill="#394940"/>
+    <path d="M266 382L306 456L347 382" fill="none" stroke="#C6B597" stroke-width="1.5" opacity=".5"/>
+    <path d="M278 421L303 469L330 420M269 466L303 512M339 468L306 512" fill="none" stroke="#C6B597" stroke-opacity=".4" stroke-width="1.2"/>
+    <path d="M306 456L306 688" stroke="${GOLD}" stroke-opacity=".4" stroke-width="1.2"/>
+    <path d="M284 512C293 526 301 536 306 552C312 536 321 526 329 512" fill="none" stroke="#C6B597" stroke-width="1.2"/>
+    <path d="M248 400C229 381 219 357 219 332" fill="none" stroke="#D3C3A8" stroke-width="9" opacity=".15"/>
+    <path d="M379 398C399 376 410 350 410 324" fill="none" stroke="#D3C3A8" stroke-width="9" opacity=".15"/>
+    <path d="M417 453C435 443 451 448 458 464C465 481 455 497 438 500C421 503 410 492 410 479C410 468 412 459 417 453Z" fill="${SKIN}" stroke="#A77B5A" stroke-width="1.6"/>
+    <path d="M456 478C470 492 471 509 459 521C448 530 435 523 428 512" fill="${SKIN}" stroke="#A77B5A" stroke-width="1.5"/>
+    <path d="M432 512C478 493 520 451 558 395" stroke="#5B4A36" stroke-width="8" stroke-linecap="round"/>
+    <path d="M438 514C484 494 526 453 565 396" stroke="#B88A4C" stroke-width="2.2"/>
+    <path d="M464 478C495 441 523 389 551 319" stroke="#E6DBC7" stroke-width="3" opacity=".55"/>
+    <path d="M550 321L579 231" stroke="url(#jiang-blade)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M550 321L579 231" stroke="#F9F3E6" stroke-width="1.5" opacity=".65"/>
+    <path d="M543 318L555 326L548 338L536 329Z" fill="#A83B30" stroke="#6D2621" stroke-width="1.2"/>
+    <path d="M578 231L585 217" stroke="${CINNABAR}" stroke-width="3"/>
+    <path d="M548 307C558 299 568 297 578 301" fill="none" stroke="${GOLD}" stroke-width="1.1"/>
+    <path d="M229 632L242 620L253 638L247 678L232 690L225 657Z" fill="#1C2923" stroke="#C4B294" stroke-width="1.2"/>
+    <g>
+      <path d="M234 389C251 363 276 349 301 347C290 372 281 394 274 421C254 417 241 405 234 389Z" fill="#4A5C52" stroke="#C4B294" stroke-width="1.2"/>
+      <path d="M378 390C361 364 338 351 314 348C326 372 335 393 341 420C360 416 372 405 378 390Z" fill="#4A5C52" stroke="#C4B294" stroke-width="1.2"/>
+      <path d="M241 399C258 395 276 396 290 405M371 400C354 396 336 397 322 406" fill="none" stroke="#D0B98F" stroke-opacity=".55" stroke-width="1.2"/>
+      <path d="M267 436C279 442 292 444 306 441M263 456C277 463 292 465 309 461M268 477C281 482 295 483 307 479" fill="none" stroke="#C4B294" stroke-opacity=".38" stroke-width="1.1"/>
+      <path d="M265 417C281 426 300 429 318 423" fill="none" stroke="#A83B30" stroke-width="5" opacity=".72"/>
+      <path d="M265 417C281 426 300 429 318 423" fill="none" stroke="${GOLD}" stroke-width="1.3" opacity=".55"/>
+      <path d="M302 421L302 436" stroke="#D0B98F" stroke-opacity=".5" stroke-width="1.1"/>
+      <circle cx="302" cy="418" r="4" fill="#B88A4C" stroke="#F1E3C4" stroke-width="1"/>
+      <path d="M251 376C260 367 271 362 283 361M353 376C344 367 333 362 321 361" fill="none" stroke="#E3CEAA" stroke-opacity=".38" stroke-width="1.1"/>
+    </g>
+    <path d="M51 155C105 132 158 134 204 158" fill="none" stroke="#F0E5D1" stroke-opacity=".25" stroke-width="1.2"/>
+    <path d="M340 96C359 82 379 77 400 81" fill="none" stroke="#F0E5D1" stroke-opacity=".2" stroke-width="1.1"/>
+    <path d="M485 257C510 244 534 244 557 255" fill="none" stroke="#A83B30" stroke-opacity=".35" stroke-width="1.4"/>
+  </g>
+  <rect x="18" y="18" width="564" height="724" fill="none" stroke="#2A221C" stroke-opacity=".2"/>
+</svg>`,
+
+    yin: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-label="隐士陶渊明的武侠风立绘">
+  <defs>
+    <linearGradient id="yin-bg" x1="0" y1="0" x2=".8" y2="1">
+      <stop offset="0" stop-color="#F0F0D9"/>
+      <stop offset=".55" stop-color="#D8DECB"/>
+      <stop offset="1" stop-color="#8C9C80"/>
+    </linearGradient>
+    <radialGradient id="yin-sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#C7954E" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#C7954E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="yin-robe" x1="0" y1="0" x2=".8" y2="1">
+      <stop offset="0" stop-color="#ECE7D6"/>
+      <stop offset="1" stop-color="#B5B89D"/>
+    </linearGradient>
+    <linearGradient id="yin-hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#506B58" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#506B58" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="yin-field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9AE74" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#C9AE74" stop-opacity=".02"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="760" fill="url(#yin-bg)"/>
+  <circle cx="375" cy="152" r="124" fill="url(#yin-sun)"/>
+  <circle cx="375" cy="152" r="50" fill="#BF8B46" opacity=".32"/>
+  <path d="M0 534C87 478 153 487 217 525C288 473 358 482 421 522C478 488 543 491 600 518V760H0Z" fill="url(#yin-hill)"/>
+  <path d="M0 612C97 566 165 574 229 606C293 572 362 578 426 611C486 584 548 588 600 611V760H0Z" fill="#61755A" opacity=".22"/>
+  <path d="M0 677C88 646 159 651 225 674C293 647 366 650 428 675C490 653 547 655 600 675V760H0Z" fill="url(#yin-field)"/>
+  <g fill="none" stroke="#6F7C52" stroke-opacity=".5" stroke-width="1">
+    <path d="M32 563C82 536 127 539 170 559M430 558C476 536 522 538 568 557"/>
+    <path d="M50 591C103 568 151 571 194 590M405 590C450 569 498 568 550 586"/>
+    <path d="M24 690H575M24 708H575M24 726H575"/>
+    <path d="M82 674V732M151 674V732M220 674V732M289 674V732M358 674V732M427 674V732M496 674V732"/>
+  </g>
+  <g fill="none" stroke="#687A55" stroke-width="1.2" opacity=".44">
+    <path d="M100 517C91 445 103 381 132 318M119 436C147 409 163 381 174 351M106 466C80 440 63 410 56 378"/>
+    <path d="M516 518C524 448 512 389 485 331M497 439C471 413 455 386 445 357M510 467C537 441 553 413 560 381"/>
+    <path d="M159 357C184 344 207 341 229 345M440 355C415 342 392 340 370 344"/>
+  </g>
+  <g opacity=".18" fill="#8D7D4C">
+    <path d="M36 553C78 524 117 518 152 533C126 560 92 571 57 565Z"/>
+    <path d="M462 556C500 526 537 523 572 539C547 566 511 574 477 567Z"/>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M265 284C270 307 280 324 305 333C333 324 343 306 347 283L335 352C326 371 287 371 278 352Z" fill="${SKIN_SHADE}"/>
+    <path d="M257 207C254 165 274 137 301 137C331 137 350 166 346 211C344 251 328 276 302 285C276 275 260 250 257 207Z" fill="${SKIN}"/>
+    <path d="M248 194C244 147 270 112 304 111C340 110 365 144 355 201C343 172 327 157 301 157C271 155 256 170 248 194Z" fill="#3D4A3C"/>
+    <path d="M244 169C258 144 279 129 305 127C333 125 355 140 367 165C349 154 330 148 309 148C285 148 263 155 244 169Z" fill="${INK}"/>
+    <path d="M260 166C250 137 262 109 287 93C301 116 302 141 291 164Z" fill="${INK}"/>
+    <path d="M350 165C362 137 351 108 326 91C311 115 309 140 320 164Z" fill="${INK}"/>
+    <path d="M259 161C226 150 205 156 191 175C217 182 241 195 260 214Z" fill="#9C8A58"/>
+    <path d="M348 161C381 150 402 157 416 176C390 183 366 196 347 215Z" fill="#9C8A58"/>
+    <path d="M218 179C248 159 291 148 329 151C367 155 396 172 414 199C396 216 366 227 331 228C292 230 255 218 226 198Z" fill="#C7B47A" stroke="#766948" stroke-width="2"/>
+    <path d="M240 176C270 161 304 155 337 158C365 161 386 171 400 184" fill="none" stroke="#8C7D51" stroke-width="1.5"/>
+    <path d="M237 197C268 203 298 205 327 202C357 200 383 193 402 184" fill="none" stroke="#8C7D51" stroke-width="1.2"/>
+    <path d="M252 214C265 230 284 239 304 241C325 240 343 231 354 215" fill="none" stroke="#6C6243" stroke-width="1.1" opacity=".6"/>
+    <path d="M270 201C279 196 289 196 296 201" fill="none" stroke="${INK}" stroke-width="3"/>
+    <path d="M313 201C322 196 332 196 340 202" fill="none" stroke="${INK}" stroke-width="3"/>
+    <path d="M276 213C283 217 290 217 296 213" fill="none" stroke="${INK}" stroke-width="2.3"/>
+    <path d="M315 213C322 217 329 217 336 212" fill="none" stroke="${INK}" stroke-width="2.3"/>
+    <path d="M303 214C302 227 299 236 295 242" fill="none" stroke="${SKIN_SHADE}" stroke-width="1.7"/>
+    <path d="M287 258C296 264 309 265 319 257" fill="none" stroke="#8D4E43" stroke-width="2.5"/>
+    <path d="M280 247C291 243 305 244 316 250" fill="none" stroke="#5A3F30" stroke-width="2"/>
+    <path d="M269 270C285 282 303 287 319 286C335 285 350 278 360 267" fill="none" stroke="#C6B18B" stroke-width="1.3" opacity=".6"/>
+    <path d="M232 392C249 348 278 326 305 327C336 326 369 347 386 391L452 760H140Z" fill="url(#yin-robe)" stroke="#687359" stroke-width="2.2"/>
+    <path d="M261 349L306 430L351 348L371 760H234Z" fill="#DDDCC8"/>
+    <path d="M261 349L306 430L351 348" fill="none" stroke="#7D8368" stroke-width="1.8"/>
+    <path d="M306 430L291 760M306 430L326 760" stroke="${GOLD}" stroke-opacity=".36" stroke-width="1.2"/>
+    <path d="M228 410C194 447 173 500 166 561C161 615 168 663 186 702C201 669 210 628 210 589C214 530 228 477 250 444Z" fill="#D3D3BC" stroke="#687359" stroke-width="2"/>
+    <path d="M389 409C421 441 441 487 449 544C455 596 448 644 431 686C415 657 406 620 404 586C400 531 388 485 366 452Z" fill="#D3D3BC" stroke="#687359" stroke-width="2"/>
+    <path d="M188 542C202 575 209 610 207 650M424 542C411 575 405 610 407 650" fill="none" stroke="#788068" stroke-opacity=".48" stroke-width="1.3"/>
+    <path d="M249 500C263 544 278 579 299 609M370 499C354 543 339 579 320 610" fill="none" stroke="${GOLD}" stroke-opacity=".4" stroke-width="1.2"/>
+    <path d="M233 453C234 500 239 544 249 579M383 452C382 500 377 542 368 576" fill="none" stroke="#7A806A" stroke-opacity=".24" stroke-width="1.2"/>
+    <path d="M435 442C461 420 477 390 486 355" stroke="#7B673F" stroke-width="7" stroke-linecap="round"/>
+    <path d="M438 447C465 425 482 395 493 358" stroke="#C0A067" stroke-width="2"/>
+    <path d="M480 353C503 326 520 290 531 247" stroke="#765D37" stroke-width="4"/>
+    <path d="M531 247L554 173" stroke="#DDD2B6" stroke-width="8" stroke-linecap="round"/>
+    <path d="M531 247L554 173" stroke="#7D6A46" stroke-width="1.3" opacity=".6"/>
+    <path d="M520 259L541 245L553 262L533 276Z" fill="#8E7A51" stroke="#5A4A31" stroke-width="1.4"/>
+    <path d="M456 452C470 442 484 447 490 462C495 478 485 491 470 492C456 493 448 482 448 471C448 463 451 456 456 452Z" fill="${SKIN}" stroke="#A77B5A" stroke-width="1.6"/>
+    <path d="M487 481C500 491 501 506 491 516C481 525 468 519 463 507" fill="${SKIN}" stroke="#A77B5A" stroke-width="1.5"/>
+    <path d="M180 628C199 611 218 610 235 625C248 611 268 613 281 629L274 735H169Z" fill="#B6A778" opacity=".25"/>
+    <path d="M210 649C221 636 235 636 247 649C259 637 272 639 282 651M207 676C219 665 232 665 243 677C254 665 267 667 277 678" fill="none" stroke="#617453" stroke-width="1.2" opacity=".55"/>
+    <g fill="#D8B65C" stroke="#8A773F" stroke-width="1">
+      <circle cx="119" cy="623" r="8"/><circle cx="137" cy="612" r="10"/><circle cx="156" cy="624" r="7"/>
+      <circle cx="445" cy="619" r="8"/><circle cx="463" cy="608" r="10"/><circle cx="482" cy="621" r="7"/>
+    </g>
+    <g fill="none" stroke="#63764E" stroke-width="1.1">
+      <path d="M119 632V666M137 623V662M156 632V661M445 628V665M463 619V662M482 630V664"/>
+    </g>
+    <path d="M65 444C83 423 104 412 128 408M535 443C518 423 497 412 473 408" fill="none" stroke="#7F8A5D" stroke-opacity=".45" stroke-width="1.1"/>
+    <path d="M486 207C506 196 527 196 545 206M141 278C157 268 174 267 190 273" fill="none" stroke="#6F7C52" stroke-opacity=".45" stroke-width="1.1"/>
+    <path d="M328 69C349 55 371 54 392 64" fill="none" stroke="#7E7045" stroke-opacity=".4" stroke-width="1"/>
+  </g>
+  <rect x="18" y="18" width="564" height="724" fill="none" stroke="#4B5038" stroke-opacity=".16"/>
+</svg>`
+  };
+
+  var PHRASES = {
+    mou: "谋定后动",
+    wang: "日月当空",
+    wen: "此心安处",
+    xia: "风萧水寒",
+    shi: "举杯邀月",
+    jiang: "封狼居胥",
+    yin: "归去来兮"
+  };
+
+  var SEAL_GLYPHS = {
+    mou: "谋", wang: "权", wen: "雅", xia: "义", shi: "灵", jiang: "勇", yin: "隐"
+  };
+
+  var LIGHT_CALIGRAPHY = { xia: true };
+
+  Object.keys(PORTRAITS).forEach(function (code) {
+    PORTRAITS[code] = PORTRAITS[code].replace(
+      '<svg xmlns=',
+      '<svg preserveAspectRatio="xMidYMid slice" xmlns='
+    );
+    var chars = PHRASES[code].split("");
+    var textColor = LIGHT_CALIGRAPHY[code] ? "#F8F1E5" : "#202A25";
+    var textOpacity = LIGHT_CALIGRAPHY[code] ? ".28" : ".22";
+    var columns = chars.map(function (character, index) {
+      return '<text x="54" y="' + (432 + index * 31) + '">' + character + "</text>";
+    }).join("");
+    var extras = `
+  <g pointer-events="none">
+    <g fill="${textColor}" opacity="${textOpacity}" font-family="KaiTi, STKaiti, Songti SC, SimSun, serif" font-size="24" text-anchor="middle">
+      ${columns}
+    </g>
+    <g fill="#A83B30" opacity=".7">
+      <rect x="37" y="566" width="36" height="36" fill="none" stroke="#A83B30" stroke-width="1.2"/>
+      <text x="55" y="592" text-anchor="middle" font-family="KaiTi, STKaiti, Songti SC, SimSun, serif" font-size="21">${SEAL_GLYPHS[code]}</text>
+    </g>
+    <g fill="${textColor}" opacity=".1">
+      <path d="M512 182C530 166 551 168 564 184C547 195 528 196 512 182Z"/>
+      <path d="M520 198C533 192 545 195 552 204C541 210 527 209 520 198Z"/>
+      <circle cx="506" cy="211" r="4"/>
+      <circle cx="557" cy="171" r="2.6"/>
+    </g>
+    <g fill="#A83B30" opacity=".09">
+      <path d="M74 648C93 632 112 637 122 654C104 668 84 666 74 648Z"/>
+      <circle cx="65" cy="668" r="3"/>
+      <circle cx="113" cy="675" r="1.8"/>
+    </g>
+  </g>
+  <rect x="18"`;
+    PORTRAITS[code] = PORTRAITS[code].replace('<rect x="18"', extras);
+  });
+
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = PORTRAITS;
+  }
+  root.ANCIENT_PORTRAITS = PORTRAITS;
+})(typeof globalThis !== "undefined" ? globalThis : this);
+
+
+/* =========================================================
    穿越古代身份图鉴 · 评分内核
    规则：
    - 每个选项有 1 个主维度（+3）和 1 个副维度（+1）
@@ -3605,16 +5318,31 @@ main {
     els.resultDynasty = byId("resultDynasty");
     els.resultTagline = byId("resultTagline");
     els.resultKeywords = byId("resultKeywords");
+    els.resultSkillChip = byId("resultSkillChip");
     els.saveBtn = byId("saveBtn");
     els.copyBtn = byId("copyBtn");
     els.restartBtn = byId("restartBtn");
     els.restartBtnBottom = byId("restartBtnBottom");
+    els.resultPortrait = byId("resultPortrait");
+    els.portraitIndex = byId("portraitIndex");
+    els.portraitSeal = byId("portraitSeal");
+    els.portraitWeapon = byId("portraitWeapon");
+    els.wuxiaRealm = byId("wuxiaRealm");
+    els.wuxiaAlias = byId("wuxiaAlias");
+    els.skillTier = byId("skillTier");
+    els.skillName = byId("skillName");
+    els.skillType = byId("skillType");
+    els.skillLine = byId("skillLine");
+    els.skillDesc = byId("skillDesc");
+    els.minorSkills = byId("minorSkills");
+    els.wuxiaStats = byId("wuxiaStats");
     els.cardWatermark = byId("cardWatermark");
     els.cardNo = byId("cardNo");
     els.cardName = byId("cardName");
     els.cardSeal = byId("cardSeal");
     els.cardRole = byId("cardRole");
     els.cardKeywords = byId("cardKeywords");
+    els.cardSkill = byId("cardSkill");
     els.cardQuote = byId("cardQuote");
     els.cardDims = byId("cardDims");
     els.card = byId("shareCard");
@@ -3965,6 +5693,94 @@ main {
     });
   }
 
+  function renderMinorSkills(skills) {
+    clearChildren(els.minorSkills);
+
+    skills.forEach(function (skill, index) {
+      var article = document.createElement("article");
+      var top = document.createElement("div");
+      var num = document.createElement("span");
+      var type = document.createElement("span");
+      var title = document.createElement("h4");
+      var desc = document.createElement("p");
+      var tag = document.createElement("span");
+
+      article.className = "minor-skill";
+      top.className = "minor-skill__top";
+      num.className = "minor-skill__num";
+      num.textContent = ["贰", "叁"][index] || "奇";
+      type.className = "minor-skill__type";
+      type.textContent = skill.type;
+      title.textContent = skill.name;
+      desc.textContent = skill.desc;
+      tag.className = "minor-skill__tag";
+      tag.textContent = skill.tag;
+
+      top.appendChild(num);
+      top.appendChild(type);
+      article.appendChild(top);
+      article.appendChild(title);
+      article.appendChild(desc);
+      article.appendChild(tag);
+      els.minorSkills.appendChild(article);
+    });
+  }
+
+  function renderWuxiaStats(stats) {
+    clearChildren(els.wuxiaStats);
+
+    stats.forEach(function (stat) {
+      var row = document.createElement("div");
+      var meta = document.createElement("div");
+      var name = document.createElement("span");
+      var value = document.createElement("strong");
+      var track = document.createElement("span");
+      var fill = document.createElement("span");
+
+      row.className = "wuxia-stat";
+      meta.className = "wuxia-stat__meta";
+      name.textContent = stat.name;
+      value.textContent = String(stat.value);
+      track.className = "wuxia-stat__track";
+      fill.className = "wuxia-stat__fill";
+      fill.dataset.width = String(stat.value);
+
+      meta.appendChild(name);
+      meta.appendChild(value);
+      track.appendChild(fill);
+      row.appendChild(meta);
+      row.appendChild(track);
+      els.wuxiaStats.appendChild(row);
+    });
+  }
+
+  function renderWuxia(result) {
+    var wuxia = result.wuxia;
+    if (!wuxia || !els.wuxiaAlias) return;
+
+    var portrait = window.ANCIENT_PORTRAITS && window.ANCIENT_PORTRAITS[result.code];
+    if (portrait) {
+      els.resultPortrait.innerHTML = portrait;
+    } else {
+      els.resultPortrait.innerHTML = "";
+    }
+
+    els.portraitIndex.textContent = "PERSONA " + result.index;
+    els.portraitSeal.textContent = result.glyph;
+    els.portraitWeapon.textContent = wuxia.weapon;
+    els.wuxiaRealm.textContent = wuxia.realm;
+    els.wuxiaAlias.textContent = wuxia.alias;
+    els.skillTier.textContent = wuxia.signature.tier;
+    els.skillName.textContent = wuxia.signature.name;
+    els.skillType.textContent = wuxia.signature.type;
+    els.skillLine.textContent = "“" + wuxia.signature.line + "”";
+    els.skillDesc.textContent = wuxia.signature.desc;
+    els.resultSkillChip.textContent = wuxia.signature.name;
+    els.cardSkill.textContent = wuxia.signature.name;
+    renderMinorSkills(wuxia.skills);
+    renderWuxiaStats(wuxia.stats);
+  }
+
   function renderResult(analysis) {
     var result = analysis.result;
     var top3 = analysis.top3;
@@ -3987,6 +5803,7 @@ main {
     els.resultEaster.textContent = result.easter;
     renderModern(result.modern);
     renderDimensions(analysis.ranked);
+    renderWuxia(result);
 
     els.cardWatermark.textContent = result.glyph;
     els.cardNo.textContent = "NO." + result.index + " / 07";
@@ -3995,11 +5812,12 @@ main {
     els.cardRole.textContent = result.archetype + " · " + result.title;
     els.cardKeywords.textContent = result.keywords.join(" · ");
     els.cardQuote.textContent = result.tagline;
+    els.cardSkill.textContent = result.wuxia.signature.name;
     renderCardDimensions(top3);
 
     els.card.setAttribute(
       "aria-label",
-      "我的古代身份分享卡：" + result.archetype + "，历史原型" + result.person + "，" + result.title
+      "我的古代身份分享卡：" + result.archetype + "，历史原型" + result.person + "，" + result.title + "，本命绝学" + result.wuxia.signature.name
     );
 
     els.saveBtn.disabled = false;
@@ -4008,7 +5826,7 @@ main {
   }
 
   function revealBars() {
-    all(".dimension-fill, .card-dim__fill").forEach(function (fill) {
+    all(".dimension-fill, .card-dim__fill, .wuxia-stat__fill").forEach(function (fill) {
       fill.style.width = (fill.dataset.width || "0") + "%";
     });
   }
@@ -4027,10 +5845,12 @@ main {
     var isWeb = /^https?:/i.test(window.location.href);
     var lines = [
       "我的古代身份是「" + result.person + "」——" + result.archetype + " · " + result.title,
+      "江湖名号：" + result.wuxia.alias,
+      "本命绝学：" + result.wuxia.signature.name + "（" + result.wuxia.realm + "）",
       "“" + result.tagline + "”",
       "主气质：" + topNames,
       isWeb ? "来测测你的古代身份：" + window.location.href : "来测测你的古代身份。",
-      "#穿越古代身份图鉴 #古代身份测试 #人格测试 #趣味测试"
+      "#穿越古代身份图鉴 #古代身份测试 #武侠立绘 #人格测试 #趣味测试"
     ];
 
     return lines.join("\n");
@@ -4303,6 +6123,10 @@ main {
     ctx.font = '400 37px "Songti SC", "STSong", "KaiTi", "SimSun", serif';
     ctx.fillText(result.archetype + "  ·  " + result.title, 96, 477);
 
+    ctx.fillStyle = colors.gold;
+    ctx.font = '400 18px "Songti SC", "STSong", "KaiTi", "SimSun", serif';
+    ctx.fillText("江湖名号 · " + result.wuxia.alias, 98, 514);
+
     // 印章
     drawCanvasSeal(ctx, 832, 314, 126, result.glyph);
 
@@ -4324,6 +6148,27 @@ main {
     quoteLines.slice(0, 3).forEach(function (line, index) {
       ctx.fillText(line, 138, 620 + index * 51);
     });
+
+    ctx.strokeStyle = "rgba(175, 138, 82, 0.35)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(138, 714);
+    ctx.lineTo(W - 138, 714);
+    ctx.stroke();
+
+    ctx.fillStyle = colors.cinnabar;
+    ctx.font = '400 14px "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.fillText("本命绝学", 138, 748);
+
+    ctx.fillStyle = colors.ink;
+    ctx.font = '500 23px "Songti SC", "STSong", "KaiTi", "SimSun", serif';
+    ctx.fillText(result.wuxia.signature.name, 246, 748);
+
+    ctx.fillStyle = colors.muted;
+    ctx.font = '400 13px "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.textAlign = "right";
+    ctx.fillText(result.wuxia.realm, W - 138, 747);
+    ctx.textAlign = "left";
 
     // 关键词
     ctx.fillStyle = colors.muted;
